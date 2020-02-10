@@ -1,22 +1,20 @@
 name: Lighthouse
-on: push
+on: [push]
 jobs:
-  static-dist-dir:
+  lhci:
+    name: Lighthouse CI
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Install requirements
-        run: pushd pwa && npm install && popd
-      - name: Build
-        run: pushd pwa && npm run build && popd
-      - name: Run Lighthouse against a static dist dir
-        uses: treosh/lighthouse-ci-action@v2
+      - uses: actions/checkout@v1
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
         with:
-          configPath: "./.github/lighthouse/main.json"
-          runs: 1
-      - name: Upload lighthouse report
-        uses: actions/upload-artifact@v1
-        with:
-          name: lighthouse
-          path: ./.lighthouseci
+          node-version: 10.x
+      - name: npm install and build
+        run: |
+          pushd pwa && npm install
+          npm run build && popd
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.3.x
+          lhci autorun --config .github/lighthouse/main.json
