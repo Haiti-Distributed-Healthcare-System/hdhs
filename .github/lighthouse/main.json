@@ -1,8 +1,0 @@
-{
-  "ci": {
-    "collect": {
-      "staticDistDir": "./pwa/build",
-      "numberOfRuns": 3
-    }
-  }
-}
