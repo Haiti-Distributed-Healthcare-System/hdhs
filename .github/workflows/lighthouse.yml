@@ -13,4 +13,4 @@ jobs:
       - name: Run Lighthouse against a static dist dir
         uses: treosh/lighthouse-ci-action@v2
         with:
-          configPath: "./github/lighthouse/main.json"
+          configPath: "./.github/lighthouse/main.json"
