@@ -3,12 +3,6 @@
     "collect": {
       "staticDistDir": "./pwa/build",
       "numberOfRuns": 3
-    },
-    "assert": {
-      "preset": "lighthouse:recommended"
-    },
-    "upload": {
-      "target": "temporary-public-storage"
     }
   }
 }
