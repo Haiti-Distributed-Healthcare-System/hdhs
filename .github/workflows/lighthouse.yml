@@ -14,3 +14,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           configPath: "./.github/lighthouse/main.json"
+          runs: 1
+      - name: Upload lighthouse report
+        uses: actions/upload-artifact@v1
+        with:
+          name: lighthouse
+          path: ./.lighthouseci
