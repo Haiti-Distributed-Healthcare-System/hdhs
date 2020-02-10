@@ -6,8 +6,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Install requirements
+        run: pushd pwa && npm install && popd
       - name: Build
-        run: cd pwa && npm run build
+        run: pushd pwa && npm run build && popd
       - name: Run Lighthouse against a static dist dir
         uses: treosh/lighthouse-ci-action@v2
         with:
