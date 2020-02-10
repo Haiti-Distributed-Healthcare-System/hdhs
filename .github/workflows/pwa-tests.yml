@@ -16,9 +16,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd pwa 
-      - run: npm install
-      - run: npm run build
-      - run: npm test
+      - run: pushd pwa && npm install && popd
+      - run: pushd pwa && npm run build && popd
+      - run: pushd pwa && npm test && popd
         env:
           CI: true
