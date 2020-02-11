@@ -6,9 +6,9 @@ cache:
     - node_modules
 before_install:
   - npm install -g @lhci/cli@0.3.x
-  - sudo apt-add-repository ppa:ubuntu-desktop/ubuntu-make
-  - sudo apt-get update 
-  - sudo apt-get install ubuntu-make 
+  - sudo apt-add-repository ppa:ubuntu-desktop/ubuntu-make -y
+  - sudo apt-get update -y
+  - sudo apt-get install ubuntu-make -y
   - pushd pwa && npm install && popd
 script:
   - pushd pwa && npm run build && popd
