@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  pwa:
+    build:
+      context: ./pwa
+    command: npm start
+    volumes:
+      - ./pwa/:/app
+    ports:
+      - "8000:3000"
+    
