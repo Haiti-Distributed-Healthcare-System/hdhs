@@ -1,4 +1,4 @@
-name: Lighthouse
+name: Build project and Run Lighthouse CI
 on: [push]
 jobs:
   lhci:
@@ -10,11 +10,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
-      - name: npm install and build
+      - name: npm install, build
         run: |
-          pushd pwa && npm install
-          npm run build && popd
+          npm install
+          npm run build
       - name: run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.3.x
-          lhci autorun --upload.target=temporary-public-storage
+          lhci autorun || echo "LHCI failed!"
