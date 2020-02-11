@@ -4,6 +4,7 @@ addons:
 before_install:
   - npm install -g @lhci/cli@0.3.x 
 script:
+  - pushd pwa && npm install && popd
   - pushd pwa && npm run build && popd
   - pushd pwa && npm test && popd
 after_success:
