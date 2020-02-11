@@ -1,0 +1,10 @@
+language: node_js
+addons:
+  chrome: stable 
+before_install:
+  - npm install -g @lhci/cli@0.3.x 
+script:
+  - pushd pwa && npm run build && popd
+  - pushd pwa && npm test && popd
+after_success:
+  - lhci autorun --upload.target=temporary-public-storage
