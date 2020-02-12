@@ -8,5 +8,5 @@ services:
     volumes:
       - ./pwa/:/app
     ports:
-      - "8000:3000"
+      - "3000:3000"
     
