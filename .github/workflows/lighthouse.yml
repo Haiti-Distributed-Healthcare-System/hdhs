@@ -18,3 +18,8 @@ jobs:
         run: |
           npm install -g @lhci/cli@0.3.x
           lhci autorun || echo "LHCI failed!"
+      - name: Upload lighthouse report
+        uses: actions/upload-artifact@v1
+        with:
+          name: lighthouse
+          path: ./.lighthouseci
