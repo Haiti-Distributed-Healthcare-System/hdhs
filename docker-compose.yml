@@ -9,4 +9,4 @@ services:
       - ./pwa/:/app
     ports:
       - "8000:3000"
-    
+    container_name: haiti_pwa
