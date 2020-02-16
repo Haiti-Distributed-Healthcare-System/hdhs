@@ -4,7 +4,6 @@ services:
   pwa:
     build:
       context: ./pwa
-    command: npm start
     volumes:
       - ./pwa/:/app
     ports:

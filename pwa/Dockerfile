@@ -1,15 +1,15 @@
 FROM node:12.10.0
 
-WORKDIR /app
-# cd app folder within container.
+COPY package*.json ./data/
 
-COPY package*.json ./
+WORKDIR /data
 
 RUN npm install
 
-COPY . .
-# copy {everything in PWA} {WORKDIR (/app)}
-# this is okay because node_modules is ignored
+ENV PATH /data/node_modules/.bin:$PATH
+
+COPY . /data/app
+WORKDIR /data/app
 
 EXPOSE 3000
 
