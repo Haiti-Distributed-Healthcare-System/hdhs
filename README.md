@@ -13,7 +13,7 @@
 The application runs on docker, which can be installed [here](https://docs.docker.com/install/).
 If you're a linux user, you'll also need to install [docker-compose](https://docs.docker.com/compose/install/) separately. Otherwise, it's included in the Mac and PC versions of "Docker Desktop"
 
-- The PWA and accompanying database can be started by running the command `docker-compose -f dev-docker-compose up` from the root directory.
-  - `docker-compose -f dev-docker-compose up` will then stop the docker processes from running in the background.
+- The PWA and accompanying database can be started by running the command `docker-compose -f dev-docker-compose.yml up` from the root directory.
+  - `docker-compose -f dev-docker-compose.yml up` will then stop the docker processes from running in the background.
 - Once the images have been built and the processes started, the PWA can be seen at your localhost, at the port specified in [dev-docker-compose.yml](https://github.com/Haiti-Distributed-Healthcare-System/hdhs/blob/dev/dev-docker-compose.yml).
 - More tips to troubleshoot docker are available [here](https://github.com/Haiti-Distributed-Healthcare-System/hdhs/wiki/Using-Docker).
