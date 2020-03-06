@@ -1,1 +1,3 @@
 **/.lighthouseci/**
+env/*
+.vscode/*
