@@ -12,6 +12,8 @@
     justify-content: center;
     height: 45%;
     #iconCard {
+      animation-name: fade-in-from-up;
+      animation-duration: 1.5s;
       justify-content: center;
       align-items: center;
       flex-direction: row;
@@ -30,7 +32,13 @@
         }
       }
     }
+    input {
+      animation-name: fade-in;
+      animation-duration: 2s;
+    }
     #buttonFlex{
+      animation-name: fade-in;
+      animation-duration: 2s;
       display: flex;
       justify-content: center;
       .am-button {
@@ -42,4 +50,21 @@
       }
     }
   }
+}
+
+$animationDelay: 1;
+@for $i from 1 through 15 {
+	.loginGrid :nth-child(#{$i}) {
+		animation-delay: #{0.3+($i)/30}s;
+  }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-in-from-up {
+  0% { opacity: 0; transform: translateY(-100px)}
+  100% { opacity: 1; }
 }
