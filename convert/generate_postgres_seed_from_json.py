@@ -8,13 +8,12 @@ from fmp import FMP
 
 db_json = dict()
 fmp_model = FMP()
-CURR_DAY = datetime.now().strftime("%Y%m%d_%H%M")
 
 
 # 1st (sql file)
 # 2nd (write to sql connection)
-def write_command(string):
-    with open("./init/{curr_day}_init_db.sql".format(curr_day=CURR_DAY), "w") as f:
+def write_command(string, date_time):
+    with open("./init/{date_time}_init_db.sql".format(date_time=date_time), "w") as f:
         f.write(string)
 
 
@@ -33,7 +32,8 @@ def main(argv):
     with open(model_file, "r") as f:
         data_model = json.load(f)
 
-    schema = "chi_{day}".format(day=CURR_DAY)
+    date_time = '_'.join(os.path.split(os.path.abspath(model_file))[-1].split('_')[:2])
+    schema = "chi_{date_time}".format(date_time=date_time)
     command = "create schema {schema};\n".format(schema=schema)
     for table_name, attribute_dict in data_model.items():
         command += "create table {schema}.{table_name} (\n".format(
@@ -65,7 +65,7 @@ def main(argv):
 
         command += ");\n\n"
 
-    write_command(command)
+    write_command(command, date_time)
 
 
 if __name__ == "__main__":
