@@ -33,12 +33,12 @@
     #buttonFlex{
       display: flex;
       justify-content: center;
-      .am-button-active {
-        background-color: #fff !important;
-      }
       .am-button {
         background-color: #9BD7FF;
         width: 40%;
+        .am-button-active {
+          background-color: #fff;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import {InputItem, Card, Button} from 'antd-mobile'
+import {InputItem, Button} from 'antd-mobile'
 import '../scss/Login.scss'
 
 export default function Login(): ReactElement {
@@ -9,11 +9,11 @@ export default function Login(): ReactElement {
         <div id="loginGrid">
             <div id="iconCard">
               <div id="imgWrap">
-                <img src="/logoIcon512.jpg"></img>
+                <img src="/logoIcon512.jpg" alt="CHI Logo"></img>
               </div>
             </div>
             <InputItem placeholder="username"/>
-            <InputItem placeholder="password"/>
+            <InputItem placeholder="password" type="password"/>
             <div id="buttonFlex">
               <Button>Login</Button>
             </div>
