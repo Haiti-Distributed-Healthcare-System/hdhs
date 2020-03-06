@@ -1,5 +1,5 @@
-create schema chi_20200306;
-create table chi_20200306.clinics (
+create schema chi_20200306_1047;
+create table chi_20200306_1047.clinics (
 	pk_clinic_id FLOAT primary key,
 	clinic_name VARCHAR ,
 	creation_date TIMESTAMP ,
@@ -8,7 +8,7 @@ create table chi_20200306.clinics (
 	modified_acct VARCHAR 
 );
 
-create table chi_20200306.patients (
+create table chi_20200306_1047.patients (
 	pk_patient_id FLOAT primary key,
 	creation_date TIMESTAMP ,
 	creation_acct VARCHAR ,
@@ -29,7 +29,7 @@ create table chi_20200306.patients (
 	fk_geonameid VARCHAR 
 );
 
-create table chi_20200306.visits (
+create table chi_20200306_1047.visits (
 	pk_visit_id FLOAT primary key,
 	creation_date TIMESTAMP ,
 	creation_acct VARCHAR ,
@@ -235,7 +235,7 @@ create table chi_20200306.visits (
 	notes_modification_status VARCHAR 
 );
 
-create table chi_20200306.diagnoses (
+create table chi_20200306_1047.diagnoses (
 	pk_diagnosis_id FLOAT primary key,
 	diagnosis_name VARCHAR ,
 	pk_diagnosis_key VARCHAR primary key,
@@ -245,7 +245,7 @@ create table chi_20200306.diagnoses (
 	modified_acct VARCHAR 
 );
 
-create table chi_20200306.diagnoses_made (
+create table chi_20200306_1047.diagnoses_made (
 	pk_diagnoses_made FLOAT primary key,
 	fk_visit_id FLOAT ,
 	fk_diagnosis_key VARCHAR ,
@@ -255,7 +255,7 @@ create table chi_20200306.diagnoses_made (
 	modified_acct VARCHAR 
 );
 
-create table chi_20200306.meds (
+create table chi_20200306_1047.meds (
 	pk_med_id FLOAT primary key,
 	med_name VARCHAR ,
 	creation_date TIMESTAMP ,
@@ -266,7 +266,7 @@ create table chi_20200306.meds (
 	med_type VARCHAR 
 );
 
-create table chi_20200306.meds_dispensed (
+create table chi_20200306_1047.meds_dispensed (
 	pk_meds_dispensed FLOAT primary key,
 	fk_visit_id FLOAT ,
 	fk_med_key VARCHAR ,

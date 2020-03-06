@@ -8,7 +8,7 @@ from fmp import FMP
 
 db_json = dict()
 fmp_model = FMP()
-CURR_DAY = datetime.now().strftime("%Y%m%d")
+CURR_DAY = datetime.now().strftime("%Y%m%d_%H%M")
 
 
 # 1st (sql file)
