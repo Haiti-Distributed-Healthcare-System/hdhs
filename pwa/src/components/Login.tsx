@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import {InputItem, Card} from 'antd-mobile'
+import {InputItem, Card, Button} from 'antd-mobile'
 import '../scss/Login.scss'
 
 export default function Login(): ReactElement {
@@ -14,6 +14,9 @@ export default function Login(): ReactElement {
             </div>
             <InputItem placeholder="username"/>
             <InputItem placeholder="password"/>
+            <div id="buttonFlex">
+              <Button>Login</Button>
+            </div>
         </div>
       </div>
     </>
