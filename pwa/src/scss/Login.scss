@@ -1,0 +1,36 @@
+@import '_include-media.scss';
+
+// @include media("<desktop") {
+
+#loginWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  #loginGrid {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    text-align: center;
+    justify-content: center;
+    height: 35%;
+    #iconCard {
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      #imgWrap {
+        width: 20%;
+        margin: auto;
+        padding: .2rem;
+        background-color: #eee;
+        border-radius: 5px;
+        img {
+          display: block;
+          width: 100%;
+          max-width: 512px;
+          height: auto;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
