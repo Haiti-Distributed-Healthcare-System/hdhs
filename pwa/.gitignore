@@ -8,10 +8,6 @@
 # testing
 /coverage
 
-# production
-build/*
-!build/.gitkeep
-
 # misc
 .DS_Store
 .env.local
