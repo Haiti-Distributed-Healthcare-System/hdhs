@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-const useFetch = (route: string) => {
+const useApi = (route: string) => {
   const [response, setResponse] = React.useState(null);
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -23,4 +22,4 @@ const useFetch = (route: string) => {
   return { response, error, isLoading };
 };
 
-export default useFetch
+export default useApi
