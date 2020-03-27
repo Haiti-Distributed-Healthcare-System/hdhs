@@ -21,9 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "integration-non-head": "cypress open",
-    "integration": "cypress run",
-    "coverage": "react-scripts test --coverage --watchAll=false",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:cov": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

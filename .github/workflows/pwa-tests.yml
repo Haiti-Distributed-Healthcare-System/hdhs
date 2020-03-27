@@ -18,6 +18,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: pushd pwa && npm install && popd
       - run: pushd pwa && npm run build && popd
-      - run: pushd pwa && npm test && popd
+      - run: pushd pwa && npm test:cov && popd
+      - run: pushd pwa && npm cy:run && popd
         env:
           CI: true
