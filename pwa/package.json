@@ -21,6 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "integration-non-head": "cypress open",
+    "integration": "cypress run",
     "coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
@@ -40,7 +42,14 @@
     ]
   },
   "devDependencies": {
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "@testing-library/react-hooks": "^3.2.1",
-    "react-test-renderer": "^16.13.1"
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "cypress": "^4.2.0",
+    "react-test-renderer": "^16.13.1",
+    "svg-url-loader": "^5.0.0",
+    "webpack": "^4.42.1"
   }
 }
