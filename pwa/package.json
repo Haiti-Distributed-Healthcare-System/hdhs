@@ -29,6 +29,14 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 90
+      }
+    },
+    "coverageReporters":["lcov"]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
