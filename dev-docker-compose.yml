@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   pwa:
     build:
@@ -9,14 +8,38 @@ services:
     ports:
       - "3000:3000"
     container_name: haiti_pwa
-    
+
   database:
     image: "postgres" # use latest official postgres version
-    env_file:
-      - database.env # configure postgres
     volumes:
-      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+      - "./pgdata:/var/lib/postgresql/data" # persist data even if container shuts down
     ports:
-      - "5432:5432"        
-volumes:
-  database-data: # named volumes can be managed easier using docker-compose
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: app_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: HaitiCHI
+      
+  api:
+    image: postgrest/postgrest
+    ports:
+      - "4000:3000"
+    expose:
+      - "4000"
+    links:
+      - database:database
+    environment:
+      PGRST_DB_URI: postgres://postgres:HaitiCHI@database:5432/app_db
+      PGRST_DB_SCHEMA: public
+      PGRST_DB_ANON_ROLE: postgres
+    depends_on:
+      - database
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "4001:8080"
+    expose:
+      - "8080"
+    environment: 
+      API_URL: http://localhost:4000
