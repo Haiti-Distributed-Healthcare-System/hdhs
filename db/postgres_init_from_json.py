@@ -12,8 +12,8 @@ fmp_model = FMP()
 
 # 1st (sql file)
 # 2nd (write to sql connection)
-def write_command(string, date_time):
-    with open("./init/{date_time}_init_db.sql".format(date_time=date_time), "w") as f:
+def write_command(string, out_file):
+    with open(out_file, "w") as f:
         f.write(string)
 
 
@@ -32,7 +32,9 @@ def main(argv):
     with open(model_file, "r") as f:
         data_model = json.load(f)
 
-    date_time = '_'.join(os.path.split(os.path.abspath(model_file))[-1].split('_')[:2])
+    date_time = "_".join(os.path.split(os.path.abspath(model_file))[-1].split("_")[:2])
+    output_file = "./init/{date_time}_init_db.sql".format(date_time=date_time)
+
     schema = "chi_{date_time}".format(date_time=date_time)
     command = "create schema {schema};\n".format(schema=schema)
     for table_name, attribute_dict in data_model.items():
@@ -41,12 +43,17 @@ def main(argv):
         )
         features = list(attribute_dict.keys())
         last_elem = features[-1]
+
+        # HACK: mark the first feautre name with 'pk' in
+        # the name as the primary key even if others exist.
+        pk_found = False
         for feature in features:
 
             extra_param_string = ""
 
-            if attribute_dict[feature]["pk"]:
+            if attribute_dict[feature]["pk"] and not pk_found:
                 extra_param_string += "primary key"
+                pk_found = True
 
             # elif attribute_dict[feature]["fk"]:
             #     extra_param_string += "foreign key"
@@ -65,7 +72,7 @@ def main(argv):
 
         command += ");\n\n"
 
-    write_command(command, date_time)
+    write_command(command, output_file)
 
 
 if __name__ == "__main__":

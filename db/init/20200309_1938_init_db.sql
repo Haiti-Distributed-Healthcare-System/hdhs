@@ -1,5 +1,5 @@
-create schema chi_20200305_2357;
-create table chi_20200305_2357.clinics (
+create schema chi_20200309_1938;
+create table chi_20200309_1938.clinics (
 	pk_clinic_id FLOAT primary key,
 	clinic_name VARCHAR ,
 	creation_date TIMESTAMP ,
@@ -8,7 +8,7 @@ create table chi_20200305_2357.clinics (
 	modified_acct VARCHAR 
 );
 
-create table chi_20200305_2357.patients (
+create table chi_20200309_1938.patients (
 	pk_patient_id FLOAT primary key,
 	creation_date TIMESTAMP ,
 	creation_acct VARCHAR ,
@@ -29,7 +29,7 @@ create table chi_20200305_2357.patients (
 	fk_geonameid VARCHAR 
 );
 
-create table chi_20200305_2357.visits (
+create table chi_20200309_1938.visits (
 	pk_visit_id FLOAT primary key,
 	creation_date TIMESTAMP ,
 	creation_acct VARCHAR ,
@@ -235,17 +235,17 @@ create table chi_20200305_2357.visits (
 	notes_modification_status VARCHAR 
 );
 
-create table chi_20200305_2357.diagnoses (
+create table chi_20200309_1938.diagnoses (
 	pk_diagnosis_id FLOAT primary key,
 	diagnosis_name VARCHAR ,
-	pk_diagnosis_key VARCHAR primary key,
+	pk_diagnosis_key VARCHAR ,
 	creation_date TIMESTAMP ,
 	creation_acct VARCHAR ,
 	modified_date TIMESTAMP ,
 	modified_acct VARCHAR 
 );
 
-create table chi_20200305_2357.diagnoses_made (
+create table chi_20200309_1938.diagnoses_made (
 	pk_diagnoses_made FLOAT primary key,
 	fk_visit_id FLOAT ,
 	fk_diagnosis_key VARCHAR ,
@@ -255,18 +255,18 @@ create table chi_20200305_2357.diagnoses_made (
 	modified_acct VARCHAR 
 );
 
-create table chi_20200305_2357.meds (
+create table chi_20200309_1938.meds (
 	pk_med_id FLOAT primary key,
 	med_name VARCHAR ,
 	creation_date TIMESTAMP ,
 	creation_acct VARCHAR ,
 	modified_date TIMESTAMP ,
 	modified_acct VARCHAR ,
-	pk_med_key VARCHAR primary key,
+	pk_med_key VARCHAR ,
 	med_type VARCHAR 
 );
 
-create table chi_20200305_2357.meds_dispensed (
+create table chi_20200309_1938.meds_dispensed (
 	pk_meds_dispensed FLOAT primary key,
 	fk_visit_id FLOAT ,
 	fk_med_key VARCHAR ,
