@@ -1,0 +1,98 @@
+import json
+from datetime import datetime
+
+import pandas as pd
+import pyodbc
+from tqdm import tqdm
+
+from db import DB
+
+
+"""
+File Maker Pro Connection Object
+
+Desc:
+This file contains the primary logic for interacting with the file maker pro database
+"""
+
+
+class FMP(DB):
+    def __init__(self, dsn=None, username=None, password=None):
+        DB.__init__(self)
+        if dsn is None:
+            dsn = input("Enter the FMP DSN: ")
+        if username is None:
+            username = input("Enter your FMP username: ")
+        if password is None:
+            password = input("Enter your FMP password: ")
+
+        self.__dsn = dsn
+        self.__username = username
+        self.__password = password
+
+        self.__connection_string = "DSN={0};UID={1};PWD={2}".format(
+            self.__dsn, self.__username, self.__password
+        )
+
+        self.__fmp_table_names = [
+            "clinics",
+            "patients",
+            "visits",
+            "diagnoses",
+            "diagnoses_made",
+            "meds",
+            "meds_dispensed",
+            # "settings",
+            # "globals",
+        ]
+
+        self.__python_types_to_sql = {
+            "str": "VARCHAR",
+            "date": "TIMESTAMP",
+            "float64": "FLOAT",
+            "NoneType": "VARCHAR",
+        }
+
+        self.__pyodbc_connection = pyodbc.connect(self.__connection_string)
+
+    @property
+    def python_types_to_sql(self):
+        return self.__python_types_to_sql
+
+    @property
+    def fmp_table_names(self):
+        return self.__fmp_table_names
+
+    @property
+    def connection(self):
+        return self.__pyodbc_connection
+
+    # ABSTRACT BASE CLASS MEHTODS
+    def init_from_json(model_object):
+        self._model = model_object
+
+    def parse_database(self) -> dict():
+        self._model = dict()
+        for tbl in tqdm(self.fmp_table_names):
+            query = "select * from {tbl}".format(tbl=tbl)
+            df = pd.read_sql(query, self.connection)
+
+            self._model[tbl] = {}
+            col_types = [
+                df.iloc[1, index].__class__.__name__ for index in range(len(df.columns))
+            ]
+
+            for elem in zip(df.columns, col_types):
+                self._model[tbl][elem[0]] = {}
+                self._model[tbl][elem[0]]["type"] = elem[1]
+                self._model[tbl][elem[0]]["pk"] = "pk" == elem[0][:2]
+                self._model[tbl][elem[0]]["fk"] = "fk" == elem[0][:2]
+        return self._model
+
+    def write_model(self, model_object=None):
+        curr_time = datetime.now().strftime(self.datetime_format)
+        with open("./models/{time}_model.json".format(time=curr_time), "w") as f:
+            if model_object is not None:
+                json.dump(model_object, f, indent=4)
+            else:
+                json.dump(self._model, f, indent=4)
