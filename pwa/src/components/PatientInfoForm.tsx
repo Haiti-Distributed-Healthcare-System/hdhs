@@ -27,99 +27,131 @@ export default function Form(): ReactElement {
     }
 
     return (
-      
-    <>
-        <TextareaItem
-          title="First Name"
-          placeholder="First Name"
-          data-seed="firstName"
-          autoHeight
-          id="firstname"
-        />
+      <>
+      <TextareaItem
+      title="First Name"
+      placeholder="First Name"
+      data-seed="firstName"
+      autoHeight
+      id="firstname"
+      />
 
-        <TextareaItem
-          title="Last Name"
-          placeholder="Last Name"
-          data-seed="lastName"
-          id="lastname"
-          // whats the difference between id and data seed?
-          autoHeight
-        />
+      <TextareaItem
+      title="Last Name"
+      placeholder="Last Name"
+      data-seed="lastName"
+      id="lastname"
+      // whats the difference between id and data seed?
+      autoHeight
+      />
 
-        <TextareaItem
-          title="Nickname"
-          placeholder="optional"
-          data-seed="nickname"
-          id="nickname"
-          autoHeight
-        />
+      <TextareaItem
+      title="Nickname"
+      placeholder="optional"
+      data-seed="nickname"
+      id="nickname"
+      autoHeight
+      />
 
-        <DatePicker
-          mode="date"
-          locale={enUs}
-          title="Birth Date"
-          extra="Birth Date"
-          data-seed="birthDate"
-        >
-          <List.Item arrow="horizontal">Birth Date</List.Item>
-           {/* TODO: figure out how to access this value */}
-        </DatePicker>
-        <InputItem
-              type="money"
-              moneyKeyboardAlign="left"
-              clear
-              id = 'age'
-            >Age </InputItem>
-        {/* these don't technically need to be in their own <List/> */}
+      <DatePicker
+      mode="date"
+      locale={enUs}
+      title="Birth Date"
+      extra="Birth Date"
+      data-seed="birthDate"
+      >
+      <List.Item arrow="horizontal">Birth Date</List.Item>
+      {/* TODO: figure out how to access this value */}
+      </DatePicker>
+      <InputItem
+          type="money"
+          moneyKeyboardAlign="left"
+          clear
+          id = 'age'
+      >Age </InputItem>
 
-        <List>
-            <InputItem
-              type="money"
-              moneyKeyboardAlign="left"
-              clear
-              id = 'weight'
-            >Weight (kg)</InputItem>
+      <InputItem
+          type="money"
+          moneyKeyboardAlign="left"
+          clear
+          id = 'phone'
+      >Phone</InputItem>
 
-            <InputItem
-              type="money"
-              moneyKeyboardAlign="left"
-              clear
-              id = 'height'
-            >Height (cm)</InputItem>
-
-            <InputItem
-              type="money"
-              moneyKeyboardAlign="left"
-              clear
-              id = 'temp'
-            >Temp (F)</InputItem>
-
-            <InputItem
-              type="money"
-              moneyKeyboardAlign="left"
-              clear
-              id = 'pulse'
-            >Pulse</InputItem>
-            {/* TODO: figure out how to access these values from the money keyboard */}
-        </List>
-        <List renderHeader={() => 'Chief Complaint'}>
+      {/* TODO: only display this section for patients marked as Female */}
+      <List>
           <TextareaItem
-            placeholder="1."
-            // autoHeight
-            rows={2}
-            id = 'complaint1'
+              title="G"
+              id = 'gravida'
           />
           <TextareaItem
-            placeholder="2."
-            rows={2}
-            id = 'complaint2'
+              title="P"
+              id = 'para'
           />
           <TextareaItem
-            placeholder="3."
-            rows={2}
-            id = 'complaint3'
+              title="A"
+              id = 'abortus'
           />
-        </List>
+          <TextareaItem
+              title="LMP"
+              id = 'lmp'
+          />
+          <TextareaItem
+            // TODO: this should be a radio buttin
+              title="Wants Planning"
+              id = 'wants_planning'
+          />
+      </List>
+
+      {/* these don't technically need to be in their own <List/> */}
+
+      <List>
+          <InputItem
+          type="money"
+          moneyKeyboardAlign="left"
+          clear
+          id = 'weight'
+          >Weight (kg)</InputItem>
+
+          <InputItem
+          type="money"
+          moneyKeyboardAlign="left"
+          clear
+          id = 'height'
+          >Height (cm)</InputItem>
+
+          <InputItem
+          type="money"
+          moneyKeyboardAlign="left"
+          clear
+          id = 'temp'
+          >Temp (F)</InputItem>
+
+          <InputItem
+          type="money"
+          moneyKeyboardAlign="left"
+          clear
+          id = 'pulse'
+          >Pulse</InputItem>
+          {/* TODO: figure out how to access these values from the money keyboard */}
+      </List>
+      <List renderHeader={() => 'Chief Complaint'}>
+          <TextareaItem
+              placeholder="1."
+              // autoHeight
+              rows={2}
+              id = 'complaint1'
+          />
+          <TextareaItem
+              placeholder="2."
+              rows={2}
+              id = 'complaint2'
+          />
+          <TextareaItem
+              placeholder="3."
+              rows={2}
+              id = 'complaint3'
+          />
+      </List>
         <Button onClick={onSubmit} >Submit</Button>
 
     </>
