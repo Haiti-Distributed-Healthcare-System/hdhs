@@ -14,6 +14,8 @@ services:
     ports:
       - "3000:3000"
     container_name: haiti_pwa
+    environment: 
+      environment: "docker"
 
   database:
     image: "postgres" # use latest official postgres version
@@ -21,15 +23,18 @@ services:
       - "./pgdata:/var/lib/postgresql/data" # persist data even if container shuts down
     ports:
       - "5432:5432"
+    expose:
+      - "5422"
     environment:
       POSTGRES_DB: app_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: HaitiCHI
-      
+      environment: "docker"      
+
   api:
     image: postgrest/postgrest
     ports:
-      - "4000:3000"
+      - "4000:4000"
     expose:
       - "4000"
     links:
@@ -38,6 +43,8 @@ services:
       PGRST_DB_URI: postgres://postgres:HaitiCHI@database:5432/app_db
       PGRST_DB_SCHEMA: public
       PGRST_DB_ANON_ROLE: postgres
+      PGRST_SERVER_PORT: 4000
+      environment: "docker"    
     depends_on:
       - database
 
@@ -49,3 +56,4 @@ services:
       - "8080"
     environment: 
       API_URL: http://localhost:4000
+      environment: "docker"
