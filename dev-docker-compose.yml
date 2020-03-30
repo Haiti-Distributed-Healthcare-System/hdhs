@@ -4,7 +4,13 @@ services:
     build:
       context: ./pwa
     volumes:
-      - ./pwa/:/app
+      # These dirs can be changed outside of the conatiner, and reflected within.
+      # All other files require a rebuild:
+      #     docker-compose -f dev-docker-compose.yml up --build
+      - ./pwa/src:/data/src
+      - ./pwa/cypress:/data/cypress
+      - ./pwa/public:/data/public
+      - ./pwa/coverage:/data/coverage
     ports:
       - "3000:3000"
     container_name: haiti_pwa

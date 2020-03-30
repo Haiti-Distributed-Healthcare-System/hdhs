@@ -1,15 +1,14 @@
 FROM node:12.10.0
 
-COPY package*.json ./data/
-
 WORKDIR /data
+
+COPY package*.json ./
 
 RUN npm install
 
 ENV PATH /data/node_modules/.bin:$PATH
 
-COPY . /data/app
-WORKDIR /data/app
+COPY . ./
 
 EXPOSE 3000
 
