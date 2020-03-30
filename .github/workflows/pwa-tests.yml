@@ -16,9 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: pushd pwa && npm install && popd
-      - run: pushd pwa && npm run build && popd
-      - run: pushd pwa && npm run test:cov && popd
-      - run: pushd pwa && npm run cy:run && popd
+      - run: docker-compose -f dev-docker-compose.yml up --detach
+      - run: docker-compose -f dev-docker-compose.yml down
         env:
           CI: true
