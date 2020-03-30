@@ -1,4 +1,4 @@
-FROM node:12.10.0
+FROM cypress/base:12.16.0
 
 WORKDIR /data
 

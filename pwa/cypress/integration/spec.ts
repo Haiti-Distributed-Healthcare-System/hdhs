@@ -4,7 +4,7 @@
 
 describe('Homepage', () => {
   it('shows login button', function () {
-    cy.visit('http://localhost:3001')
+    cy.visit('http://localhost:3000')
     cy.get('.am-button').contains('Login')
   })
 })
