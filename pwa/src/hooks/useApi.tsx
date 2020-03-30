@@ -5,6 +5,7 @@ const useApi = (route: string) => {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   
+  /* istanbul ignore next */
   const getUrl = () => {
     if (process.env.environment === "docker"){
       return "http://api:4000/"
