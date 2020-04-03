@@ -1,15 +1,14 @@
-FROM node:12.10.0
-
-COPY package*.json ./data/
+FROM cypress/base:12.16.0
 
 WORKDIR /data
+
+COPY package*.json ./
 
 RUN npm install
 
 ENV PATH /data/node_modules/.bin:$PATH
 
-COPY . /data/app
-WORKDIR /data/app
+COPY . ./
 
 EXPOSE 3000
 
