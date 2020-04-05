@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
-import {WhiteSpace, Button, Icon} from 'antd-mobile'
+import {WhiteSpace, Button} from 'antd-mobile'
 
-import '../scss/Login.scss'
+import '../scss/LandingPage.scss'
 
 export default function Login(): ReactElement {
   const patientLookup = () => {
@@ -13,8 +13,15 @@ export default function Login(): ReactElement {
   }
   return (
     <>
-      <Button onClick={patientLookup} icon="search">Patient Lookup</Button><WhiteSpace />
-      <Button onClick={newPatient} icon="plus">New Patient</Button><WhiteSpace />
+      <div id="buttonFlex">
+        <Button onClick={patientLookup} icon="search">Patient Lookup</Button>
+        <WhiteSpace />
+      </div>
+      <br/>
+      <div id="buttonFlex">
+        <Button onClick={newPatient} icon="plus">New Patient</Button>
+        <WhiteSpace />
+      </div>
     </>
   )
 }
