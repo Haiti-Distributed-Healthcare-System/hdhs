@@ -14,7 +14,7 @@ export default function Login(): ReactElement {
   return (
     <>
       <Button onClick={patientLookup} icon="search">Patient Lookup</Button><WhiteSpace />
-      <Button onClick={newPatient} icon="comment">New Patient</Button><WhiteSpace />
+      <Button onClick={newPatient} icon="plus">New Patient</Button><WhiteSpace />
     </>
   )
 }
