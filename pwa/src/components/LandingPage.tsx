@@ -15,20 +15,20 @@ export default function LandingPage(): ReactElement {
     console.log("Clicked New Patient");
   };
   return (
-    <>
-      <div id="buttonFlex">
+    <div id="landing-wrapper">
+      <div className="button-flex">
         <Button onClick={patientLookup} icon="search">
           Patient Lookup
         </Button>
         <WhiteSpace />
       </div>
       <br />
-      <div id="buttonFlex">
+      <div className="button-flex">
         <Button icon={<UserAddOutlined />} onClick={newPatient}>
           New Patient
         </Button>
         <WhiteSpace />
       </div>
-    </>
+    </div>
   );
 }
