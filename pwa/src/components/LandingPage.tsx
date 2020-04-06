@@ -1,14 +1,16 @@
 import React, { ReactElement } from "react";
 import { WhiteSpace, Button } from "antd-mobile";
-import Icon, {UserAddOutlined} from "@ant-design/icons";
+import Icon, { UserAddOutlined } from "@ant-design/icons";
 
 import "../scss/LandingPage.scss";
 
-export default function Login(): ReactElement {
+export default function LandingPage(): ReactElement {
+  /* istanbul ignore next */
   const patientLookup = () => {
     console.log("Clicked Patient Lookup");
   };
 
+  /* istanbul ignore next */
   const newPatient = () => {
     console.log("Clicked New Patient");
   };
@@ -22,7 +24,7 @@ export default function Login(): ReactElement {
       </div>
       <br />
       <div id="buttonFlex">
-        <Button icon={<UserAddOutlined/>}onClick={newPatient}>
+        <Button icon={<UserAddOutlined />} onClick={newPatient}>
           New Patient
         </Button>
         <WhiteSpace />
