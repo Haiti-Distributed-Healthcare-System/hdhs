@@ -1,13 +1,19 @@
-#buttonFlex{
-    animation-name: fade-in;
-    animation-duration: 2s;
-    display: flex;
-    justify-content: center;
-    .am-button {
-      background-color: #9BD7FF;
-      width: 40%;
-      &.am-button-active {
-        background-color: #ccebff;
-      }
+#buttonFlex {
+  animation-name: fade-in;
+  animation-duration: 2s;
+  display: flex;
+  justify-content: center;
+  .am-button {
+    background-color: #9bd7ff;
+    width: 40%;
+    &.am-button-active {
+      background-color: #ccebff;
     }
   }
+}
+
+#plus-person-icon {
+  position: relative;
+  right: 0.4em;
+  top: 0.1em;
+}
