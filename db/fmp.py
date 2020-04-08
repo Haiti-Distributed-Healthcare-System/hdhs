@@ -44,6 +44,8 @@ class FMP(DB):
             "diagnoses_made",
             "meds",
             "meds_dispensed",
+            "geonames",
+            "settings"
             # "settings",
             # "globals",
         ]
@@ -87,23 +89,42 @@ class FMP(DB):
 
             self._model[tbl] = {}
             col_types = [
-                df.iloc[1, index].__class__.__name__ for index in range(len(df.columns))
+                df.iloc[0, index].__class__.__name__ for index in range(len(df.columns))
             ]
 
-            for elem in zip(df.columns, col_types):
-                self._model[tbl][elem[0]] = {}
-                self._model[tbl][elem[0]]["type"] = elem[1]
-                # get table
-                # convert to singular
-                #
-                # check_str = f"pk_{}_id"
-                # self._model[tbl][elem[0]]["pk"] = "pk" == elem[0][:2]
-                # self._model[tbl][elem[0]]["fk"] = "fk" == elem[0][:2]
-                # foreign key true --> what it points to
+            smallest_pk_edit_distance = 123456789
+            previous_pk_field = None
+            for field_name, field_type in zip(df.columns, col_types):
+                self._model[tbl][field_name] = {}
+                self._model[tbl][field_name]["type"] = field_type
 
-            primary_key_field_name = ""
-            for field_name in self._model[tbl].keys():
-                self._model[tbl][field_name]["fk"] = "fk" == field_name[:2]
+                # extract primary keys
+                if field_name[:3] == "pk_":
+                    # possible primary key
+                    distance = edit_distance(field_name[3:-3], tbl)
+                    if distance < smallest_pk_edit_distance:
+                        # closest primary key so far
+                        if previous_pk_field is not None:
+                            # remove previously assumed pk
+                            self._model[tbl][previous_pk_field]["pk"] = False
+
+                        # set current pk
+                        self._model[tbl][field_name]["pk"] = True
+                        previous_pk_field = field_name
+                        smallest_pk_edit_distance = distance
+                    else:
+                        self._model[tbl][field_name]["pk"] = False
+                else:
+                    self._model[tbl][field_name]["pk"] = False
+
+                # extract foreign keys
+                if field_name[:3] == "fk_":
+                    self._model[tbl][field_name]["fk"] = True
+                    self._model[tbl][field_name][
+                        "fk_table"
+                    ] = self.get_tablename_from_fieldname(field_name)
+                else:
+                    self._model[tbl][field_name]["fk"] = False
 
         return self._model
 
