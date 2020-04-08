@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "include": [
+    "../node_modules/cypress",
+    "*/*.ts"
+  ],
+  "compilerOptions": {
+    "strict": false,
+    "baseUrl": "../node_modules",
+    "target": "es5",
+    "lib": ["es7", "dom"],
+    "esModuleInterop": true,
+    "jsx": "react",
+    "inlineSourceMap": true,
+    "skipLibCheck": true
+  }
+}
