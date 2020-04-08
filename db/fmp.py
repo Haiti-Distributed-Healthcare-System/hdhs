@@ -60,7 +60,7 @@ class FMP(DB):
             self.__connect()
 
     def __connect(self):
-        if self.__pyodbc_connection is None
+        if self.__pyodbc_connection is None:
             self.__pyodbc_connection = pyodbc.connect(self.__connection_string)
 
     @property
