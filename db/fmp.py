@@ -19,7 +19,7 @@ This file contains the primary logic for interacting with the file maker pro dat
 
 
 class FMP(DB):
-    def __init__(self, dsn=None, username=None, password=None):
+    def __init__(self, dsn=None, username=None, password=None, connect=True):
         DB.__init__(self)
         if dsn is None:
             dsn = input("Enter the FMP DSN: ")
@@ -55,7 +55,13 @@ class FMP(DB):
             "NoneType": "VARCHAR",
         }
 
-        self.__pyodbc_connection = pyodbc.connect(self.__connection_string)
+        self.__pyodbc_connection = None
+        if connect:
+            self.__connect()
+
+    def __connect(self):
+        if self.__pyodbc_connection is None
+            self.__pyodbc_connection = pyodbc.connect(self.__connection_string)
 
     @property
     def python_types_to_sql(self):
@@ -67,12 +73,11 @@ class FMP(DB):
 
     @property
     def connection(self):
+        if self.__pyodbc_connection is None:
+            self.__connect()
         return self.__pyodbc_connection
 
     # ABSTRACT BASE CLASS MEHTODS
-    def init_from_json(model_object):
-        self._model = model_object
-
     def parse_database(self) -> dict():
         self._model = dict()
 
@@ -117,7 +122,7 @@ class FMP(DB):
         try:
             # map lambda over list of table `names & extract min edit distance
             index_of_match = int(
-                np.argmin(np.array(list(map(matcher, self.__fmp_table_names))), axis=0)
+                np.argmin(np.array(list(map(matcher, self.fmp_table_names))), axis=0)
             )
         except TypeError as e:
             print("FAILURE: to tables have equally close edit_distance")
