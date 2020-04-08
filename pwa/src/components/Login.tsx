@@ -1,8 +1,11 @@
 import React, { ReactElement } from 'react'
+import useApi from '../hooks/useApi'
 import {InputItem, Button} from 'antd-mobile'
 import '../scss/Login.scss'
 
 export default function Login(): ReactElement {
+  const {response, error, isLoading} = useApi("")
+
   return (
     <>
       <div id="loginWrapper">
@@ -19,6 +22,10 @@ export default function Login(): ReactElement {
             </div>
         </div>
       </div>
+      <p>Loading API Fetch: {isLoading.toString()}</p>
+      {response && 
+        <p>API Fetch Result: {JSON.stringify(response)}</p>
+      }
     </>
   )
 }
