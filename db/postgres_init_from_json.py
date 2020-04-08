@@ -7,7 +7,7 @@ from datetime import datetime
 from fmp import FMP
 
 db_json = dict()
-fmp_model = FMP()
+fmp_model = FMP("", "", "", connect=False)
 
 
 # 1st (sql file)
@@ -20,6 +20,9 @@ def write_command(string, out_file):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", required=True, help="JSON model file to seed")
+    # parser.add_argument("-d", "--dsn", help="dsn name")
+    # parser.add_argument("-u", "--username", help="username for dsn")
+    # parser.add_argument("-p", "--password", help="password for dsn")
     args = parser.parse_args()
     print(args)
     if not os.path.isfile(os.path.abspath(args.model)):
@@ -37,35 +40,28 @@ def main(argv):
 
     schema = "chi_{date_time}".format(date_time=date_time)
     command = "create schema {schema};\n".format(schema=schema)
-    for table_name, attribute_dict in data_model.items():
+    for table_name in data_model.keys():
         command += "create table {schema}.{table_name} (\n".format(
             schema=schema, table_name=table_name
         )
-        features = list(attribute_dict.keys())
-        last_elem = features[-1]
 
-        # HACK: mark the first feautre name with 'pk' in
-        # the name as the primary key even if others exist.
-        pk_found = False
-        for feature in features:
+        last_elem = list(data_model[table_name].keys())[-1]
+        print(table_name)
+        for field_name in data_model[table_name].keys():
 
             extra_param_string = ""
-
-            if attribute_dict[feature]["pk"] and not pk_found:
+            print(field_name, data_model[table_name][field_name])
+            if data_model[table_name][field_name]["pk"]:
                 extra_param_string += "primary key"
-                pk_found = True
-
-            # elif attribute_dict[feature]["fk"]:
-            #     extra_param_string += "foreign key"
 
             command += "\t{attr_name} {attr_type} {extra_params}".format(
-                attr_name=feature,
+                attr_name=field_name,
                 attr_type=fmp_model.python_types_to_sql[
-                    attribute_dict[feature]["type"]
+                    data_model[table_name][field_name]["type"]
                 ],
                 extra_params=extra_param_string,
             )
-            if feature != last_elem:
+            if field_name != last_elem:
                 command += ",\n"
             else:
                 command += "\n"
