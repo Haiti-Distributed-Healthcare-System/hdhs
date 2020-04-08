@@ -4,3 +4,7 @@ env/*
 # postgres persisted data
 pgdata/
 
+.gitsecret/keys/random_seed
+!*.secret
+db/init/20200305_2357_init_db.sql
+db/init/20200309_1938_init_db.sql
