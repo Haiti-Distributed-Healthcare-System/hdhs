@@ -2,11 +2,13 @@ import json
 from datetime import datetime
 
 import pandas as pd
+import numpy as np
 import pyodbc
 from tqdm import tqdm
 
 from db import DB
 
+from utils import edit_distance
 
 """
 File Maker Pro Connection Object
@@ -60,7 +62,7 @@ class FMP(DB):
         return self.__python_types_to_sql
 
     @property
-    def fmp_table_names(self):
+    def fmp_table_names(self) -> list:
         return self.__fmp_table_names
 
     @property
@@ -73,6 +75,7 @@ class FMP(DB):
 
     def parse_database(self) -> dict():
         self._model = dict()
+
         for tbl in tqdm(self.fmp_table_names):
             query = "select * from {tbl}".format(tbl=tbl)
             df = pd.read_sql(query, self.connection)
@@ -85,11 +88,46 @@ class FMP(DB):
             for elem in zip(df.columns, col_types):
                 self._model[tbl][elem[0]] = {}
                 self._model[tbl][elem[0]]["type"] = elem[1]
-                self._model[tbl][elem[0]]["pk"] = "pk" == elem[0][:2]
-                self._model[tbl][elem[0]]["fk"] = "fk" == elem[0][:2]
+                # get table
+                # convert to singular
+                #
+                # check_str = f"pk_{}_id"
+                # self._model[tbl][elem[0]]["pk"] = "pk" == elem[0][:2]
+                # self._model[tbl][elem[0]]["fk"] = "fk" == elem[0][:2]
+                # foreign key true --> what it points to
+
+            primary_key_field_name = ""
+            for field_name in self._model[tbl].keys():
+                self._model[tbl][field_name]["fk"] = "fk" == field_name[:2]
+
         return self._model
 
-    def write_model(self, model_object=None):
+    def get_tablename_from_fieldname(self, field_name: str):
+        # remove "pk_" or "fk_" --> we only enter this function if this has already matched
+        extracted_field_to_match = field_name[3:]
+        # not all fields that start with "pk_" or "fk_" end in "_id"
+        if field_name[-3:] == "_id":
+            extracted_field_to_match = extracted_field_to_match[:-3]
+        else:
+            print(f"consider fixing fieldname: {field_name}")
+
+        # function that returns the edit distance of the table to the extracted field name
+        matcher = lambda table_name: edit_distance(table_name, extracted_field_to_match)
+
+        try:
+            # map lambda over list of table `names & extract min edit distance
+            index_of_match = int(
+                np.argmin(np.array(list(map(matcher, self.__fmp_table_names))), axis=0)
+            )
+        except TypeError as e:
+            print("FAILURE: to tables have equally close edit_distance")
+            # TODO: potentially add a backup lookup table here
+            # for now we will re-raise the error and crash the program
+            raise (e)
+
+        return self.__fmp_table_names[index_of_match]
+
+    def write_model(self, model_object: dict = None):
         curr_time = datetime.now().strftime(self.datetime_format)
         with open("./models/{time}_model.json".format(time=curr_time), "w") as f:
             if model_object is not None:
