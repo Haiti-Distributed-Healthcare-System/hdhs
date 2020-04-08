@@ -14,6 +14,5 @@ class DB(ABC):
     def parse_database(self) -> dict():
         pass
 
-    @abstractmethod
     def init_from_json(self, json_model: dict()):
-        pass
+        self._model = json_model
