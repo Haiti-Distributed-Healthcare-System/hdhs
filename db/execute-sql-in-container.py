@@ -13,9 +13,10 @@
 
 
 import argparse
-import sys
 import pickle
+import sys
 
+from psql import PSQL
 from sqlalchemy import create_engine
 
 engine = create_engine("postgres+psycopg2://postgres:HaitiCHI@0.0.0.0:5432/app_db")
@@ -28,8 +29,10 @@ def parse_args():
 
 
 def main(argv):
-    with engine.connect() as con:
-        result = con.execute(argv.command)
+    # TODO: extract this from database.env (ideally but it in the PSQL class)
+    psql = PSQL("postgres+psycopg2://postgres:HaitiCHI@0.0.0.0:5432/app_db")
+    result = psql.execute_command(argv.command)
+    print(result)
 
 
 if __name__ == "__main__":

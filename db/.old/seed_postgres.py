@@ -1,11 +1,10 @@
 import argparse
 import os
-import pandas as pd
 import sys
 
-from sqlalchemy import Column, Integer, MetaData, String, Table, create_engine
-
+import pandas as pd
 from fmp import FMP
+from sqlalchemy import Column, Integer, MetaData, String, Table, create_engine
 
 engine = create_engine("postgres+psycopg2://user:password@0.0.0.0:5432/database")
 

@@ -4,10 +4,10 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import pyodbc
-from tqdm import tqdm
-
 from db import DB
+from tqdm import tqdm
 from utils import edit_distance
+
 
 """
 File Maker Pro Connection Object
@@ -35,7 +35,8 @@ class FMP(DB):
             self.__dsn, self.__username, self.__password
         )
 
-        self.__fmp_table_names = [
+        # TODO: consider extracting this list to the DB class
+        self._table_names = [
             "clinics",
             "patients",
             "visits",
@@ -45,8 +46,8 @@ class FMP(DB):
             "meds_dispensed",
             "geonames",
             "settings"
-            # "settings",
             # "globals",
+            # TODO: add the join tables that are still in the FMP model, but weren't used last year
         ]
 
         self.__python_types_to_sql = {
@@ -60,6 +61,20 @@ class FMP(DB):
         if connect:
             self.__connect()
 
+    # METHODS FROM DB SUPER CLASS
+    # ###########################
+
+    def read_table(self, table_name) -> pd.DataFrame:
+        query = "select * from {table}".format(table=table_name)
+        df = pd.read_sql(query, self.connection)
+        return df
+
+    def write_table(self, data, table_name):
+        # TODO: implement write_table in FMP class
+        print("IMPLEMENT WRITE_TABLE IN FMP")
+
+    # ###########################
+
     def __connect(self):
         if self.__pyodbc_connection is None:
             self.__pyodbc_connection = pyodbc.connect(self.__connection_string)
@@ -67,10 +82,6 @@ class FMP(DB):
     @property
     def python_types_to_sql(self):
         return self.__python_types_to_sql
-
-    @property
-    def fmp_table_names(self) -> list:
-        return self.__fmp_table_names
 
     @property
     def connection(self):
@@ -82,75 +93,49 @@ class FMP(DB):
     def parse_database(self) -> dict():
         self._model = dict()
 
-        for tbl in tqdm(self.fmp_table_names):
-            query = "select * from {tbl}".format(tbl=tbl)
-            df = pd.read_sql(query, self.connection)
+        for table_name in tqdm(self.table_names):
+            df = self.read_table(table_name)
 
-            self._model[tbl] = {}
+            self._model[table_name] = {}
             col_types = [
                 df.iloc[0, index].__class__.__name__ for index in range(len(df.columns))
             ]
 
-            smallest_pk_edit_distance = 123456789
+            smallest_pk_edit_distance = float("inf")
             previous_pk_field = None
             for field_name, field_type in zip(df.columns, col_types):
-                self._model[tbl][field_name] = {}
-                self._model[tbl][field_name]["type"] = field_type
+                self._model[table_name][field_name] = {}
+                self._model[table_name][field_name]["type"] = field_type
 
                 # extract primary keys
                 if field_name[:3] == "pk_":
                     # possible primary key
-                    distance = edit_distance(field_name[3:-3], tbl)
+                    distance = edit_distance(field_name[3:-3], table_name)
                     if distance < smallest_pk_edit_distance:
                         # closest primary key so far
                         if previous_pk_field is not None:
                             # remove previously assumed pk
-                            self._model[tbl][previous_pk_field]["pk"] = False
+                            self._model[table_name][previous_pk_field]["pk"] = False
 
                         # set current pk
-                        self._model[tbl][field_name]["pk"] = True
+                        self._model[table_name][field_name]["pk"] = True
                         previous_pk_field = field_name
                         smallest_pk_edit_distance = distance
                     else:
-                        self._model[tbl][field_name]["pk"] = False
+                        self._model[table_name][field_name]["pk"] = False
                 else:
-                    self._model[tbl][field_name]["pk"] = False
+                    self._model[table_name][field_name]["pk"] = False
 
                 # extract foreign keys
                 if field_name[:3] == "fk_":
-                    self._model[tbl][field_name]["fk"] = True
-                    self._model[tbl][field_name][
+                    self._model[table_name][field_name]["fk"] = True
+                    self._model[table_name][field_name][
                         "fk_table"
                     ] = self.get_tablename_from_fieldname(field_name)
                 else:
-                    self._model[tbl][field_name]["fk"] = False
+                    self._model[table_name][field_name]["fk"] = False
 
         return self._model
-
-    def get_tablename_from_fieldname(self, field_name: str):
-        # remove "pk_" or "fk_" --> we only enter this function if this has already matched
-        extracted_field_to_match = field_name[3:]
-        # not all fields that start with "pk_" or "fk_" end in "_id"
-        if field_name[-3:] == "_id":
-            extracted_field_to_match = extracted_field_to_match[:-3]
-        else:
-            print(f"consider fixing fieldname: {field_name}")
-
-        # function that returns the edit distance of the table to the extracted field name
-        matcher = lambda table_name: edit_distance(table_name, extracted_field_to_match)
-
-        try:
-            # map lambda over list of table `names & extract min edit distance
-            index_of_match = int(
-                np.argmin(np.array(list(map(matcher, self.fmp_table_names))), axis=0)
-            )
-        except TypeError as e:
-            print("FAILURE: to tables have equally close edit_distance")
-            # TODO: potentially add a backup lookup table here
-            # for now we will re-raise the error and crash the program
-            raise (e)
-
-        return self.__fmp_table_names[index_of_match]
 
     def write_model(self, model_object: dict = None):
         curr_time = datetime.now().strftime(self.datetime_format)
