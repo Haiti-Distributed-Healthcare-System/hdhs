@@ -6,4 +6,3 @@ pgdata/
 
 .gitsecret/keys/random_seed
 !*.secret
-db/backups/*.tar.gz
