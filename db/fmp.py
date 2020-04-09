@@ -1,13 +1,12 @@
 import json
 from datetime import datetime
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 import pyodbc
 from tqdm import tqdm
 
 from db import DB
-
 from utils import edit_distance
 
 """

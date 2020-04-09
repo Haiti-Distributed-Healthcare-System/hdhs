@@ -1,5 +1,6 @@
-from fmp import FMP
 import pandas as pd
+
+from fmp import FMP
 
 fmp_model = FMP("20200303_chihaiti", "hjohnson", "hjohnson")
 

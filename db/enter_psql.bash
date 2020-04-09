@@ -1,1 +1,1 @@
-psql --host=database --username=user --dbname=database
+psql --host=database --username=postgres --dbname=app_db
