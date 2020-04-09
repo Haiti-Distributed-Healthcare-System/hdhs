@@ -8,7 +8,7 @@ const RadioItem = Radio.RadioItem;
 
 export default function Form(): ReactElement {
     // useState returns a value, and a function to set that value
-    const [name, setName] = useState()
+    // const [name, setName] = useState()
     const [planning, setPlanning] = useState(0)
 
     const onSubmit = () => {
@@ -31,8 +31,9 @@ export default function Form(): ReactElement {
         { value: 1, label: 'No' },
     ];
 
-    const onChange = (value :any) => { //todo change type here
+    const onChange = (value :number) => { //todo change type here
         console.log('checkbox');
+        setPlanning(value)
     };
 
     return (
@@ -106,7 +107,7 @@ export default function Form(): ReactElement {
             />
             <List renderHeader={() => 'Wants Planning?'}>
                 {wantsPlanning.map(i => (
-                    <RadioItem key={i.value} checked={this.state.planning  === i.value} onChange={() => onChange(i.value)}>
+                    <RadioItem key={i.value} checked={planning  === i.value} onChange={() => onChange(i.value)}>
                         {i.label}
                     </RadioItem>
                 ))}
