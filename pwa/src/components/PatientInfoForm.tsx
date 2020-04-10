@@ -156,37 +156,35 @@ export default function Form(): ReactElement {
         : null
       }
 
-      {/* TODO these don't technically need to be in their own <List/> */}
+      <InputItem
+        type="number"
+        id='weight'
+      >Weight (kg)</InputItem>
 
-        <InputItem
-          type="number"
-          id='weight'
-        >Weight (kg)</InputItem>
+      <InputItem
+        type="number"
+        id='height'
+      >Height (cm)</InputItem>
 
-        <InputItem
-          type="number"
-          id='height'
-        >Height (cm)</InputItem>
+      <InputItem
+        type="number"
+        id='bp'
+      >BP</InputItem>
 
-        <InputItem
-          type="number"
-          id='bp'
-        >BP</InputItem>
+      <InputItem
+        type="number"
+        id='temp'
+      >Temp (F)</InputItem>
 
-        <InputItem
-          type="number"
-          id='temp'
-        >Temp (F)</InputItem>
+      <InputItem
+        type="number"
+        id='pulse'
+      >Pulse</InputItem>
 
-        <InputItem
-          type="number"
-          id='pulse'
-        >Pulse</InputItem>
-
-        <InputItem
-          type="number"
-          id='z-score'
-        >Z-Score</InputItem>
+      <InputItem
+        type="number"
+        id='z-score'
+      >Z-Score</InputItem>
 
       <List renderHeader={() => 'Albendazole?'}>
         {radioYesNo.map(i => (
