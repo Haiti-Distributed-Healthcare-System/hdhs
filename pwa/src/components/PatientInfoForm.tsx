@@ -7,13 +7,24 @@ const RadioItem = Radio.RadioItem;
 
 
 export default function Form(): ReactElement {
+  // State Hooks for Radio Buttons
   // useState returns a value, and a function to set that value
-  const [sex, setSex] = useState() // Default: null
-  const [albendazole, setAlbendazole] = useState(0) // Default: No
-  const [visit, setVisit] = useState(0) // Default: No
-  const [pregnant, setPregnant] = useState(0) // Default: No
-  const [planning, setPlanning] = useState(0) // Default: No
+  const [sex, setSex] = useState()                      // Default: null
+  const [albendazole, setAlbendazole] = useState(0)     // Default: No
+  const [visit, setVisit] = useState(0)                 // Default: No
+  const [pregnant, setPregnant] = useState(0)           // Default: No
+  const [planning, setPlanning] = useState(0)           // Default: No
 
+    // Data for Radio Buttons
+    const sexValues = [
+      { value: 0, label: 'Male' },
+      { value: 1, label: 'Female' }
+    ]
+  
+    const radioYesNo = [
+      { value: 0, label: 'No' },
+      { value: 1, label: 'Yes' },
+    ];
 
   const onSubmit = () => {
     // This shows how to access the values of the form
@@ -31,23 +42,11 @@ export default function Form(): ReactElement {
     console.log("Wants Planning?: " + planning)
   }
 
-  // Data for Radio Buttons
-  const sexValues = [
-    { value: 0, label: 'Male' },
-    { value: 1, label: 'Female' }
-  ]
-
-  const radioYesNo = [
-    { value: 0, label: 'No' },
-    { value: 1, label: 'Yes' },
-  ];
-
   return (
     <div id='patient-info-wrapper'>
       <TextareaItem
         title="First Name"
         placeholder="First Name"
-        data-seed="firstName"
         autoHeight
         id="firstname"
       />
@@ -55,16 +54,13 @@ export default function Form(): ReactElement {
       <TextareaItem
         title="Last Name"
         placeholder="Last Name"
-        data-seed="lastName"
         id="lastname"
-        // whats the difference between id and data seed?
         autoHeight
       />
 
       <TextareaItem
         title="Nickname"
         placeholder="Nickname"
-        data-seed="nickname"
         id="nickname"
         autoHeight
       />
@@ -102,7 +98,6 @@ export default function Form(): ReactElement {
       <TextareaItem
         title="Town"
         placeholder="town"
-        data-seed="town"
         id="town"
         autoHeight
       />
