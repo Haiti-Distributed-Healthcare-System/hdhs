@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react'
-import { DatePicker, InputItem, List, TextareaItem, Button, Radio } from 'antd-mobile'
+import { DatePicker, InputItem, List, TextareaItem, Button, Radio, WhiteSpace} from 'antd-mobile'
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import '../scss/Login.scss'
 
@@ -73,6 +73,8 @@ export default function Form(): ReactElement {
         ))}
       </List>
 
+      <WhiteSpace/>
+
       <DatePicker
         mode="date"
         locale={enUs}
@@ -86,18 +88,19 @@ export default function Form(): ReactElement {
 
       <InputItem
         type="number"
+        placeholder="Age"
         id='age'
       >Age </InputItem>
 
       <InputItem
         type="number"
-        clear
+        placeholder="Phone"
         id='phone'
       >Phone</InputItem>
 
       <TextareaItem
         title="Town"
-        placeholder="town"
+        placeholder="Town"
         id="town"
         autoHeight
       />
@@ -110,9 +113,10 @@ export default function Form(): ReactElement {
         ))}
       </List>
 
-      {/* Only display the female-only div if the patient is female */}
+      {/* Only display the 'female-only' div if the patient is female */}
       {sex ?
         <div id='female-only'>
+          <WhiteSpace/>
           <List renderHeader={() => 'Pregnant?'}>
             {radioYesNo.map(i => (
               <RadioItem key={i.value} checked={pregnant === i.value} onChange={() => setPregnant(i.value)}>
@@ -125,21 +129,25 @@ export default function Form(): ReactElement {
             title="G"
             type="number"
             id='gravida'
-          />
+          >G</InputItem>
+
           <InputItem
             title="P"
             type="number"
             id='para'
-          />
+          >P</InputItem>
+
           <InputItem
             title="A"
             type="number"
             id='abortus'
-          />
+          >A</InputItem>
+
           <TextareaItem
             title="LMP"
             id='lmp'
           />
+
           <List renderHeader={() => 'Wants Planning?'}>
             {radioYesNo.map(i => (
               <RadioItem key={i.value} checked={planning === i.value} onChange={() => setPlanning(i.value)}>
@@ -151,33 +159,41 @@ export default function Form(): ReactElement {
         : null
       }
 
+      <WhiteSpace/>
+
       <InputItem
         type="number"
+        placeholder="Weight"
         id='weight'
       >Weight (kg)</InputItem>
 
       <InputItem
         type="number"
+        placeholder="Height"
         id='height'
       >Height (cm)</InputItem>
 
       <InputItem
         type="number"
+        placeholder="Blood Pressure"
         id='bp'
       >BP</InputItem>
 
       <InputItem
         type="number"
+        placeholder="Temp"
         id='temp'
       >Temp (F)</InputItem>
 
       <InputItem
         type="number"
+        placeholder="Pulse"
         id='pulse'
       >Pulse</InputItem>
 
       <InputItem
         type="number"
+        placeholder="Z-Score"
         id='z-score'
       >Z-Score</InputItem>
 
@@ -195,7 +211,6 @@ export default function Form(): ReactElement {
           id='alergies'
         />
       </List>
-      {/* TODO: this would be nice as a dynamic entry */}
 
       <List renderHeader={() => 'Medicines'}>
         <TextareaItem
@@ -208,17 +223,17 @@ export default function Form(): ReactElement {
         <TextareaItem
           placeholder="1."
           // autoHeight
-          rows={2}
+          autoHeight
           id='complaint1'
         />
         <TextareaItem
           placeholder="2."
-          rows={2}
+          autoHeight
           id='complaint2'
         />
         <TextareaItem
           placeholder="3."
-          rows={2}
+          autoHeight
           id='complaint3'
         />
       </List>
@@ -236,6 +251,8 @@ export default function Form(): ReactElement {
           id='exam'
         />
       </List>
+
+      <WhiteSpace/>
 
       <Button onClick={onSubmit} >Submit</Button>
 
