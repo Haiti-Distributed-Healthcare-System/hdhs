@@ -7,7 +7,6 @@ const RadioItem = Radio.RadioItem;
 
 export default function Form(): ReactElement {
     // useState returns a value, and a function to set that value
-    const [displayFemaleOptions, setDisplayFemaleOptions] = useState(0)
     const [sex, setSex] = useState() // Default: null
     const [albendazole, setAlbendazole] = useState(0) // Default: No
     const [visit, setVisit] = useState(0) // Default: No
@@ -42,20 +41,7 @@ export default function Form(): ReactElement {
         { value: 1, label: 'Yes' },
     ];
 
-    // const onChangePlanning = (value :number) => { //todo change type here
-    //     setPlanning(value)
-    // };
-
-    // const changeSex = (value :number) => {
-    //   setSex(value)
-    //   if (value) {
-    //     // Male = 0 - do not display female-only div
-    //     setDisplayFemaleOptions(0)
-    //   } else {
-    //     setDisplayFemaleOptions
-
-    //   }
-    // }
+    // TODO - get rid of the "money" input type
 
     return (
       <div id='patient-info-wrapper'>
@@ -78,7 +64,7 @@ export default function Form(): ReactElement {
 
         <TextareaItem
         title="Nickname"
-        placeholder="optional"
+        placeholder="Nickname"
         data-seed="nickname"
         id="nickname"
         autoHeight
@@ -116,6 +102,14 @@ export default function Form(): ReactElement {
             clear
             id = 'phone'
         >Phone</InputItem>
+
+        <TextareaItem
+          title="Town"
+          placeholder="town"
+          data-seed="town"
+          id="town"
+          autoHeight
+        />
 
         <List renderHeader={() => 'Visit?'}>
             {radioYesNo.map(i => (
@@ -167,32 +161,39 @@ export default function Form(): ReactElement {
 
         <List>
             <InputItem
-            type="money"
-            moneyKeyboardAlign="left"
-            clear
-            id = 'weight'
+              type="money"
+              moneyKeyboardAlign="left"
+              clear
+              id = 'weight'
             >Weight (kg)</InputItem>
 
             <InputItem
-            type="money"
-            moneyKeyboardAlign="left"
-            clear
-            id = 'height'
+              type="money"
+              moneyKeyboardAlign="left"
+              clear
+              id = 'height'
             >Height (cm)</InputItem>
 
             <InputItem
-            type="money"
-            moneyKeyboardAlign="left"
-            clear
-            id = 'temp'
+              type="money"
+              moneyKeyboardAlign="left"
+              clear
+              id = 'temp'
             >Temp (F)</InputItem>
 
             <InputItem
-            type="money"
-            moneyKeyboardAlign="left"
-            clear
-            id = 'pulse'
+              type="money"
+              moneyKeyboardAlign="left"
+              clear
+              id = 'pulse'
             >Pulse</InputItem>
+
+            <InputItem
+              type="money"
+              moneyKeyboardAlign="left"
+              clear
+              id = 'z-score'
+            >Z-Score</InputItem>
             {/* TODO: figure out how to access these values from the money keyboard */}
         </List>
 
@@ -202,6 +203,21 @@ export default function Form(): ReactElement {
                     {i.label}
                 </RadioItem>
             ))}
+        </List>
+
+        <List renderHeader={() => 'Alergies'}>
+            <TextareaItem
+                autoHeight
+                id = 'alergies'
+            />
+        </List>
+        {/* TODO: this would be nice as a dynamic entry */}
+
+        <List renderHeader={() => 'Medicines'}>
+            <TextareaItem
+                autoHeight
+                id = 'medicines'
+            />
         </List>
 
         <List renderHeader={() => 'Chief Complaint'}>
@@ -222,7 +238,22 @@ export default function Form(): ReactElement {
                 id = 'complaint3'
             />
         </List>
-            <Button onClick={onSubmit} >Submit</Button>
+
+        <List renderHeader={() => 'History'}>
+            <TextareaItem
+                autoHeight
+                id = 'history'
+            />
+        </List>
+
+        <List renderHeader={() => 'Exam'}>
+            <TextareaItem
+                autoHeight
+                id = 'exam'
+            />
+        </List>
+
+        <Button onClick={onSubmit} >Submit</Button>
 
     </div>
     )
