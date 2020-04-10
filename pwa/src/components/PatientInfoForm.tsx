@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from 'react'
 import { DatePicker, InputItem, List, TextareaItem, Button, Radio } from 'antd-mobile'
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import '../scss/Login.scss'
+
 const RadioItem = Radio.RadioItem;
 
 
@@ -40,8 +41,6 @@ export default function Form(): ReactElement {
     { value: 0, label: 'No' },
     { value: 1, label: 'Yes' },
   ];
-
-  // TODO - get rid of the "money" input type
 
   return (
     <div id='patient-info-wrapper'>
@@ -90,15 +89,12 @@ export default function Form(): ReactElement {
       </DatePicker>
 
       <InputItem
-        type="money"
-        moneyKeyboardAlign="left"
-        clear
+        type="number"
         id='age'
       >Age </InputItem>
 
       <InputItem
-        type="money"
-        moneyKeyboardAlign="left"
+        type="number"
         clear
         id='phone'
       >Phone</InputItem>
@@ -119,7 +115,7 @@ export default function Form(): ReactElement {
         ))}
       </List>
 
-      {/* Only display the following div if the patient is female */}
+      {/* Only display the female-only div if the patient is female */}
       {sex ?
         <div id='female-only'>
           <List renderHeader={() => 'Pregnant?'}>
@@ -130,16 +126,19 @@ export default function Form(): ReactElement {
             ))}
           </List>
 
-          <TextareaItem
+          <InputItem
             title="G"
+            type="number"
             id='gravida'
           />
-          <TextareaItem
+          <InputItem
             title="P"
+            type="number"
             id='para'
           />
-          <TextareaItem
+          <InputItem
             title="A"
+            type="number"
             id='abortus'
           />
           <TextareaItem
@@ -159,43 +158,35 @@ export default function Form(): ReactElement {
 
       {/* TODO these don't technically need to be in their own <List/> */}
 
-      <List>
         <InputItem
-          type="money"
-          moneyKeyboardAlign="left"
-          clear
+          type="number"
           id='weight'
         >Weight (kg)</InputItem>
 
         <InputItem
-          type="money"
-          moneyKeyboardAlign="left"
-          clear
+          type="number"
           id='height'
         >Height (cm)</InputItem>
 
         <InputItem
-          type="money"
-          moneyKeyboardAlign="left"
-          clear
+          type="number"
+          id='bp'
+        >BP</InputItem>
+
+        <InputItem
+          type="number"
           id='temp'
         >Temp (F)</InputItem>
 
         <InputItem
-          type="money"
-          moneyKeyboardAlign="left"
-          clear
+          type="number"
           id='pulse'
         >Pulse</InputItem>
 
         <InputItem
-          type="money"
-          moneyKeyboardAlign="left"
-          clear
+          type="number"
           id='z-score'
         >Z-Score</InputItem>
-        {/* TODO: figure out how to access these values from the money keyboard */}
-      </List>
 
       <List renderHeader={() => 'Albendazole?'}>
         {radioYesNo.map(i => (
