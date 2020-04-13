@@ -9,7 +9,7 @@ const RadioItem = Radio.RadioItem;
 export default function Form(): ReactElement {
   // State Hooks for Radio Buttons
   // useState returns a value, and a function to set that value
-  const [sex, setSex] = useState()                      // Default: null
+  const [sex, setSex] = useState(null as Number)        // Default: null
   const [albendazole, setAlbendazole] = useState(0)     // Default: No
   const [visit, setVisit] = useState(0)                 // Default: No
   const [pregnant, setPregnant] = useState(0)           // Default: No
