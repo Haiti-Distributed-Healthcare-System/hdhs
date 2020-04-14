@@ -21,7 +21,7 @@ const App = () => {
         </Route>
         <Route path="/patientinfo">
           <Wrapper
-            title="Patient Information"
+            navTitle="Patient Information"
             leftArrowText="Home"
             leftArrowRoute="/"
           >

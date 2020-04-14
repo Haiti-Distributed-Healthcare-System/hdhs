@@ -5,25 +5,34 @@ import { useHistory } from "react-router-dom";
 import "./scss/Wrapper.scss";
 
 type props = {
-  title: string;
-  leftArrowText: string;
-  leftArrowRoute: string;
+  navTitle?: string;
+  leftArrowText?: string;
+  leftArrowRoute?: string;
   children: React.ReactNode;
 };
 
 const Wrapper = (props: props) => {
+  const { navTitle, leftArrowText, leftArrowRoute } = props;
   const hist = useHistory();
+  const needNavBar = navTitle || leftArrowText || leftArrowRoute;
+  const leftContentArr = leftArrowText
+    ? [<Icon type="left" />, `${leftArrowText}`]
+    : [];
+  const leftRoute = leftArrowRoute ? `${leftArrowRoute}` : "/";
 
   return (
     <div id="primary-wrapper">
       <div id="wrapper-contents">
-        <NavBar
-          mode="light"
-          onLeftClick={() => hist.push(`${props.leftArrowRoute}`)}
-          leftContent={[<Icon type="left" />, `${props.leftArrowText}`]}
-        >
-          {`${props.title}`}
-        </NavBar>
+        {needNavBar && (
+          <NavBar
+            id="nav-bar"
+            mode="light"
+            onLeftClick={() => hist.push(leftRoute)}
+            leftContent={leftContentArr}
+          >
+            {`${navTitle}`}
+          </NavBar>
+        )}
         {props.children}
       </div>
     </div>
