@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { WhiteSpace, Button } from "antd-mobile";
-import Icon, { UserAddOutlined } from "@ant-design/icons";
+import { UserAddOutlined } from "@ant-design/icons";
 
 import "../scss/LandingPage.scss";
 
