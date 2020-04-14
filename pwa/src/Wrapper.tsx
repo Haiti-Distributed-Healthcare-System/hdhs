@@ -1,11 +1,17 @@
 import React from "react";
 
+import "./scss/Wrapper.scss";
+
 type props = {
   children: React.ReactNode;
 };
 
 const Wrapper = (props: props) => {
-  return <div className="primary-wrapper">{props.children}</div>;
+  return (
+    <div id="primary-wrapper">
+      <div id="wrapper-contents">{props.children}</div>
+    </div>
+  );
 };
 
 export default Wrapper;
