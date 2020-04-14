@@ -20,7 +20,11 @@ const App = () => {
           <LandingPage />
         </Route>
         <Route path="/patientinfo">
-          <Wrapper>
+          <Wrapper
+            title="Patient Information"
+            leftArrowText="Home"
+            leftArrowRoute="/"
+          >
             <PatientInfoPlaceholder />
           </Wrapper>
         </Route>

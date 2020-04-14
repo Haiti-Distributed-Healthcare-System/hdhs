@@ -1,26 +1,28 @@
 import React from "react";
 import { NavBar, Icon } from "antd-mobile";
+import { useHistory } from "react-router-dom";
 
 import "./scss/Wrapper.scss";
 
 type props = {
+  title: string;
+  leftArrowText: string;
+  leftArrowRoute: string;
   children: React.ReactNode;
 };
 
 const Wrapper = (props: props) => {
+  const hist = useHistory();
+
   return (
     <div id="primary-wrapper">
       <div id="wrapper-contents">
         <NavBar
           mode="light"
-          icon={<Icon type="left" />}
-          onLeftClick={() => console.log("onLeftClick")}
-          rightContent={[
-            <Icon key="0" type="search" style={{ marginRight: "16px" }} />,
-            <Icon key="1" type="ellipsis" />,
-          ]}
+          onLeftClick={() => hist.push(`${props.leftArrowRoute}`)}
+          leftContent={[<Icon type="left" />, `${props.leftArrowText}`]}
         >
-          NavBar
+          {`${props.title}`}
         </NavBar>
         {props.children}
       </div>
