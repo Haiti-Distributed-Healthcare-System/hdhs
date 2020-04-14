@@ -6,6 +6,7 @@ import "../scss/LandingPage.scss";
 
 export default function LandingPage(): ReactElement {
   /* istanbul ignore next */
+  // TODO: these onClick functions could be mocked in a unit test
   const patientLookup = () => {
     console.log("Clicked Patient Lookup");
   };

@@ -1,5 +1,6 @@
 import React from "react";
-import { render, queryByAttribute } from "@testing-library/react";
+import { render, queryByAttribute, fireEvent } from "@testing-library/react";
+import { useHistory } from "react-router-dom";
 import Wrapper from "./Wrapper";
 
 const mockHistoryPush = jest.fn();
@@ -57,4 +58,17 @@ test("renders leftArrowText", () => {
   const leftArrowText = dom.getByText("back");
 
   expect(leftArrowText).toBeInTheDocument();
+});
+
+test("redirects on left arrow click ", () => {
+  const dom = render(
+    <Wrapper leftArrowText="back" leftArrowRoute="/">
+      <div>Hello!</div>
+    </Wrapper>
+  );
+
+  const leftArrowText = dom.getByText("back");
+  fireEvent.click(leftArrowText);
+
+  expect(useHistory().push).toBeCalledWith("/");
 });
