@@ -9,7 +9,7 @@ import {
   WhiteSpace,
 } from "antd-mobile";
 import enUs from "antd-mobile/lib/date-picker/locale/en_US";
-import "../scss/Login.scss";
+import "../scss/PatientInfoForm.scss";
 
 const RadioItem = Radio.RadioItem;
 
@@ -45,6 +45,9 @@ export default function Form(): ReactElement {
     const nicknameField: HTMLInputElement = document.getElementById(
       "nickname"
     ) as HTMLInputElement;
+    const birthdateField: HTMLInputElement = document.getElementById(
+      "birthdate"
+    ) as HTMLInputElement;
     const complaintField1: HTMLInputElement = document.getElementById(
       "complaint1"
     ) as HTMLInputElement;
@@ -58,15 +61,17 @@ export default function Form(): ReactElement {
     console.log("First name:", firstNameField.value);
     console.log("Last name:", lastNameField.value);
     console.log("Nickname:", nicknameField.value);
+    console.log("Birth Date:", birthdateField.value);
     console.log(
       "Complaints: ",
       complaintField1.value +
-        " " +
-        complaintField2.value +
-        " " +
-        complaintField3.value
+      " " +
+      complaintField2.value +
+      " " +
+      complaintField3.value
     );
     console.log("Wants Planning?: " + planning);
+
   };
 
   return (
@@ -109,16 +114,9 @@ export default function Form(): ReactElement {
 
       <WhiteSpace />
 
-      <DatePicker
-        mode="date"
-        locale={enUs}
-        title="Birth Date"
-        extra="Birth Date"
-        data-seed="birthDate"
-      >
-        <List.Item arrow="horizontal">Birth Date</List.Item>
-        {/* TODO: figure out how to access this value */}
-      </DatePicker>
+      <InputItem placeholder="YYYY-MM-DD" id="birthdate">
+          Birth Date
+      </InputItem>
 
       <InputItem type="number" placeholder="Age" id="age">
         Age{" "}
