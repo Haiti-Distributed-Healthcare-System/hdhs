@@ -21,7 +21,7 @@
       #imgWrap {
         width: 28%;
         margin: auto;
-        padding: .2rem;
+        padding: 0.2rem;
         background-color: #eee;
         border-radius: 5px;
         img {
@@ -37,13 +37,13 @@
       animation-name: fade-in;
       animation-duration: 2s;
     }
-    #buttonFlex{
+    #buttonFlex {
       animation-name: fade-in;
       animation-duration: 2s;
       display: flex;
       justify-content: center;
       .am-button {
-        background-color: #9BD7FF;
+        background-color: #9bd7ff;
         width: 40%;
         &.am-button-active {
           background-color: #ccebff;
@@ -51,21 +51,29 @@
       }
     }
   }
-}
-
-$animationDelay: 1;
-@for $i from 1 through 15 {
-	.loginGrid :nth-child(#{$i}) {
-		animation-delay: #{0.3+($i)/30}s;
+  $animationDelay: 1;
+  @for $i from 1 through 15 {
+    .loginGrid :nth-child(#{$i}) {
+      animation-delay: #{0.3+ ($i)/30}s;
+    }
   }
-}
 
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
-@keyframes fade-in-from-up {
-  0% { opacity: 0; transform: translateY(-100px)}
-  100% { opacity: 1; }
+  @keyframes fade-in-from-up {
+    0% {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
