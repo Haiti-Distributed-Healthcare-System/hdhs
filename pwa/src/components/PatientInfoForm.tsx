@@ -1,6 +1,5 @@
 import React, { ReactElement, useState } from "react";
 import {
-  DatePicker,
   InputItem,
   List,
   TextareaItem,
@@ -8,7 +7,6 @@ import {
   Radio,
   WhiteSpace,
 } from "antd-mobile";
-import enUs from "antd-mobile/lib/date-picker/locale/en_US";
 import "../scss/PatientInfoForm.scss";
 
 const RadioItem = Radio.RadioItem;
@@ -65,13 +63,12 @@ export default function Form(): ReactElement {
     console.log(
       "Complaints: ",
       complaintField1.value +
-      " " +
-      complaintField2.value +
-      " " +
-      complaintField3.value
+        " " +
+        complaintField2.value +
+        " " +
+        complaintField3.value
     );
     console.log("Wants Planning?: " + planning);
-
   };
 
   return (
@@ -115,7 +112,7 @@ export default function Form(): ReactElement {
       <WhiteSpace />
 
       <InputItem placeholder="YYYY-MM-DD" id="birthdate">
-          Birth Date
+        Birth Date
       </InputItem>
 
       <InputItem type="number" placeholder="Age" id="age">
