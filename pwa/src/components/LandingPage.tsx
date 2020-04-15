@@ -1,11 +1,12 @@
 import React, { ReactElement } from "react";
 import { WhiteSpace, Button } from "antd-mobile";
-import Icon, { UserAddOutlined } from "@ant-design/icons";
+import { UserAddOutlined } from "@ant-design/icons";
 
 import "../scss/LandingPage.scss";
 
 export default function LandingPage(): ReactElement {
   /* istanbul ignore next */
+  // TODO: these onClick functions could be mocked in a unit test
   const patientLookup = () => {
     console.log("Clicked Patient Lookup");
   };
