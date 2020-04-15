@@ -1,8 +1,17 @@
 #patient-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  .submit-button {
     display: flex;
-    flex-direction: column;
-
-    height: 100%;
+    justify-content: center;
+    padding: 2em 0;
     width: 100%;
+    .am-list {
+      min-width: 8em;
+      width: 40%;
+      max-width: 20em;
+    }
   }
-  
+}
