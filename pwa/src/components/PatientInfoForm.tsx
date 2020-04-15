@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react'
-import { DatePicker, InputItem, List, TextareaItem, Button, Radio, WhiteSpace} from 'antd-mobile'
+import { DatePicker, InputItem, List, TextareaItem, Button, Radio, WhiteSpace } from 'antd-mobile'
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import '../scss/Login.scss'
 
@@ -15,17 +15,18 @@ export default function Form(): ReactElement {
   const [pregnant, setPregnant] = useState(0)           // Default: No
   const [planning, setPlanning] = useState(0)           // Default: No
 
-    // Data for Radio Buttons
-    const sexValues = [
-      { value: 0, label: 'Male' },
-      { value: 1, label: 'Female' }
-    ]
-  
-    const radioYesNo = [
-      { value: 0, label: 'No' },
-      { value: 1, label: 'Yes' },
-    ];
+  // Data for Radio Buttons
+  const sexValues = [
+    { value: 0, label: 'Male' },
+    { value: 1, label: 'Female' }
+  ]
 
+  const radioYesNo = [
+    { value: 0, label: 'No' },
+    { value: 1, label: 'Yes' },
+  ];
+
+  /* istanbul ignore next */
   const onSubmit = () => {
     // This shows how to access the values of the form
     const firstNameField: HTMLInputElement = document.getElementById('firstname') as HTMLInputElement
@@ -67,13 +68,13 @@ export default function Form(): ReactElement {
 
       <List renderHeader={() => 'Sex'}>
         {sexValues.map(i => (
-          <RadioItem key={i.value} checked={sex === i.value} onChange={() => setSex(i.value)}>
+          <RadioItem id={`${i.label.toLowerCase()}-button`} key={i.value} name='sex' checked={sex === i.value} onChange={() => setSex(i.value)}>
             {i.label}
           </RadioItem>
         ))}
       </List>
 
-      <WhiteSpace/>
+      <WhiteSpace />
 
       <DatePicker
         mode="date"
@@ -107,7 +108,7 @@ export default function Form(): ReactElement {
 
       <List renderHeader={() => 'Visit?'}>
         {radioYesNo.map(i => (
-          <RadioItem key={i.value} checked={visit === i.value} onChange={() => setVisit(i.value)}>
+          <RadioItem key={i.value} name='visit' checked={visit === i.value} onChange={() => setVisit(i.value)}>
             {i.label}
           </RadioItem>
         ))}
@@ -116,10 +117,10 @@ export default function Form(): ReactElement {
       {/* Only display the 'female-only' div if the patient is female */}
       {sex ?
         <div id='female-only'>
-          <WhiteSpace/>
+          <WhiteSpace />
           <List renderHeader={() => 'Pregnant?'}>
             {radioYesNo.map(i => (
-              <RadioItem key={i.value} checked={pregnant === i.value} onChange={() => setPregnant(i.value)}>
+              <RadioItem key={i.value} name='pregnant' checked={pregnant === i.value} onChange={() => setPregnant(i.value)}>
                 {i.label}
               </RadioItem>
             ))}
@@ -150,7 +151,7 @@ export default function Form(): ReactElement {
 
           <List renderHeader={() => 'Wants Planning?'}>
             {radioYesNo.map(i => (
-              <RadioItem key={i.value} checked={planning === i.value} onChange={() => setPlanning(i.value)}>
+              <RadioItem key={i.value} name='planning' checked={planning === i.value} onChange={() => setPlanning(i.value)}>
                 {i.label}
               </RadioItem>
             ))}
@@ -159,7 +160,7 @@ export default function Form(): ReactElement {
         : null
       }
 
-      <WhiteSpace/>
+      <WhiteSpace />
 
       <InputItem
         type="number"
@@ -252,7 +253,7 @@ export default function Form(): ReactElement {
         />
       </List>
 
-      <WhiteSpace/>
+      <WhiteSpace />
 
       <Button onClick={onSubmit} >Submit</Button>
 
