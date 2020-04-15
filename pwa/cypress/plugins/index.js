@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const webpack = require('@cypress/webpack-preprocessor');
+const webpack = require('@cypress/webpack-preprocessor')
 
 const webpackOptions = {
     mode: 'development',
@@ -36,15 +36,15 @@ const webpackOptions = {
             },
         ],
     },
-};
+}
 
 const options = {
     webpackOptions,
     watchOptions: {},
-};
+}
 
 module.exports = (on, config) => {
-    on('file:preprocessor', webpack(options));
+    on('file:preprocessor', webpack(options))
 
-    return config;
-};
+    return config
+}
