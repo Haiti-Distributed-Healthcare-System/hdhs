@@ -1,26 +1,50 @@
-version: '3.7'
-
+version: "3"
 services:
   pwa:
     build:
       context: ./pwa
       dockerfile: Dockerfile-pi
     volumes:
-      - type: bind
-        source: ./pwa/build
-        target: /data/app/build
+      # These dirs can be changed outside of the conatiner, and reflected within.
+      # All other files require a rebuild:
+      #     docker-compose -f dev-docker-compose.yml up --build
+      - ./pwa/src:/data/src
+      - ./pwa/cypress:/data/cypress
+      - ./pwa/public:/data/public
+      - ./pwa/coverage:/data/coverage
     ports:
       - "3000:3000"
     container_name: haiti_pwa
-    
+    environment:
+      environment: "docker"
+
   database:
     image: "postgres" # use latest official postgres version
-    env_file:
-      - database.env # configure postgres
     volumes:
-      - "database-data:/var/lib/postgresql/data/" # persist data even if container shuts down
+      - "./pgdata:/var/lib/postgresql/data" # persist data even if container shuts down
     ports:
-      - "5432:5432"       
- 
-volumes:
-  database-data: # named volumes can be managed easier using docker-compose
+      - "5432:5432"
+    expose:
+      - "5422"
+    environment:
+      POSTGRES_DB: app_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: HaitiCHI
+      environment: "docker"
+
+  api:
+    image: postgrest/postgrest
+    ports:
+      - "4000:4000"
+    expose:
+      - "4000"
+    links:
+      - database:database
+    environment:
+      PGRST_DB_URI: postgres://postgres:HaitiCHI@database:5432/app_db
+      PGRST_DB_SCHEMA: public
+      PGRST_DB_ANON_ROLE: postgres
+      PGRST_SERVER_PORT: 4000
+      environment: "docker"
+    depends_on:
+      - database
