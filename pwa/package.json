@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/node": "^12.12.26",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-router-dom": "^5.1.4",
     "@ant-design/icons": "^4.0.5",
     "antd-mobile": "^2.3.1",
     "node-sass": "^4.13.1",
@@ -60,10 +64,6 @@
     "react-test-renderer": "^16.13.1",
     "svg-url-loader": "^5.0.0",
     "ts-loader": "^6.2.2",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.26",
-    "@types/react": "^16.9.19",
-    "@types/react-dom": "^16.9.5",
-    "@types/react-router-dom": "^5.1.4"
+    "@types/jest": "^24.9.1"
   }
 }
