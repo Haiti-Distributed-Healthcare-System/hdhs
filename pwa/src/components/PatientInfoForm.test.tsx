@@ -23,11 +23,11 @@ test("female-only div is only displayed if the sex is selected as female", async
 
 test("sets visit input", () => {
   const dom = render(<PatientInfoForm />);
-  const visitYesInput = dom.queryByTestId("visit-Yes");
-  const checkBox = visitYesInput.getElementsByTagName("span")[0];
+  const firstVisitYesInput = dom.queryByTestId("first-visit-Yes");
+  const checkBox = firstVisitYesInput.getElementsByTagName("span")[0];
 
   expect(checkBox).not.toHaveClass("am-radio-checked");
-  fireEvent.click(visitYesInput);
+  fireEvent.click(firstVisitYesInput);
   expect(checkBox).toHaveClass("am-radio-checked");
 });
 

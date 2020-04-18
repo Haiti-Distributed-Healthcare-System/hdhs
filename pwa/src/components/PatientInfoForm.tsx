@@ -16,7 +16,7 @@ export default function Form(): ReactElement {
   // useState returns a value, and a function to set that value
   const [sex, setSex] = useState(null as Number); // Default: null
   const [albendazole, setAlbendazole] = useState(0); // Default: No
-  const [visit, setVisit] = useState(0); // Default: No
+  const [firstVisit, setFirstVisit] = useState(0); // Default: No
   const [pregnant, setPregnant] = useState(0); // Default: No
   const [planning, setPlanning] = useState(0); // Default: No
 
@@ -125,14 +125,14 @@ export default function Form(): ReactElement {
 
       <TextareaItem title="Town" placeholder="Town" id="town" autoHeight />
 
-      <List renderHeader={() => "Visit?"}>
+      <List renderHeader={() => "First Visit?"}>
         {radioYesNo.map((i) => (
           <RadioItem
             key={i.value}
-            data-testid={`visit-${i.label}`}
+            data-testid={`first-visit-${i.label}`}
             name="visit"
-            checked={visit === i.value}
-            onClick={() => setVisit(i.value)}
+            checked={firstVisit === i.value}
+            onClick={() => setFirstVisit(i.value)}
           >
             {i.label}
           </RadioItem>
@@ -257,7 +257,7 @@ export default function Form(): ReactElement {
 
       <div className="submit-button">
         <List>
-          <Button onClick={onSubmit}>Submit!!</Button>
+          <Button onClick={onSubmit}>Submit</Button>
         </List>
       </div>
     </div>
