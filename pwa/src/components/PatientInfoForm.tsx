@@ -113,7 +113,7 @@ export default function Form(): ReactElement {
 
       <WhiteSpace />
 
-      <InputItem placeholder="YYYY-MM-DD" id="birthdate">
+      <InputItem placeholder="YYYY-MM-DD" id="birthdate" type="digit">
         Birth Date
       </InputItem>
 
