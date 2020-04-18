@@ -19,6 +19,7 @@ export default function Form(): ReactElement {
   const [visit, setVisit] = useState(0); // Default: No
   const [pregnant, setPregnant] = useState(0); // Default: No
   const [planning, setPlanning] = useState(0); // Default: No
+  const [bloodPressureValue, setbloodPressureValue] = useState("");
 
   // Data for Radio Buttons
   const sexValues = [
@@ -70,6 +71,13 @@ export default function Form(): ReactElement {
           complaintField3.value
       );
       console.log("Wants Planning?: " + planning);
+    }
+  };
+
+  const validateBp = (value: string) => {
+    const newChar = value.slice(-1);
+    if (newChar.match(/[0-9]|\/|^$/) && value.length < 8) {
+      setbloodPressureValue(value);
     }
   };
 
@@ -199,7 +207,12 @@ export default function Form(): ReactElement {
         Height (cm)
       </InputItem>
 
-      <InputItem type="number" placeholder="Blood Pressure" id="bp">
+      <InputItem
+        placeholder="Blood Pressure"
+        id="bp"
+        value={bloodPressureValue}
+        onChange={validateBp}
+      >
         BP
       </InputItem>
 
