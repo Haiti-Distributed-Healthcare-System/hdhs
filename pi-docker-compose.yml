@@ -12,6 +12,7 @@ services:
       - ./pwa/cypress:/data/cypress
       - ./pwa/public:/data/public
       - ./pwa/coverage:/data/coverage
+      - ./pwa/build:/data/build
     ports:
       - "3000:3000"
     container_name: haiti_pwa
