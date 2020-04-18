@@ -33,42 +33,44 @@ export default function Form(): ReactElement {
 
   /* istanbul ignore next */
   const onSubmit = () => {
-    // This shows how to access the values of the form
-    const firstNameField: HTMLInputElement = document.getElementById(
-      "firstname"
-    ) as HTMLInputElement;
-    const lastNameField: HTMLInputElement = document.getElementById(
-      "lastname"
-    ) as HTMLInputElement;
-    const nicknameField: HTMLInputElement = document.getElementById(
-      "nickname"
-    ) as HTMLInputElement;
-    const birthdateField: HTMLInputElement = document.getElementById(
-      "birthdate"
-    ) as HTMLInputElement;
-    const complaintField1: HTMLInputElement = document.getElementById(
-      "complaint1"
-    ) as HTMLInputElement;
-    const complaintField2: HTMLInputElement = document.getElementById(
-      "complaint2"
-    ) as HTMLInputElement;
-    const complaintField3: HTMLInputElement = document.getElementById(
-      "complaint3"
-    ) as HTMLInputElement;
+    if (process.env.NODE_ENV === "development") {
+      // This shows how to access the values of the form
+      const firstNameField: HTMLInputElement = document.getElementById(
+        "firstname"
+      ) as HTMLInputElement;
+      const lastNameField: HTMLInputElement = document.getElementById(
+        "lastname"
+      ) as HTMLInputElement;
+      const nicknameField: HTMLInputElement = document.getElementById(
+        "nickname"
+      ) as HTMLInputElement;
+      const birthdateField: HTMLInputElement = document.getElementById(
+        "birthdate"
+      ) as HTMLInputElement;
+      const complaintField1: HTMLInputElement = document.getElementById(
+        "complaint1"
+      ) as HTMLInputElement;
+      const complaintField2: HTMLInputElement = document.getElementById(
+        "complaint2"
+      ) as HTMLInputElement;
+      const complaintField3: HTMLInputElement = document.getElementById(
+        "complaint3"
+      ) as HTMLInputElement;
 
-    console.log("First name:", firstNameField.value);
-    console.log("Last name:", lastNameField.value);
-    console.log("Nickname:", nicknameField.value);
-    console.log("Birth Date:", birthdateField.value);
-    console.log(
-      "Complaints: ",
-      complaintField1.value +
-        " " +
-        complaintField2.value +
-        " " +
-        complaintField3.value
-    );
-    console.log("Wants Planning?: " + planning);
+      console.log("First name:", firstNameField.value);
+      console.log("Last name:", lastNameField.value);
+      console.log("Nickname:", nicknameField.value);
+      console.log("Birth Date:", birthdateField.value);
+      console.log(
+        "Complaints: ",
+        complaintField1.value +
+          " " +
+          complaintField2.value +
+          " " +
+          complaintField3.value
+      );
+      console.log("Wants Planning?: " + planning);
+    }
   };
 
   return (
