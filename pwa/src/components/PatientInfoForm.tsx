@@ -19,6 +19,7 @@ export default function Form(): ReactElement {
   const [firstVisit, setFirstVisit] = useState(0); // Default: No
   const [pregnant, setPregnant] = useState(0); // Default: No
   const [planning, setPlanning] = useState(0); // Default: No
+  const [bloodPressureValue, setbloodPressureValue] = useState("");
 
   // Data for Radio Buttons
   const sexValues = [
@@ -33,42 +34,51 @@ export default function Form(): ReactElement {
 
   /* istanbul ignore next */
   const onSubmit = () => {
-    // This shows how to access the values of the form
-    const firstNameField: HTMLInputElement = document.getElementById(
-      "firstname"
-    ) as HTMLInputElement;
-    const lastNameField: HTMLInputElement = document.getElementById(
-      "lastname"
-    ) as HTMLInputElement;
-    const nicknameField: HTMLInputElement = document.getElementById(
-      "nickname"
-    ) as HTMLInputElement;
-    const birthdateField: HTMLInputElement = document.getElementById(
-      "birthdate"
-    ) as HTMLInputElement;
-    const complaintField1: HTMLInputElement = document.getElementById(
-      "complaint1"
-    ) as HTMLInputElement;
-    const complaintField2: HTMLInputElement = document.getElementById(
-      "complaint2"
-    ) as HTMLInputElement;
-    const complaintField3: HTMLInputElement = document.getElementById(
-      "complaint3"
-    ) as HTMLInputElement;
+    if (process.env.NODE_ENV === "development") {
+      // This shows how to access the values of the form
+      const firstNameField: HTMLInputElement = document.getElementById(
+        "firstname"
+      ) as HTMLInputElement;
+      const lastNameField: HTMLInputElement = document.getElementById(
+        "lastname"
+      ) as HTMLInputElement;
+      const nicknameField: HTMLInputElement = document.getElementById(
+        "nickname"
+      ) as HTMLInputElement;
+      const birthdateField: HTMLInputElement = document.getElementById(
+        "birthdate"
+      ) as HTMLInputElement;
+      const complaintField1: HTMLInputElement = document.getElementById(
+        "complaint1"
+      ) as HTMLInputElement;
+      const complaintField2: HTMLInputElement = document.getElementById(
+        "complaint2"
+      ) as HTMLInputElement;
+      const complaintField3: HTMLInputElement = document.getElementById(
+        "complaint3"
+      ) as HTMLInputElement;
 
-    console.log("First name:", firstNameField.value);
-    console.log("Last name:", lastNameField.value);
-    console.log("Nickname:", nicknameField.value);
-    console.log("Birth Date:", birthdateField.value);
-    console.log(
-      "Complaints: ",
-      complaintField1.value +
-        " " +
-        complaintField2.value +
-        " " +
-        complaintField3.value
-    );
-    console.log("Wants Planning?: " + planning);
+      console.log("First name:", firstNameField.value);
+      console.log("Last name:", lastNameField.value);
+      console.log("Nickname:", nicknameField.value);
+      console.log("Birth Date:", birthdateField.value);
+      console.log(
+        "Complaints: ",
+        complaintField1.value +
+          " " +
+          complaintField2.value +
+          " " +
+          complaintField3.value
+      );
+      console.log("Wants Planning?: " + planning);
+    }
+  };
+
+  const validateBp = (value: string) => {
+    const newChar = value.slice(-1);
+    if (newChar.match(/[0-9]|\/|^$/) && value.length < 8) {
+      setbloodPressureValue(value);
+    }
   };
 
   return (
@@ -111,11 +121,11 @@ export default function Form(): ReactElement {
 
       <WhiteSpace />
 
-      <InputItem placeholder="YYYY-MM-DD" id="birthdate">
+      <InputItem placeholder="YYYY-MM-DD" id="birthdate" type="digit">
         Birth Date
       </InputItem>
 
-      <InputItem type="number" placeholder="Age" id="age">
+      <InputItem type="number" placeholder="Age" id="age" maxLength={3}>
         Age{" "}
       </InputItem>
 
@@ -197,7 +207,12 @@ export default function Form(): ReactElement {
         Height (cm)
       </InputItem>
 
-      <InputItem type="number" placeholder="Blood Pressure" id="bp">
+      <InputItem
+        placeholder="Blood Pressure"
+        id="bp"
+        value={bloodPressureValue}
+        onChange={validateBp}
+      >
         BP
       </InputItem>
 
