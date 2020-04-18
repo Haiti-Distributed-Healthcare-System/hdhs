@@ -117,7 +117,7 @@ export default function Form(): ReactElement {
         Birth Date
       </InputItem>
 
-      <InputItem type="number" placeholder="Age" id="age">
+      <InputItem type="number" placeholder="Age" id="age" maxLength={3}>
         Age{" "}
       </InputItem>
 
