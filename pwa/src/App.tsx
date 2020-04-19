@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+import { StoreProvider } from 'easy-peasy'
+import store from './state/store'
+
 import Login from './components/Login'
 import LandingPage from './components/LandingPage'
 import PatientInfoPlaceholder from './components/PatientInfoPlaceholder'
@@ -11,28 +14,30 @@ import './antd-mobile.css'
 
 const App: React.FunctionComponent = () => {
     return (
-        <Router>
-            <Switch>
-                <Route path="/login">
-                    <Login />
-                </Route>
-                <Route path="/landing">
-                    <LandingPage />
-                </Route>
-                <Route path="/patientinfo">
-                    <Wrapper
-                        navTitle="Patient Information"
-                        leftArrowText="Home"
-                        leftArrowRoute="/"
-                    >
-                        <PatientInfoPlaceholder />
-                    </Wrapper>
-                </Route>
-                <Route path="/">
-                    <Login />
-                </Route>
-            </Switch>
-        </Router>
+        <StoreProvider store={store}>
+            <Router>
+                <Switch>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="/landing">
+                        <LandingPage />
+                    </Route>
+                    <Route path="/patientinfo">
+                        <Wrapper
+                            navTitle="Patient Information"
+                            leftArrowText="Home"
+                            leftArrowRoute="/"
+                        >
+                            <PatientInfoPlaceholder />
+                        </Wrapper>
+                    </Route>
+                    <Route path="/">
+                        <Login />
+                    </Route>
+                </Switch>
+            </Router>
+        </StoreProvider>
     )
 }
 
