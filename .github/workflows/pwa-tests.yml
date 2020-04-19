@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: docker-compose -f dev-docker-compose.yml up --detach
+      - run: docker exec haiti_pwa npm run lint
       - run: docker exec haiti_pwa npm run test:cov
       - run: docker exec haiti_pwa npm run cy:run
       - run: docker exec haiti_pwa npm run build
