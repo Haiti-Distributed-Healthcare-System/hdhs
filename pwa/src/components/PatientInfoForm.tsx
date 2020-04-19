@@ -121,7 +121,7 @@ export default function Form(): ReactElement {
 
       <WhiteSpace />
 
-      <InputItem placeholder="YYYY-MM-DD" id="birthdate" type="digit">
+      <InputItem placeholder="YYYY-MM-DD" id="birthdate" type="digit" maxLength={10}>
         Birth Date
       </InputItem>
 
@@ -167,19 +167,21 @@ export default function Form(): ReactElement {
             ))}
           </List>
 
-          <InputItem title="G" type="number" id="gravida">
+          <InputItem title="G" type="number" id="gravida" placeholder="0">
             G
           </InputItem>
 
-          <InputItem title="P" type="number" id="para">
+          <InputItem title="P" type="number" id="para" placeholder="0">
             P
           </InputItem>
 
-          <InputItem title="A" type="number" id="abortus">
+          <InputItem title="A" type="number" id="abortus" placeholder="0">
             A
           </InputItem>
 
-          <TextareaItem title="LMP" id="lmp" />
+          <InputItem placeholder="YYYY-MM-DD" id="lmp" type="digit" maxLength={10}>
+            LMP
+          </InputItem>
 
           <List renderHeader={() => "Wants Planning?"}>
             {radioYesNo.map((i) => (
