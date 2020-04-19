@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Login from './components/Login'
 import LandingPage from './components/LandingPage'
-import PatientInfoPlaceholder from './components/PatientInfoPlaceholder'
 import Wrapper from './Wrapper'
+import PatientInfoForm from './components/PatientInfoForm'
 
 import './scss/App.scss'
 import './antd-mobile.css'
@@ -25,7 +25,7 @@ const App: React.FunctionComponent = () => {
                         leftArrowText="Home"
                         leftArrowRoute="/"
                     >
-                        <PatientInfoPlaceholder />
+                        <PatientInfoForm />
                     </Wrapper>
                 </Route>
                 <Route path="/">
