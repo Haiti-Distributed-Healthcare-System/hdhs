@@ -19,7 +19,7 @@ export default function Form(): ReactElement {
   const [firstVisit, setFirstVisit] = useState(0); // Default: No
   const [pregnant, setPregnant] = useState(0); // Default: No
   const [planning, setPlanning] = useState(0); // Default: No
-  const [bloodPressureValue, setbloodPressureValue] = useState("");
+  const [bloodPressureValue, setBloodPressureValue] = useState("");
 
   // Data for Radio Buttons
   const sexValues = [
@@ -77,7 +77,7 @@ export default function Form(): ReactElement {
   const validateBp = (value: string) => {
     const newChar = value.slice(-1);
     if (newChar.match(/[0-9]|\/|^$/) && value.length < 8) {
-      setbloodPressureValue(value);
+      setBloodPressureValue(value);
     }
   };
 
