@@ -201,11 +201,11 @@ export default function Form(): ReactElement {
 
       <WhiteSpace />
 
-      <InputItem type="number" placeholder="Weight" id="weight">
+      <InputItem type="number" placeholder="Weight" id="weight" maxLength={3}>
         Weight (kg)
       </InputItem>
 
-      <InputItem type="number" placeholder="Height" id="height">
+      <InputItem type="number" placeholder="Height" id="height" maxLength={3}>
         Height (cm)
       </InputItem>
 
@@ -218,11 +218,11 @@ export default function Form(): ReactElement {
         BP
       </InputItem>
 
-      <InputItem type="number" placeholder="Temp" id="temp">
+      <InputItem type="number" placeholder="Temp" id="temp" maxLength={3}>
         Temp (F)
       </InputItem>
 
-      <InputItem type="number" placeholder="Pulse" id="pulse">
+      <InputItem type="number" placeholder="Pulse" id="pulse" maxLength={3}>
         Pulse
       </InputItem>
 
