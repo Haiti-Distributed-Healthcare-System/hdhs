@@ -74,7 +74,7 @@ export default function Form(): ReactElement {
     }
   };
 
-  const validateBp = (value: string) => {
+  const validateAndSetBloodPressure = (value: string) => {
     const newChar = value.slice(-1);
     if (newChar.match(/[0-9]|\/|^$/) && value.length < 8) {
       setBloodPressureValue(value);
@@ -213,7 +213,7 @@ export default function Form(): ReactElement {
         placeholder="Blood Pressure"
         id="bp"
         value={bloodPressureValue}
-        onChange={validateBp}
+        onChange={validateAndSetBloodPressure}
       >
         BP
       </InputItem>
