@@ -89,7 +89,7 @@ test("renders the Patient Info Form fields", () => {
     "Height",
     "Z-Score",
     "Albendazole",
-    "Alergies",
+    "Allergies",
     "Medicines",
     "Chief Complaint",
     "History",
