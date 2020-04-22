@@ -1,9 +1,9 @@
-import React, { ReactElement, useState } from "react";
-import { List, Checkbox, TextareaItem } from 'antd-mobile';
-import "../scss/DiagnosisForm.scss";
-import * as data from './DiagnosisFields.json';
+import React, { ReactElement, useState } from 'react'
+import { List, Checkbox, TextareaItem } from 'antd-mobile'
+import '../scss/DiagnosisForm.scss'
+import * as data from './DiagnosisFields.json'
 
-const CheckboxItem = Checkbox.CheckboxItem;
+const CheckboxItem = Checkbox.CheckboxItem
 
 /*
 
@@ -28,32 +28,42 @@ Diagnosis Fields are stored in DiagnosisFields.json in the format:
 }
 */
 
-var diagnosisFields = data.diagnoses;
+var diagnosisFields = data.diagnoses
 
 export default function Form(): ReactElement {
-
     return (
         <div>
-
             <List renderHeader={() => 'Patient Diagnosis'}>
-                {diagnosisFields.map((field) => (
-                    ((field.name == null) ? <></> :
-                        <CheckboxItem
-                            id={`${field.name.toLowerCase()}-button`}
-                            key={field.name}
-                            name="sex"
-                        >
-                            {field.name}
-                        </CheckboxItem>
-                    )
+                {diagnosisFields.map((field) => {
+                    const formElements: ReactElement[] = []
 
-                    // ((field["text-input-title"] == null) ? null : 
-                    //     <List renderHeader={() => field["text-input-title"]}>
-                    //         <TextareaItem autoHeight id= {field["text-input-title"].toLowerCase()} />
-                    //     </List>
-                    // )
+                    if (field.name != null) {
+                        formElements.push(
+                            <CheckboxItem
+                                id={`${field.name.toLowerCase()}-button`}
+                                key={field.name}
+                                name="sex"
+                            >
+                                {field.name}
+                            </CheckboxItem>,
+                        )
+                    }
 
-                ))}
+                    if (field['text-input-title'] != null) {
+                        formElements.push(
+                            <List
+                                renderHeader={() => field['text-input-title']}
+                            >
+                                <TextareaItem
+                                    autoHeight
+                                    id={field['text-input-title'].toLowerCase()}
+                                />
+                            </List>,
+                        )
+                    }
+
+                    return <> {formElements} </>
+                })}
             </List>
         </div>
     )
