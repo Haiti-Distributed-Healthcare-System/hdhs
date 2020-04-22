@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import { List, Checkbox, Flex } from 'antd-mobile';
+import { List, Checkbox, TextareaItem } from 'antd-mobile';
 import "../scss/DiagnosisForm.scss";
 import * as data from './DiagnosisFields.json';
 
@@ -35,20 +35,25 @@ export default function Form(): ReactElement {
     return (
         <div>
 
-            <List renderHeader={() => 'CheckboxItem demo'}>
-                {diagnosisFields.map((i) => (
-                    // TOOD: how do I add conditionals here?
-                    // i.e. `if (i.name != null){}`
-                    ((i.name == null) ? <></> : 
+            <List renderHeader={() => 'Patient Diagnosis'}>
+                {diagnosisFields.map((field) => (
+                    ((field.name == null) ? <></> :
                         <CheckboxItem
-                        id={`${i.name.toLowerCase()}-button`}
-                        key={i.name}
-                        name="sex"
+                            id={`${field.name.toLowerCase()}-button`}
+                            key={field.name}
+                            name="sex"
                         >
-                        {i.name}
+                            {field.name}
                         </CheckboxItem>
                     )
-                  ))}
+
+                    // ((field["text-input-title"] == null) ? null : 
+                    //     <List renderHeader={() => field["text-input-title"]}>
+                    //         <TextareaItem autoHeight id= {field["text-input-title"].toLowerCase()} />
+                    //     </List>
+                    // )
+
+                ))}
             </List>
         </div>
     )
