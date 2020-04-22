@@ -61,7 +61,7 @@
             "text-input-title": ""
         },
         {
-            "name": "",
+            
             "group-title": "Eye",
             "group": [
                 "Ptergium",
@@ -106,7 +106,7 @@
             "text-input-title": ""
         },
         {
-            "name": "",
+            
             "group-title": "Intestinal",
             "group": [
                 "Gastritis",
@@ -146,7 +146,7 @@
             "text-input-title": ""
         },
         {
-            "name": "",
+            
             "group-title": "Cardiovascular",
             "group": [
                 "Hypertension",
@@ -209,7 +209,7 @@
             "text-input-type": "number"
         },
         {
-            "name": "",
+            
             "group-title": "Dermatological",
             "group": [
                 "Atopic Derm",
@@ -310,7 +310,7 @@
             "text-input-title": ""
         },
         {
-            "name": "",
+            
             "group-title": "",
             "group": [],
             "radio-buttons": {
@@ -320,7 +320,7 @@
             "text-input-title": "Other Diagnosis"
         },
         {
-            "name": "",
+            
             "group-title": "",
             "group": [],
             "radio-buttons": {
