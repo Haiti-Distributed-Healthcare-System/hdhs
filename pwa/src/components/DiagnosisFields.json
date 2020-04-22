@@ -1,144 +1,114 @@
 {
-    "diagnoses" : [
+    "diagnoses": [
         {
-            "name":"Asthma",
-            "group-title":"",
-            "group":[],
+            "name": "Asthma",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Allergies",
-            "group-title":"",
-            "group":[],
+            "name": "Allergies",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Anemia",
-            "group-title":"",
-            "group":[],
+            "name": "Anemia",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Malnutrition",
-            "group-title":"",
-            "group":[],
+            "name": "Malnutrition",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Depression",
-            "group-title":"",
-            "group":[],
+            "name": "Depression",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Diabetes",
-            "group-title":"",
-            "group":[],
+            "name": "Diabetes",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"",
-            "group-title":"Eye",
-            "group":[
+            "name": "",
+            "group-title": "Eye",
+            "group": [
                 "Ptergium",
                 "Cataract",
                 "Dry Eye",
                 "Conjuntivitis"
             ],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Fever",
-            "group-title":"",
-            "group":[],
+            "name": "Fever",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Possible Malaria",
-            "group-title":"",
-            "group":[],
+            "name": "Possible Malaria",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Filariasis",
-            "group-title":"",
-            "group":[],
+            "name": "Filariasis",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"",
-            "group-title":"Intestinal",
-            "group":[
+            "name": "",
+            "group-title": "Intestinal",
+            "group": [
                 "Gastritis",
                 "GERD",
                 "Gastroenteritis",
@@ -146,120 +116,102 @@
                 "Possible Cholera"
             ],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Headache",
-            "group-title":"",
-            "group":[],
+            "name": "Headache",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Hernia",
-            "group-title":"",
-            "group":[],
+            "name": "Hernia",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"Hernia Type",
-                "radio-buttons":[
+                "radio-buttons-title": "Hernia Type",
+                "radio-buttons": [
                     "Inguinal",
                     "Umbilical",
                     "Both"
                 ]
-
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"",
-            "group-title":"Cardiovascular",
-            "group":[
+            "name": "",
+            "group-title": "Cardiovascular",
+            "group": [
                 "Hypertension",
                 "Stroke",
                 "Angina",
                 "CHF"
             ],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Musculoskeletal Pain",
-            "group-title":"",
-            "group":[],
+            "name": "Musculoskeletal Pain",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Otitis",
-            "group-title":"",
-            "group":[
+            "name": "Otitis",
+            "group-title": "",
+            "group": [
                 "Pneumonia",
                 "Sinusitis"
             ],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
+                "radio-buttons-title": "",
+                "radio-buttons": [
                     "Right",
                     "Left",
                     "Both"
                 ]
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"URI",
-            "group-title":"",
-            "group":[],
+            "name": "URI",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Pregnancy",
-            "group-title":"",
-            "group":[],
+            "name": "Pregnancy",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":"Weeks",
-            "text-input-type":"number"
+            "text-input-title": "Weeks",
+            "text-input-type": "number"
         },
         {
-            "name":"",
-            "group-title":"Dermatological",
-            "group":[
+            "name": "",
+            "group-title": "Dermatological",
+            "group": [
                 "Atopic Derm",
                 "Fungal",
                 "Scabies",
@@ -267,148 +219,115 @@
                 "Tinea Capitus (kerion)"
             ],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Possible STD",
-            "group-title":"",
-            "group":[],
+            "name": "Possible STD",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Possible TB",
-            "group-title":"",
-            "group":[],
+            "name": "Possible TB",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Possible Parasites",
-            "group-title":"",
-            "group":[],
+            "name": "Possible Parasites",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"UTI",
-            "group-title":"",
-            "group":[],
+            "name": "UTI",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Vaginal",
-            "group-title":"",
-            "group":[
+            "name": "Vaginal",
+            "group-title": "",
+            "group": [
                 "Vaginitis",
                 "Candidal",
                 "Trich",
                 "BV"
             ],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Needs to see Dentist",
-            "group-title":"",
-            "group":[],
+            "name": "Needs to see Dentist",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Needs to see Eye Doctor",
-            "group-title":"",
-            "group":[],
+            "name": "Needs to see Eye Doctor",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"Surgical candidate",
-            "group-title":"",
-            "group":[],
+            "name": "Surgical candidate",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":""
+            "text-input-title": ""
         },
         {
-            "name":"",
-            "group-title":"",
-            "group":[],
+            "name": "",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":"Other Diagnosis"
+            "text-input-title": "Other Diagnosis"
         },
         {
-            "name":"",
-            "group-title":"",
-            "group":[],
+            "name": "",
+            "group-title": "",
+            "group": [],
             "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
+                "radio-buttons-title": "",
+                "radio-buttons": []
             },
-            "text-input-title":"Diagnoses Comments"
+            "text-input-title": "Diagnoses Comments"
         }
     ]
 }
