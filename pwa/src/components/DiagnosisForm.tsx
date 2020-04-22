@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react'
-import { List, Checkbox, TextareaItem } from 'antd-mobile'
+import { List, Checkbox, TextareaItem, WhiteSpace } from 'antd-mobile'
 import '../scss/DiagnosisForm.scss'
 import * as data from './DiagnosisFields.json'
 
@@ -41,8 +41,8 @@ export default function Form(): ReactElement {
                         formElements.push(
                             <CheckboxItem
                                 id={`${field.name.toLowerCase()}-button`}
-                                key={field.name}
-                                name="sex"
+                            // key={field.name}
+                            // name={field.name.toLowerCase()}
                             >
                                 {field.name}
                             </CheckboxItem>,
@@ -60,6 +60,28 @@ export default function Form(): ReactElement {
                                 />
                             </List>,
                         )
+                    }
+
+                    if (field.group != null) {
+                        if(field["group-title"] != null){
+                            formElements.push(
+                                <List
+                                renderHeader={() => field['group-title']}
+                                >
+                                </List>
+                            )
+                        }
+                        field.group.forEach((ele) => {
+                            formElements.push(
+                                <CheckboxItem
+                                    id={`${ele.toLowerCase()}-checkbox`}
+                                    key={ele.toLowerCase()}
+                                >
+                                    {ele}
+                                </CheckboxItem>)
+
+                        })
+                        formElements.push(<WhiteSpace size="lg"/>)
                     }
 
                     return <> {formElements} </>
