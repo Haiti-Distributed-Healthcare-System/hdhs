@@ -33,7 +33,7 @@ var diagnosisFields = data.diagnoses
 export default function Form(): ReactElement {
     return (
         <div>
-            <List renderHeader={() => 'Patient Diagnosis'}>
+            {/* <List renderHeader={() => 'Patient Diagnosis'}> */}
                 {diagnosisFields.map((field) => {
                     const formElements: ReactElement[] = []
 
@@ -63,16 +63,11 @@ export default function Form(): ReactElement {
                     }
 
                     if (field.group != null) {
-                        if(field["group-title"] != null){
-                            formElements.push(
-                                <List
-                                renderHeader={() => field['group-title']}
-                                >
-                                </List>
-                            )
-                        }
+                        const groupElements: ReactElement[] = []
+
+                        // add each group element to the internalElement arrat
                         field.group.forEach((ele) => {
-                            formElements.push(
+                            groupElements.push(
                                 <CheckboxItem
                                     id={`${ele.toLowerCase()}-checkbox`}
                                     key={ele.toLowerCase()}
@@ -81,12 +76,23 @@ export default function Form(): ReactElement {
                                 </CheckboxItem>)
 
                         })
+
+                        // Render the entire list with the internal elements
+                        if(field["group-title"] != null){
+                            formElements.push(
+                                <List
+                                renderHeader={() => field['group-title']}
+                                >{groupElements}
+                                </List>
+                            )
+                        }
+
                         formElements.push(<WhiteSpace size="lg"/>)
                     }
 
                     return <> {formElements} </>
                 })}
-            </List>
+            {/* </List> */}
         </div>
     )
 }
