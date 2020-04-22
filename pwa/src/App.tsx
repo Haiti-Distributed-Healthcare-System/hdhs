@@ -6,8 +6,8 @@ import store from './state/store'
 
 import Login from './components/Login'
 import LandingPage from './components/LandingPage'
-import PatientInfoPlaceholder from './components/PatientInfoPlaceholder'
 import Wrapper from './Wrapper'
+import PatientInfoForm from './components/PatientInfoForm'
 
 import './scss/App.scss'
 import './antd-mobile.css'
