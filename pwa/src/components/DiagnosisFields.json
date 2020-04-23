@@ -1,146 +1,186 @@
 {
     "diagnoses": [
         {
-            "name": "Asthma"
+            "name": "Asthma",
+            "id": "asthma"
         },
         {
-            "name": "Allergies"
+            "name": "Allergies",
+            "id": "allergies"
         },
         {
-            "name": "Anemia"
+            "name": "Anemia",
+            "id": "anemia"
         },
         {
-            "name": "Malnutrition"
+            "name": "Malnutrition",
+            "id": "malnutrition"
         },
         {
-            "name": "Depression"
+            "name": "Depression",
+            "id": "depression"
         },
         {
-            "name": "Diabetes"
+            "name": "Diabetes",
+            "id": "diabetes"
         },
         {
             "group-title": "Eye",
             "group": [
-                "Ptergium",
-                "Cataract",
-                "Dry Eye",
-                "Conjuntivitis"
+                {
+                    "name": "Ptergium",
+                    "id": "ptergium"
+                },
+                {
+                    "name": "Cataract",
+                    "id": "cataract"
+                },
+                {
+                    "name": "Dry Eye",
+                    "id": "dry-eye"
+                },
+                {
+                    "name": "Conjuntivitis",
+                    "id": "conjuntivitis"
+                }
             ]
         },
         {
-            "name": "Fever"
+            "name": "Fever",
+            "id": "fever"
         },
         {
-            "name": "Possible Malaria"
+            "name": "Possible Malaria",
+            "id": "malaria"
         },
         {
-            "name": "Filariasis"
+            "name": "Filariasis",
+            "id": "filariasis"
         },
         {
+            "id": "intestinal",
             "group-title": "Intestinal",
             "group": [
-                "Gastritis",
-                "GERD",
-                "Gastroenteritis",
-                "Dysentery",
-                "Possible Cholera"
+                { "name": "Gastritis", "id": "gastritis" },
+                { "name": "GERD", "id": "gerd" },
+                { "name": "Gastroenteritis", "id": "gastroenteritis" },
+                { "name": "Dysentery", "id": "dysentery" },
+                { "name": "Possible Cholera", "id": "cholera" }
             ]
         },
         {
-            "name": "Headache"
+            "name": "Headache",
+            "id": "headache"
         },
         {
             "name": "Hernia",
+            "id": "hernia",
             "radio-buttons": {
                 "radio-buttons-title": "Hernia Type",
                 "radio-buttons": [
-                    "Inguinal",
-                    "Umbilical",
-                    "Both"
+                    { "name": "Inguinal", "id": "inguinal" },
+                    { "name": "Umbilical", "id": "umbilical" },
+                    { "name": "Both", "id": "both" }
                 ]
             }
         },
         {
+            "id": "cardiovascular",
             "group-title": "Cardiovascular",
             "group": [
-                "Hypertension",
-                "Stroke",
-                "Angina",
-                "CHF"
+                { "name": "Hypertension", "id": "hypertension" },
+                { "name": "Stroke", "id": "stroke" },
+                { "name": "Angina", "id": "angina" },
+                { "name": "CHF", "id": "chf" }
             ]
         },
         {
-            "name": "Musculoskeletal Pain"
+            "name": "Musculoskeletal Pain",
+            "id": "musculoskeletal"
         },
         {
             "name": "Otitis",
+            "id": "otitis",
             "group-title": "",
             "group": [
-                "Pneumonia",
-                "Sinusitis"
+                { "name": "Pneumonia", "id": "pneumonia" },
+                { "name": "Sinusitis", "id": "sinusitis" }
             ],
             "radio-buttons": {
                 "radio-buttons-title": "",
                 "radio-buttons": [
-                    "Right",
-                    "Left",
-                    "Both"
+                    { "name": "Right", "id": "right" },
+                    { "name": "Left", "id": "left" },
+                    { "name": "Both", "id": "both" }
                 ]
             }
         },
         {
-            "name": "URI"
+            "name": "URI",
+            "id": "uri"
         },
         {
             "name": "Pregnancy",
+            "id": "pregnancy",
             "text-input-title": "Weeks",
             "text-input-type": "number"
         },
         {
             "group-title": "Dermatological",
+            "id": "dermatological",
             "group": [
-                "Atopic Derm",
-                "Fungal",
-                "Scabies",
-                "Impetigo",
-                "Tinea Capitus (kerion)"
+                { "name": "Atopic Derm", "id": "atopic-derm" },
+                { "name": "Fungal", "id": "fungal" },
+                { "name": "Scabies", "id": "scabies" },
+                { "name": "Impetigo", "id": "Impetigo" },
+                { "name": "Tinea Capitus (kerion)", "id": "tinea-capitus" }
             ]
         },
         {
-            "name": "Possible STD"
+            "name": "Possible STD",
+            "id": "std"
         },
         {
-            "name": "Possible TB"
+            "name": "Possible TB",
+            "id": "tb"
         },
         {
-            "name": "Possible Parasites"
+            "name": "Possible Parasites",
+            "id": "parasites"
         },
         {
-            "name": "UTI"
+            "name": "UTI",
+            "id": "uti"
         },
         {
             "group-title": "Vaginal",
+            "id": "vaginal",
             "group": [
-                "Vaginitis",
-                "Candidal",
-                "Trich",
-                "BV"
+                { "name": "Vaginitis", "id": "vaginitis" },
+                { "name": "Candidal", "id": "candidal" },
+                { "name": "Trich", "id": "trich" },
+                { "name": "BV", "id": "bv" }
             ]
         },
         {
-            "name": "Needs to see Dentist"
+            "name": "Needs to see Dentist",
+            "id": "dentist"
         },
         {
-            "name": "Needs to see Eye Doctor"
+            "name": "Needs to see Eye Doctor",
+            "id": "eye-doctor"
         },
         {
-            "name": "Surgical candidate"
+            "name": "Surgical candidate",
+            "id": "surgical-candidate"
         },
         {
-            "text-input-title": "Other Diagnosis"
+            "text-input-title": "Other Diagnosis",
+            "id": "other-diagnosis"
         },
         {
-            "text-input-title": "Diagnoses Comments"
+            "text-input-title": "Diagnoses Comments",
+            "id": "comments"
         }
     ]
 }

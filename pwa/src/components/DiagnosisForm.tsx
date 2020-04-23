@@ -28,71 +28,64 @@ Diagnosis Fields are stored in DiagnosisFields.json in the format:
 }
 */
 
-var diagnosisFields = data.diagnoses
+const diagnosisFields = data.diagnoses
 
-export default function Form(): ReactElement {
+export default function DiagnosisForm(): ReactElement {
     return (
-        <div>
-            {/* <List renderHeader={() => 'Patient Diagnosis'}> */}
-                {diagnosisFields.map((field) => {
-                    const formElements: ReactElement[] = []
+        <div id="diagnosis-form-wrapper" data-testid="diagnosis-form-wrapper">
+            {diagnosisFields.map((field) => {
+                const formElements: ReactElement[] = []
 
-                    if (field.name != null) {
-                        formElements.push(
-                            <CheckboxItem
-                                id={`${field.name.toLowerCase()}-button`}
-                            // key={field.name}
-                            // name={field.name.toLowerCase()}
-                            >
-                                {field.name}
+                if (field.name != null) {
+                    formElements.push(
+                        <CheckboxItem id={field.id} key={field.id}>
+                            {field.name}
+                        </CheckboxItem>,
+                    )
+                }
+
+                if (field['text-input-title'] != null) {
+                    formElements.push(
+                        <List renderHeader={() => field['text-input-title']}>
+                            <TextareaItem
+                                autoHeight
+                                // id={field['text-input-title'].toLowerCase()}
+                                id={field.id}
+                            />
+                        </List>,
+                    )
+                }
+
+                if (field.group != null) {
+                    const groupElements: ReactElement[] = []
+
+                    // add each group element to the internalElement arrat
+                    field.group.forEach((ele: any) => {
+                        groupElements.push(
+                            <CheckboxItem id={ele.id} key={ele.id}>
+                                {ele.name}
                             </CheckboxItem>,
                         )
-                    }
+                    })
 
-                    if (field['text-input-title'] != null) {
+                    // Render the entire list with the internal elements
+                    if (field['group-title'] != null) {
                         formElements.push(
-                            <List
-                                renderHeader={() => field['text-input-title']}
-                            >
-                                <TextareaItem
-                                    autoHeight
-                                    id={field['text-input-title'].toLowerCase()}
-                                />
+                            <List renderHeader={() => field['group-title']}>
+                                {groupElements}
                             </List>,
                         )
                     }
 
-                    if (field.group != null) {
-                        const groupElements: ReactElement[] = []
+                    formElements.push(<WhiteSpace size="lg" />)
+                }
 
-                        // add each group element to the internalElement arrat
-                        field.group.forEach((ele) => {
-                            groupElements.push(
-                                <CheckboxItem
-                                    id={`${ele.toLowerCase()}-checkbox`}
-                                    key={ele.toLowerCase()}
-                                >
-                                    {ele}
-                                </CheckboxItem>)
+                // TODO - Radio
+                if (field['radio-buttons'] != null) {
+                }
 
-                        })
-
-                        // Render the entire list with the internal elements
-                        if(field["group-title"] != null){
-                            formElements.push(
-                                <List
-                                renderHeader={() => field['group-title']}
-                                >{groupElements}
-                                </List>
-                            )
-                        }
-
-                        formElements.push(<WhiteSpace size="lg"/>)
-                    }
-
-                    return <> {formElements} </>
-                })}
-            {/* </List> */}
+                return <> {formElements} </>
+            })}
         </div>
     )
 }
