@@ -243,8 +243,8 @@ export default function Form(): ReactElement {
         ))}
       </List>
 
-      <List renderHeader={() => "Alergies"}>
-        <TextareaItem autoHeight id="alergies" />
+      <List renderHeader={() => "Allergies"}>
+        <TextareaItem autoHeight id="allergies" />
       </List>
 
       <List renderHeader={() => "Medicines"}>
