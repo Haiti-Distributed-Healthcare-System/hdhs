@@ -1,9 +1,10 @@
 import React, { ReactElement, useState } from 'react'
-import { List, Checkbox, TextareaItem, WhiteSpace } from 'antd-mobile'
+import { List, Checkbox, TextareaItem, WhiteSpace, Radio } from 'antd-mobile'
 import '../scss/DiagnosisForm.scss'
 import * as data from './DiagnosisFields.json'
 
 const CheckboxItem = Checkbox.CheckboxItem
+const RadioItem = Radio.RadioItem
 
 /*
 
@@ -47,11 +48,7 @@ export default function DiagnosisForm(): ReactElement {
                 if (field['text-input-title'] != null) {
                     formElements.push(
                         <List renderHeader={() => field['text-input-title']}>
-                            <TextareaItem
-                                autoHeight
-                                // id={field['text-input-title'].toLowerCase()}
-                                id={field.id}
-                            />
+                            <TextareaItem autoHeight id={field.id} />
                         </List>,
                     )
                 }
@@ -80,8 +77,24 @@ export default function DiagnosisForm(): ReactElement {
                     formElements.push(<WhiteSpace size="lg" />)
                 }
 
-                // TODO - Radio
+                // TODO: radio buttons displayed this way are indented badly
                 if (field['radio-buttons'] != null) {
+                    {
+                        field['radio-buttons']['radio-buttons'].map((i) =>
+                            formElements.push(
+                                <RadioItem
+                                    data-testid={i.id}
+                                    id={i.id}
+                                    key={i.name}
+                                    name={i.name}
+                                    // checked={sex === i.value}
+                                    // onClick={() => setSex(i.value)}
+                                >
+                                    {i.name}
+                                </RadioItem>,
+                            ),
+                        )
+                    }
                 }
 
                 return <> {formElements} </>

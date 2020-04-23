@@ -101,11 +101,31 @@
         {
             "name": "Otitis",
             "id": "otitis",
+            "radio-buttons": {
+                "radio-buttons-title": "",
+                "radio-buttons": [
+                    { "name": "Right", "id": "right" },
+                    { "name": "Left", "id": "left" },
+                    { "name": "Both", "id": "both" }
+                ]
+            }
+        },
+        {
+            "name": "Pneumonia",
+            "id": "pneumonia",
+            "radio-buttons": {
+                "radio-buttons-title": "",
+                "radio-buttons": [
+                    { "name": "Right", "id": "right" },
+                    { "name": "Left", "id": "left" },
+                    { "name": "Both", "id": "both" }
+                ]
+            }
+        },
+        {
+            "name": "Sinusitis",
+            "id": "sinusitis",
             "group-title": "",
-            "group": [
-                { "name": "Pneumonia", "id": "pneumonia" },
-                { "name": "Sinusitis", "id": "sinusitis" }
-            ],
             "radio-buttons": {
                 "radio-buttons-title": "",
                 "radio-buttons": [
