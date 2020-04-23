@@ -73,16 +73,12 @@
             "id": "headache"
         },
         {
-            "name": "Hernia",
+            "group-title": "Hernia",
             "id": "hernia",
-            "radio-buttons": {
-                "radio-buttons-title": "Hernia Type",
-                "radio-buttons": [
-                    { "name": "Inguinal", "id": "inguinal" },
-                    { "name": "Umbilical", "id": "umbilical" },
-                    { "name": "Both", "id": "both" }
-                ]
-            }
+            "group": [
+                { "name": "Inguinal", "id": "inguinal" },
+                { "name": "Umbilical", "id": "umbilical" }
+            ]
         },
         {
             "id": "cardiovascular",
@@ -99,41 +95,29 @@
             "id": "musculoskeletal"
         },
         {
-            "name": "Otitis",
+            "group-title": "Otitis",
             "id": "otitis",
-            "radio-buttons": {
-                "radio-buttons-title": "",
-                "radio-buttons": [
-                    { "name": "Right", "id": "right" },
-                    { "name": "Left", "id": "left" },
-                    { "name": "Both", "id": "both" }
-                ]
-            }
+            "group": [
+                { "name": "Right", "id": "right" },
+                { "name": "Left", "id": "left" }
+            ]
         },
         {
-            "name": "Pneumonia",
+            "group-title": "Pneumonia",
             "id": "pneumonia",
-            "radio-buttons": {
-                "radio-buttons-title": "",
-                "radio-buttons": [
-                    { "name": "Right", "id": "right" },
-                    { "name": "Left", "id": "left" },
-                    { "name": "Both", "id": "both" }
-                ]
-            }
+
+            "group": [
+                { "name": "Right", "id": "right" },
+                { "name": "Left", "id": "left" }
+            ]
         },
         {
-            "name": "Sinusitis",
             "id": "sinusitis",
-            "group-title": "",
-            "radio-buttons": {
-                "radio-buttons-title": "",
-                "radio-buttons": [
-                    { "name": "Right", "id": "right" },
-                    { "name": "Left", "id": "left" },
-                    { "name": "Both", "id": "both" }
-                ]
-            }
+            "group-title": "Sinusitis",
+            "group": [
+                { "name": "Right", "id": "right" },
+                { "name": "Left", "id": "left" }
+            ]
         },
         {
             "name": "URI",

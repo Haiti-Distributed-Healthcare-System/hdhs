@@ -77,26 +77,6 @@ export default function DiagnosisForm(): ReactElement {
                     formElements.push(<WhiteSpace size="lg" />)
                 }
 
-                // TODO: radio buttons displayed this way are indented badly
-                if (field['radio-buttons'] != null) {
-                    {
-                        field['radio-buttons']['radio-buttons'].map((i) =>
-                            formElements.push(
-                                <RadioItem
-                                    data-testid={i.id}
-                                    id={i.id}
-                                    key={i.name}
-                                    name={i.name}
-                                    // checked={sex === i.value}
-                                    // onClick={() => setSex(i.value)}
-                                >
-                                    {i.name}
-                                </RadioItem>,
-                            ),
-                        )
-                    }
-                }
-
                 return <> {formElements} </>
             })}
         </div>
