@@ -87,8 +87,8 @@ export default function Form(): ReactElement {
         const zScore: HTMLInputElement = document.getElementById(
             'z-score',
         ) as HTMLInputElement
-        const alergies: HTMLInputElement = document.getElementById(
-            'alergies',
+        const allergies: HTMLInputElement = document.getElementById(
+            'allergies',
         ) as HTMLInputElement
         const medicines: HTMLInputElement = document.getElementById(
             'medicines',
@@ -119,10 +119,10 @@ export default function Form(): ReactElement {
             town: town.value,
             firstVisit: firstVisit,
             pregnant: pregnant,
-            G: parseInt(gravida.value),
-            P: parseInt(para.value),
-            A: parseInt(abortus.value),
-            LMP: new Date(lmp.value),
+            G: sex ? parseInt(gravida.value) : null,
+            P: sex ? parseInt(para.value) : null,
+            A: sex ? parseInt(abortus.value) : null,
+            LMP: sex ? new Date(lmp.value) : null,
             wantsPlanning: planning,
             weight: parseFloat(weight.value),
             height: parseFloat(height.value),
@@ -131,7 +131,7 @@ export default function Form(): ReactElement {
             pulse: parseFloat(pulse.value),
             zScore: parseFloat(zScore.value),
             albendazole: albendazole,
-            alergies: alergies.value,
+            allergies: allergies.value,
             medicines: medicines.value,
             chiefComplaint: [
                 complaintField1.value,
@@ -141,14 +141,6 @@ export default function Form(): ReactElement {
             history: history.value,
             exam: exam.value,
         })
-
-        if (process.env.NODE_ENV === 'development') {
-            console.log(
-                'bday?: ' + birthdateField.value,
-                new Date(birthdateField.value),
-            )
-            console.log('lmp?: ' + lmp.value, new Date(lmp.value))
-        }
     }
 
     const validateAndSetBloodPressure = (value: string) => {
@@ -355,9 +347,9 @@ export default function Form(): ReactElement {
                 ))}
             </List>
 
-      <List renderHeader={() => "Allergies"}>
-        <TextareaItem autoHeight id="allergies" />
-      </List>
+            <List renderHeader={() => 'Allergies'}>
+                <TextareaItem autoHeight id="allergies" />
+            </List>
 
             <List renderHeader={() => 'Medicines'}>
                 <TextareaItem autoHeight id="medicines" />

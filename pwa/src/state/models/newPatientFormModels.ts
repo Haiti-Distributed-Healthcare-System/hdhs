@@ -24,7 +24,7 @@ interface PatientInfoFormFields {
     pulse?: number
     zScore?: number
     albendazole?: Y_N
-    alergies?: string
+    allergies?: string
     medicines?: string
     chiefComplaint?: string[]
     history?: string
