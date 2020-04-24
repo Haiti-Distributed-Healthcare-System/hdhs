@@ -82,7 +82,9 @@ test('validates blood pressure input', () => {
         </StoreProvider>,
     )
 
-    const bpInput = dom.getByPlaceholderText('Blood Pressure')
+    const bpInput = dom.getByPlaceholderText(
+        'Blood Pressure',
+    ) as HTMLInputElement
     fireEvent.change(bpInput, { target: { value: '130/85' } })
     expect(bpInput.value).toBe('130/85')
     fireEvent.change(bpInput, { target: { value: '' } })
