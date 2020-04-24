@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, getByTestId } from '@testing-library/react'
 import DiagnosisForm from './DiagnosisForm'
 
 /*
@@ -24,14 +24,39 @@ Diagnosis Fields are stored in DiagnosisFields.json in the format:
 }
 */
 
+import * as data from './DiagnosisFields.json'
+const diagnosisFields = data.diagnoses
+
 test('renders the form', async () => {
     const dom = render(<DiagnosisForm />)
     expect(dom.getByTestId('diagnosis-form-wrapper')).toBeTruthy()
 })
 
-test('renders each diagnoses.name data field as a checkbox', () => {})
+test('renders each diagnoses.name data field', () => {
+    const { getByText } = render(<DiagnosisForm />)
 
-test(' each diagnoses.name data is able to be checked/unchecked', () => {})
+    diagnosisFields.forEach((diagnosis) => {
+        if (diagnosis.name != null) {
+            const re = new RegExp(diagnosis.name, 'gi')
+            const field = getByText(re)
+            expect(field).toBeInTheDocument()
+        }
+    })
+})
+
+test(' each diagnoses.name has a corresponding checkbox and is able to be checked/unchecked', () => {
+    const { getByText, getByTestId } = render(<DiagnosisForm />)
+
+    diagnosisFields.forEach((diagnosis) => {
+        if (diagnosis.name != null) {
+            const re = new RegExp(diagnosis.id, 'gi')
+            const field = getByTestId(re)
+            expect(field).toHaveClass('am-checkbox-item')
+
+            // TODO: ensure it can be checked /unchecked
+        }
+    })
+})
 
 test('finds and element with each id in the DOM', () => {})
 
