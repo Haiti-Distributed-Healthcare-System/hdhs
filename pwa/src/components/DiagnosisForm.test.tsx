@@ -1,5 +1,10 @@
 import React from 'react'
-import { render, fireEvent, getByTestId } from '@testing-library/react'
+import {
+    render,
+    fireEvent,
+    getByTestId,
+    queryByTestId,
+} from '@testing-library/react'
 import DiagnosisForm from './DiagnosisForm'
 
 /*
@@ -45,15 +50,32 @@ test('renders each diagnoses.name data field', () => {
 })
 
 test(' each diagnoses.name has a corresponding checkbox and is able to be checked/unchecked', () => {
-    const { getByTestId } = render(<DiagnosisForm />)
+    const { getByTestId, getByText } = render(<DiagnosisForm />)
 
     diagnosisFields.forEach((diagnosis) => {
-        if (diagnosis.name != null) {
+        if (diagnosis.name != null && diagnosis.id != null) {
+            // const dom = render(<DiagnosisForm />)
             const re = new RegExp(diagnosis.id, 'gi')
-            const field = getByTestId(re)
-            expect(field).toHaveClass('am-checkbox-item')
+            // const checkboxItem = dom.queryByTestId(re)
+            const checkboxItem = getByTestId(re)
+            expect(checkboxItem).toHaveClass('am-checkbox-item')
 
             // TODO: ensure it can be checked /unchecked
+            // TOTO / help: not sure what to element to click in order to actually trigger the checkbox being checked
+            // This is very similar to the radio button tests in PatientInfoForm
+
+            const checkBox = checkboxItem.getElementsByTagName('span')[0]
+            expect(checkBox).not.toHaveClass('am-checkbox-checked')
+
+            // none of these seem to make the checkbox be checked
+            fireEvent.click(checkboxItem)
+            fireEvent.click(checkBox)
+            const checkBoxInner = checkboxItem.getElementsByClassName(
+                'am-checkbox-inner',
+            )[0]
+            fireEvent.click(checkBoxInner)
+            fireEvent.click(getByText(diagnosis.name))
+            expect(checkBox).toHaveClass('am-checkbox-checked')
         }
     })
 })
@@ -62,17 +84,17 @@ test('renders each diagnoses.text-input-title data field as a text entry field',
     const { getByTestId } = render(<DiagnosisForm />)
 
     diagnosisFields.forEach((diagnosis) => {
-        if (diagnosis['text-input-title'] != null) {
+        if (
+            diagnosis['text-input-title'] != null &&
+            diagnosis['text-input-title'] != null
+        ) {
             const re = new RegExp(diagnosis['text-input-id'], 'gi')
             const field = getByTestId(re)
             expect(field).toBeInTheDocument()
-            // TODO:
-            //expect(field).toHaveClass('textarea')
+            // TODO: ensure that this is a text field
         }
     })
 })
-
-test('each diagnoses.text-input-title data field is able to recieve text input', () => {})
 
 test('renders each diagnoses.group-title data field as a header', () => {})
 
