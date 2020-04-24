@@ -37,7 +37,11 @@ export default function DiagnosisForm(): ReactElement {
 
                 if (field.name != null) {
                     formElements.push(
-                        <CheckboxItem id={field.id} key={field.id}>
+                        <CheckboxItem
+                            id={field.id}
+                            data-testid={field.id}
+                            key={field.id}
+                        >
                             {field.name}
                         </CheckboxItem>,
                     )
@@ -46,7 +50,11 @@ export default function DiagnosisForm(): ReactElement {
                 if (field['text-input-title'] != null) {
                     formElements.push(
                         <List renderHeader={() => field['text-input-title']}>
-                            <TextareaItem autoHeight id={field.id} />
+                            <TextareaItem
+                                autoHeight
+                                id={field.id}
+                                data-testid={field.id}
+                            />
                         </List>,
                     )
                 }
@@ -57,7 +65,11 @@ export default function DiagnosisForm(): ReactElement {
                     // add each group element to the internalElement arrat
                     field.group.forEach((ele: any) => {
                         groupElements.push(
-                            <CheckboxItem id={ele.id} key={ele.id}>
+                            <CheckboxItem
+                                id={ele.id}
+                                data-testid={ele.id}
+                                key={ele.id}
+                            >
                                 {ele.name}
                             </CheckboxItem>,
                         )
@@ -66,7 +78,10 @@ export default function DiagnosisForm(): ReactElement {
                     // Render the entire list with the internal elements
                     if (field['group-title'] != null) {
                         formElements.push(
-                            <List renderHeader={() => field['group-title']}>
+                            <List
+                                renderHeader={() => field['group-title']}
+                                data-testid={field.id}
+                            >
                                 {groupElements}
                             </List>,
                         )
