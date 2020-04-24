@@ -132,6 +132,7 @@
             "name": "Pregnancy",
             "id": "pregnancy",
             "text-input-title": "Weeks",
+            "text-input-id": "pregnancy-weeks",
             "text-input-type": "number"
         },
         {
@@ -185,11 +186,11 @@
         },
         {
             "text-input-title": "Other Diagnosis",
-            "id": "other-diagnosis"
+            "text-input-id": "other-diagnosis"
         },
         {
             "text-input-title": "Diagnoses Comments",
-            "id": "comments"
+            "text-input-id": "comments"
         }
     ]
 }

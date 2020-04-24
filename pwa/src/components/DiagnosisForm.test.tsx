@@ -45,7 +45,7 @@ test('renders each diagnoses.name data field', () => {
 })
 
 test(' each diagnoses.name has a corresponding checkbox and is able to be checked/unchecked', () => {
-    const { getByText, getByTestId } = render(<DiagnosisForm />)
+    const { getByTestId } = render(<DiagnosisForm />)
 
     diagnosisFields.forEach((diagnosis) => {
         if (diagnosis.name != null) {
@@ -58,9 +58,19 @@ test(' each diagnoses.name has a corresponding checkbox and is able to be checke
     })
 })
 
-test('finds and element with each id in the DOM', () => {})
+test('renders each diagnoses.text-input-title data field as a text entry field', () => {
+    const { getByTestId } = render(<DiagnosisForm />)
 
-test('renders each diagnoses.text-input-title data field as a text entry field', () => {})
+    diagnosisFields.forEach((diagnosis) => {
+        if (diagnosis['text-input-title'] != null) {
+            const re = new RegExp(diagnosis['text-input-id'], 'gi')
+            const field = getByTestId(re)
+            expect(field).toBeInTheDocument()
+            // TODO:
+            //expect(field).toHaveClass('textarea')
+        }
+    })
+})
 
 test('each diagnoses.text-input-title data field is able to recieve text input', () => {})
 
