@@ -96,7 +96,9 @@ test('sets albendazole input', () => {
             <PatientInfoForm />
         </StoreProvider>,
     )
-    const femaleButton = dom.getByTestId('female-button')
+
+    const albendazoleYesInput = dom.queryByTestId('albendazole-Yes')
+    const checkBox = albendazoleYesInput.getElementsByTagName('span')[0]
 
     expect(checkBox).not.toHaveClass('am-radio-checked')
     fireEvent.click(albendazoleYesInput)
