@@ -8,6 +8,7 @@ import PatientInfoForm from './components/PatientInfoForm'
 
 import './scss/App.scss'
 import './antd-mobile.css'
+import TreatmentForm from './components/TreatmentForm'
 
 const App: React.FunctionComponent = () => {
     return (
@@ -17,7 +18,7 @@ const App: React.FunctionComponent = () => {
                     <Login />
                 </Route>
                 <Route path="/landing">
-                    <LandingPage />
+                    <TreatmentForm />
                 </Route>
                 <Route path="/patientinfo">
                     <Wrapper
