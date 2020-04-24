@@ -1,10 +1,9 @@
-import React, { ReactElement, useState } from 'react'
-import { List, Checkbox, TextareaItem, WhiteSpace, Radio } from 'antd-mobile'
+import React, { ReactElement } from 'react'
+import { List, Checkbox, TextareaItem, WhiteSpace } from 'antd-mobile'
 import '../scss/DiagnosisForm.scss'
 import * as data from './DiagnosisFields.json'
 
 const CheckboxItem = Checkbox.CheckboxItem
-const RadioItem = Radio.RadioItem
 
 /*
 
@@ -13,18 +12,17 @@ Diagnosis Fields are stored in DiagnosisFields.json in the format:
 {
     "diagnoses" : [
         {
-            "name":"",
-            "group-title":"",
-            "group":[],
-            "radio-buttons": {
-                "radio-buttons-title":"",
-                "radio-buttons":[
-
-                ]
-
-            },
-            "text-input-title":""
-        }
+            "name": "Name",
+            "id": "id",
+            "text-input-title": "Title",
+            "text-input-type": "type" (i.e. number)
+            "group-title": "Group Title",
+            "group": [
+                { "name": "Name1", "id": "id1" },
+                { "name": "Name2", "id": "id2" }
+            ]
+        },
+        {...}
     ]
 }
 */

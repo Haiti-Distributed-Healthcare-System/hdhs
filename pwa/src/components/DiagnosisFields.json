@@ -91,6 +91,11 @@
             ]
         },
         {
+            "name": "Healthy",
+            "id": "healthy"
+        },
+
+        {
             "name": "Musculoskeletal Pain",
             "id": "musculoskeletal"
         },
