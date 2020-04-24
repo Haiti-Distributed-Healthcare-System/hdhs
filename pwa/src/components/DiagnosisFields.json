@@ -103,8 +103,8 @@
             "group-title": "Otitis",
             "id": "otitis",
             "group": [
-                { "name": "Right", "id": "right" },
-                { "name": "Left", "id": "left" }
+                { "name": "Right", "id": "otitis-right" },
+                { "name": "Left", "id": "otitis-left" }
             ]
         },
         {
@@ -112,16 +112,16 @@
             "id": "pneumonia",
 
             "group": [
-                { "name": "Right", "id": "right" },
-                { "name": "Left", "id": "left" }
+                { "name": "Right", "id": "pneumonia-right" },
+                { "name": "Left", "id": "pneumonia-left" }
             ]
         },
         {
             "id": "sinusitis",
             "group-title": "Sinusitis",
             "group": [
-                { "name": "Right", "id": "right" },
-                { "name": "Left", "id": "left" }
+                { "name": "Right", "id": "sinusitis-right" },
+                { "name": "Left", "id": "sinusitis-left" }
             ]
         },
         {
