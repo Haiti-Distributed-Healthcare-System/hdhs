@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent, prettyDOM } from '@testing-library/react'
 import PatientInfoForm from './PatientInfoForm'
 import { StoreProvider } from 'easy-peasy'
-import { store } from '../state/store'
+import store from '../state/store'
 
 test('female-only div is only displayed if the sex is selected as female', async () => {
     const femaleOnlyFormFields = ['Pregnant?', 'LMP', 'Wants Planning?']
