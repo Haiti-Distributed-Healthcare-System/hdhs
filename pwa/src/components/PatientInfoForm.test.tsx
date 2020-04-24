@@ -98,9 +98,6 @@ test('sets albendazole input', () => {
     )
     const femaleButton = dom.getByTestId('female-button')
 
-    const albendazoleYesInput = dom.queryByTestId('albendazole-Yes')
-    const checkBox = albendazoleYesInput.getElementsByTagName('span')[0]
-
     expect(checkBox).not.toHaveClass('am-radio-checked')
     fireEvent.click(albendazoleYesInput)
     expect(checkBox).toHaveClass('am-radio-checked')
@@ -126,7 +123,7 @@ test('renders the Patient Info Form fields', () => {
         'Height',
         'Z-Score',
         'Albendazole',
-        'Alergies',
+        'Allergies',
         'Medicines',
         'Chief Complaint',
         'History',
