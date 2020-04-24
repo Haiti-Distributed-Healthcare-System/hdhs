@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { List, Checkbox, TextareaItem, WhiteSpace } from 'antd-mobile'
+import { List, Checkbox, InputItem, WhiteSpace } from 'antd-mobile'
 import '../scss/DiagnosisForm.scss'
 import * as data from './DiagnosisFields.json'
 
@@ -47,13 +47,25 @@ export default function DiagnosisForm(): ReactElement {
                     )
                 }
 
-                if (field['text-input-title'] != null) {
+                if (
+                    field['text-input-title'] != null &&
+                    field['text-input-id'] != null
+                ) {
                     formElements.push(
                         <List renderHeader={() => field['text-input-title']}>
-                            <TextareaItem
-                                autoHeight
-                                id={field.id}
-                                data-testid={field.id}
+                            <InputItem
+                                id={field['text-input-id']}
+                                data-testid={field['text-input-id']}
+                                type={
+                                    field['text-input-type'] == 'number'
+                                        ? 'number'
+                                        : 'text'
+                                }
+                                maxLength={
+                                    field['text-input-id'] == 'pregnancy-weeks'
+                                        ? 2
+                                        : null
+                                }
                             />
                         </List>,
                     )
@@ -62,7 +74,7 @@ export default function DiagnosisForm(): ReactElement {
                 if (field.group != null) {
                     const groupElements: ReactElement[] = []
 
-                    // add each group element to the internalElement arrat
+                    // add each group element to the internalElement array
                     field.group.forEach((ele: any) => {
                         groupElements.push(
                             <CheckboxItem
