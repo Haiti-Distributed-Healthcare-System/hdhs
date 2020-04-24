@@ -1,1 +1,4 @@
 **/.lighthouseci/**
+
+# postgres persisted data
+pgdata/
