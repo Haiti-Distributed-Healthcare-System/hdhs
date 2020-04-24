@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react'
 import { useStoreActions } from '../state/storeIndex'
-import { SEX, Y_N } from '../state/enums'
+import { SEX } from '../state/enums'
 import {
     InputItem,
     List,
@@ -386,7 +386,9 @@ export default function Form(): ReactElement {
 
             <div className="submit-button">
                 <List>
-                    <Button onClick={onSubmit}>Submit</Button>
+                    <Button data-testid="submit-button" onClick={onSubmit}>
+                        Submit
+                    </Button>
                 </List>
             </div>
         </div>

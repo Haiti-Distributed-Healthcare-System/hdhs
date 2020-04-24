@@ -1,3 +1,7 @@
+/* istanbul ignore file */
+// This component is a debug utility to show
+//     all contents of easy-peasy when rendered
+
 import React, { ReactElement } from 'react'
 import { useStoreState } from '../state/storeIndex'
 

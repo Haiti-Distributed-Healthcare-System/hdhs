@@ -75,6 +75,21 @@ test('sets planning input', () => {
     expect(checkBox).toHaveClass('am-radio-checked')
 })
 
+test('validates blood pressure input', () => {
+    const dom = render(
+        <StoreProvider store={store}>
+            <PatientInfoForm />
+        </StoreProvider>,
+    )
+
+    const bpInput = dom.getByPlaceholderText('Blood Pressure')
+    fireEvent.change(bpInput, { target: { value: '130/85' } })
+    expect(bpInput.value).toBe('130/85')
+    fireEvent.change(bpInput, { target: { value: '' } })
+    fireEvent.change(bpInput, { target: { value: 'abcd' } })
+    expect(bpInput.value).toBe('') // Empty String
+})
+
 test('sets albendazole input', () => {
     const dom = render(
         <StoreProvider store={store}>

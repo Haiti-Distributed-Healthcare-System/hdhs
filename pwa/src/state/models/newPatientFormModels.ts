@@ -36,13 +36,12 @@ export interface PatientInfoFormModel {
     updateFields: Action<PatientInfoFormModel, PatientInfoFormFields>
 }
 
+/* istanbul ignore next */
+// Form submission requests validated in integration test
 const patientInfoFormModel: PatientInfoFormModel = {
     fields: {},
     updateFields: action((state, formObject) => {
-        console.log('updating with: ', formObject)
-        console.log('state pre', state)
         state.fields = formObject
-        console.log('state post', state)
     }),
 }
 
