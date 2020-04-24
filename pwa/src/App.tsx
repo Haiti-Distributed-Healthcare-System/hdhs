@@ -11,6 +11,7 @@ import PatientInfoForm from './components/PatientInfoForm'
 
 import './scss/App.scss'
 import './antd-mobile.css'
+import DebugShowEasyPeasy from './components/DebugShowEasyPeasy'
 
 const App: React.FunctionComponent = () => {
     return (
@@ -29,8 +30,11 @@ const App: React.FunctionComponent = () => {
                             leftArrowText="Home"
                             leftArrowRoute="/"
                         >
-                            <PatientInfoPlaceholder />
+                            <PatientInfoForm />
                         </Wrapper>
+                    </Route>
+                    <Route path="/easy-peasy">
+                        <DebugShowEasyPeasy />
                     </Route>
                     <Route path="/">
                         <Login />

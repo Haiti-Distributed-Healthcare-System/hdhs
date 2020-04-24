@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 export enum SEX {
     male = 'male',
     female = 'female',

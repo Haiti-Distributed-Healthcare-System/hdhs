@@ -11,6 +11,12 @@ interface PatientInfoFormFields {
     phone?: string
     town?: string
     firstVisit?: Y_N
+    pregnant?: Y_N
+    G?: number
+    P?: number
+    A?: number
+    LMP?: Date
+    wantsPlanning?: Y_N
     weight?: number
     height?: number
     bloodPressure?: string
@@ -32,8 +38,11 @@ export interface PatientInfoFormModel {
 
 const patientInfoFormModel: PatientInfoFormModel = {
     fields: {},
-    updateFields: action((state, payload) => {
-        state.fields = payload
+    updateFields: action((state, formObject) => {
+        console.log('updating with: ', formObject)
+        console.log('state pre', state)
+        state.fields = formObject
+        console.log('state post', state)
     }),
 }
 

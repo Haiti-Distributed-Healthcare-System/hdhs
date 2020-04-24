@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { createTypedHooks } from 'easy-peasy'
 
 import patientInfoFormModel from './models/newPatientFormModels'
