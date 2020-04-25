@@ -74,7 +74,7 @@ test('renders each diagnoses.text-input-title data field as a text entry field',
             const re = new RegExp(diagnosis['text-input-id'], 'gi')
             const field = getByTestId(re)
             expect(field).toBeInTheDocument()
-            // TODO: ensure that this is a text field
+            expect(field).toHaveAttribute('type', 'text')
         }
     })
 })
@@ -98,17 +98,25 @@ test('renders each diagnoses.group entry in the same list element', () => {
     // ensure that each of the group elements is in the list
 })
 
-test('renders each diagnoses.[el] as a checkbox', () => {
+test('renders each diagnoses.[el] as a checkbox that can be checked/unchecked', () => {
     const { getByTestId } = render(<DiagnosisForm />)
     diagnosisFields.forEach((diagnosis) => {
         if (diagnosis.group != null) {
             diagnosis.group.forEach((groupElement) => {
                 const re = new RegExp(groupElement.id, 'gi')
-                const field = getByTestId(re)
-                expect(field).toBeInTheDocument()
-                expect(field).toHaveClass('am-checkbox-item')
+                const groupCheckboxItem = getByTestId(re)
+                expect(groupCheckboxItem).toBeInTheDocument()
+                expect(groupCheckboxItem).toHaveClass('am-checkbox-item')
 
-                // TODO: ensure it can be checked / unchecked
+                const checkBox = groupCheckboxItem.getElementsByTagName(
+                    'span',
+                )[0]
+                expect(checkBox).not.toHaveClass('am-checkbox-checked')
+                const checkBoxInput = groupCheckboxItem.getElementsByClassName(
+                    'am-checkbox-input',
+                )[0]
+                fireEvent.click(checkBoxInput)
+                expect(checkBox).toHaveClass('am-checkbox-checked')
             })
         }
     })
