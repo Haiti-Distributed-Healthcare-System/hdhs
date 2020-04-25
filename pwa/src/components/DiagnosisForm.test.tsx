@@ -45,7 +45,7 @@ test('renders each diagnoses.name data field', () => {
 })
 
 test(' each diagnoses.name has a corresponding checkbox and is able to be checked/unchecked', () => {
-    const { getByTestId, getByText } = render(<DiagnosisForm />)
+    const { getByTestId } = render(<DiagnosisForm />)
     diagnosisFields.forEach((diagnosis) => {
         if (diagnosis.name != null && diagnosis.id != null) {
             const re = new RegExp(diagnosis.id, 'gi')
@@ -92,10 +92,22 @@ test('renders each diagnoses.group-title data field as a header', () => {
 })
 
 test('renders each diagnoses.group entry in the same list element', () => {
-    // TODO:
-    // get the list element that contains one of the group id's
-    // get the elements contained in the list
-    // ensure that each of the group elements is in the list
+    const { getByTestId } = render(<DiagnosisForm />)
+    diagnosisFields.forEach((diagnosis) => {
+        if (diagnosis.group != null && diagnosis.id != null) {
+            // get the list by diagnosis.id
+            const re = new RegExp(`\^${diagnosis.id}\$`, 'gi')
+            const field = getByTestId(re)
+            expect(field).toBeInTheDocument()
+            expect(field).toHaveClass('am-list')
+
+            // For each element in the group, ensure it is contained in the list
+            diagnosis.group.forEach((groupElement) => {
+                const el = getByTestId(groupElement.id)
+                expect(field).toContainElement(el)
+            })
+        }
+    })
 })
 
 test('renders each diagnoses.[el] as a checkbox that can be checked/unchecked', () => {

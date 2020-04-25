@@ -25,6 +25,7 @@
             "id": "diabetes"
         },
         {
+            "id": "eye",
             "group-title": "Eye",
             "group": [
                 {
@@ -110,7 +111,6 @@
         {
             "group-title": "Pneumonia",
             "id": "pneumonia",
-
             "group": [
                 { "name": "Right", "id": "pneumonia-right" },
                 { "name": "Left", "id": "pneumonia-left" }

@@ -58,12 +58,12 @@ export default function DiagnosisForm(): ReactElement {
                                 data-testid={field['text-input-id']}
                                 key={field['text-input-id']}
                                 type={
-                                    field['text-input-type'] == 'number'
+                                    field['text-input-type'] === 'number'
                                         ? 'number'
                                         : 'text'
                                 }
                                 maxLength={
-                                    field['text-input-id'] == 'pregnancy-weeks'
+                                    field['text-input-id'] === 'pregnancy-weeks'
                                         ? 2
                                         : null
                                 }
@@ -77,19 +77,21 @@ export default function DiagnosisForm(): ReactElement {
 
                     // add each group element to the internalElement array
                     field.group.forEach((ele: any) => {
-                        groupElements.push(
-                            <CheckboxItem
-                                id={ele.id}
-                                data-testid={ele.id}
-                                key={ele.id}
-                            >
-                                {ele.name}
-                            </CheckboxItem>,
-                        )
+                        if (ele.id != null && ele.name != null) {
+                            groupElements.push(
+                                <CheckboxItem
+                                    id={ele.id}
+                                    data-testid={ele.id}
+                                    key={ele.id}
+                                >
+                                    {ele.name}
+                                </CheckboxItem>,
+                            )
+                        }
                     })
 
                     // Render the entire list with the internal elements
-                    if (field['group-title'] != null) {
+                    if (field['group-title'] != null && field.id !== null) {
                         formElements.push(
                             <List
                                 renderHeader={() => field['group-title']}
