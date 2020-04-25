@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import { createTypedHooks } from 'easy-peasy'
 
-import patientInfoFormModel from './models/newPatientFormModels'
+import patientInfoFormModel from './models/newPatientForm.model'
 
 export const storeModels = {
     patientInfoFormModel,
