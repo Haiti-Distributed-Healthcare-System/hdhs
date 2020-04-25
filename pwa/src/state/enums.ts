@@ -5,7 +5,7 @@ export enum SEX {
     female = 'female',
 }
 
-export enum Y_N {
+export enum YN {
     YES = 1,
     NO = 0,
 }

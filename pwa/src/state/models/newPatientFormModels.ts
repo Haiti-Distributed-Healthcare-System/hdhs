@@ -1,5 +1,5 @@
 import { Action, action } from 'easy-peasy'
-import { SEX, Y_N } from '../enums'
+import { SEX, YN } from '../enums'
 
 interface PatientInfoFormFields {
     firstName?: string
@@ -10,20 +10,20 @@ interface PatientInfoFormFields {
     age?: number
     phone?: string
     town?: string
-    firstVisit?: Y_N
-    pregnant?: Y_N
+    firstVisit?: YN
+    pregnant?: YN
     G?: number
     P?: number
     A?: number
     LMP?: Date
-    wantsPlanning?: Y_N
+    wantsPlanning?: YN
     weight?: number
     height?: number
     bloodPressure?: string
     temperature?: number
     pulse?: number
     zScore?: number
-    albendazole?: Y_N
+    albendazole?: YN
     allergies?: string
     medicines?: string
     chiefComplaint?: string[]
