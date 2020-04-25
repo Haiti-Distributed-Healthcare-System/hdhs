@@ -56,6 +56,7 @@ export default function DiagnosisForm(): ReactElement {
                             <InputItem
                                 id={field['text-input-id']}
                                 data-testid={field['text-input-id']}
+                                key={field['text-input-id']}
                                 type={
                                     field['text-input-type'] == 'number'
                                         ? 'number'

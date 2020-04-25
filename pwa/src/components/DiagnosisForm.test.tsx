@@ -52,21 +52,13 @@ test(' each diagnoses.name has a corresponding checkbox and is able to be checke
             const checkboxItem = getByTestId(re)
             expect(checkboxItem).toHaveClass('am-checkbox-item')
 
-            // TODO: ensure it can be checked /unchecked
-            // TODO: (help) not sure what to element to click in order to actually trigger the checkbox being checked
-            // This is very similar to the radio button tests in PatientInfoForm
-
-            // const checkBox = checkboxItem.getElementsByTagName('span')[0]
-            // expect(checkBox).not.toHaveClass('am-checkbox-checked')
-            // // none of these seem to make the checkbox be checked
-            // fireEvent.click(checkboxItem)
-            // fireEvent.click(checkBox)
-            // const checkBoxInner = checkboxItem.getElementsByClassName(
-            //     'am-checkbox-inner',
-            // )[0]
-            // fireEvent.click(checkBoxInner)
-            // fireEvent.click(getByText(diagnosis.name))
-            // expect(checkBox).toHaveClass('am-checkbox-checked')
+            const checkBox = checkboxItem.getElementsByTagName('span')[0]
+            expect(checkBox).not.toHaveClass('am-checkbox-checked')
+            const checkBoxInput = checkboxItem.getElementsByClassName(
+                'am-checkbox-input',
+            )[0]
+            fireEvent.click(checkBoxInput)
+            expect(checkBox).toHaveClass('am-checkbox-checked')
         }
     })
 })
@@ -100,7 +92,10 @@ test('renders each diagnoses.group-title data field as a header', () => {
 })
 
 test('renders each diagnoses.group entry in the same list element', () => {
-    // TODO
+    // TODO:
+    // get the list element that contains one of the group id's
+    // get the elements contained in the list
+    // ensure that each of the group elements is in the list
 })
 
 test('renders each diagnoses.[el] as a checkbox', () => {
