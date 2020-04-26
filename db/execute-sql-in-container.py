@@ -16,8 +16,9 @@ import argparse
 import pickle
 import sys
 
-from psql import PSQL
 from sqlalchemy import create_engine
+
+from psql import PSQL
 
 engine = create_engine("postgres+psycopg2://postgres:HaitiCHI@0.0.0.0:5432/app_db")
 

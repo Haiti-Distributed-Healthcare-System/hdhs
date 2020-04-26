@@ -4,8 +4,9 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import pyodbc
-from db import DB
 from tqdm import tqdm
+
+from db import DB
 from utils import edit_distance
 
 
@@ -37,6 +38,7 @@ class FMP(DB):
 
         # TODO: consider extracting this list to the DB class
         self._table_names = [
+            "globals",
             "clinics",
             "patients",
             "visits",
@@ -45,9 +47,12 @@ class FMP(DB):
             "meds",
             "meds_dispensed",
             "geonames",
-            "settings"
-            # "globals",
-            # TODO: add the join tables that are still in the FMP model, but weren't used last year
+            "settings",
+        ]
+
+        self._join_tables = [
+            "diagnoses_made",
+            "meds_dispensed"
         ]
 
         self.__python_types_to_sql = {
@@ -58,6 +63,7 @@ class FMP(DB):
         }
 
         self.__pyodbc_connection = None
+        self.__cursor = None
         if connect:
             self.__connect()
 
@@ -78,6 +84,16 @@ class FMP(DB):
     def __connect(self):
         if self.__pyodbc_connection is None:
             self.__pyodbc_connection = pyodbc.connect(self.__connection_string)
+            self.__pyodbc_connection
+
+    def execute_command(self, command_string):
+        result = None
+        try:
+            result = pd.read_sql(command_string, self.connection)
+        except Exception as e:
+            print(f"Failure to execute: ['{command_string}']")
+            raise (e)  # TODO: determine if crashing is appropriate
+        return result
 
     @property
     def python_types_to_sql(self):
@@ -88,6 +104,12 @@ class FMP(DB):
         if self.__pyodbc_connection is None:
             self.__connect()
         return self.__pyodbc_connection
+
+    @property
+    def cursor(self):
+        if self.__cursor is None:
+            self.__cursor = self.connection.cursor()
+        return self.__cursor
 
     # ABSTRACT BASE CLASS MEHTODS
     def parse_database(self) -> dict():

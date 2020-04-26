@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 
+import numpy as np
 import pandas as pd
+
 from utils import edit_distance
 
 
@@ -16,15 +18,6 @@ class DB(ABC):
         self._model = None
         self.datetime_format = "%Y%m%d_%H%M"
         self._table_names = []
-
-    # TODO: Delete these methods once we remove our custom model code
-    @abstractmethod
-    def write_model(self):
-        pass
-
-    @abstractmethod
-    def parse_database(self) -> dict():
-        pass
 
     # ABSTRACT METHDOS TO BE IMPLEMENTED BY CHILD CLASSES
     # ###################################################
@@ -76,7 +69,3 @@ class DB(ABC):
             raise (e)
 
         return self.table_names[index_of_match]
-
-    # TODO: delete this once we adjust to the new dual connection functionality
-    def init_from_json(self, json_model: dict()):
-        self._model = json_model

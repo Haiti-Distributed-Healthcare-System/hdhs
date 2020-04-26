@@ -1,7 +1,8 @@
 # import some python ORM for SQl
 import pandas as pd
-from db import DB
 from sqlalchemy import create_engine
+
+from db import DB
 
 
 class PSQL(DB):
@@ -28,6 +29,7 @@ class PSQL(DB):
         return self.__engine.connect()
 
     def execute_command(self, command_string):
+        print(f"PSQL EXECUTING: [{command_string}]")
         result = None
         try:
             with self.open_connection() as connection:
