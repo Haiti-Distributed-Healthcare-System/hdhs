@@ -104,8 +104,6 @@ export default function DiagnosisForm(): ReactElement {
                             </List>,
                         )
                     }
-
-                    formElements.push(<WhiteSpace size="lg" />)
                 }
 
                 return <> {formElements} </>
