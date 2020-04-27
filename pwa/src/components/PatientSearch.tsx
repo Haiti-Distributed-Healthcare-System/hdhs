@@ -13,7 +13,7 @@ const patientsSeed: Array<Patient> = [
     { pk_patient_id: 5, first_name: 'Hans', last_name: 'Johnson' },
 ]
 
-export default function SearchComponent(): ReactElement {
+export default function PatientSearch(): ReactElement {
     const [matches, setMatches] = useState([])
     const [patients, setPatients] = useState(patientsSeed)
     const [searchValue, setSearchValue] = useState('')
