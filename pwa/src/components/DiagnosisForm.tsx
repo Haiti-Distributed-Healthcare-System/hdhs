@@ -3,8 +3,6 @@ import { List, Checkbox, InputItem, WhiteSpace } from 'antd-mobile'
 import '../scss/DiagnosisForm.scss'
 import * as data from './DiagnosisFields.json'
 
-const CheckboxItem = Checkbox.CheckboxItem
-
 /*
 
 Diagnosis Fields are stored in DiagnosisFields.json in the format:
@@ -27,6 +25,7 @@ Diagnosis Fields are stored in DiagnosisFields.json in the format:
 }
 */
 
+const CheckboxItem = Checkbox.CheckboxItem
 const diagnosisFields = data.diagnoses
 
 export default function DiagnosisForm(): ReactElement {

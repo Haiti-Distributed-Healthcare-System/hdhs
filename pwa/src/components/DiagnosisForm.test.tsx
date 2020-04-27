@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import DiagnosisForm from './DiagnosisForm'
+import * as data from './DiagnosisFields.json'
 
 /*
 
@@ -24,7 +25,6 @@ Diagnosis Fields are stored in DiagnosisFields.json in the format:
 }
 */
 
-import * as data from './DiagnosisFields.json'
 const diagnosisFields = data.diagnoses
 
 test('renders the form', async () => {
