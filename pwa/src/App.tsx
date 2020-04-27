@@ -25,15 +25,15 @@ const App: React.FunctionComponent = () => {
                     <Route path="/landing">
                         <LandingPage />
                     </Route>
-                    <Wrapper
-                        navTitle="Patient Search"
-                        leftArrowText="Home"
-                        leftArrowRoute="/"
-                    >
-                        <Route path="/search">
+                    <Route path="/search">
+                        <Wrapper
+                            navTitle="Patient Search"
+                            leftArrowText="Home"
+                            leftArrowRoute="/"
+                        >
                             <PatientSearch />
-                        </Route>
-                    </Wrapper>
+                        </Wrapper>
+                    </Route>
                     <Route path="/patientinfo">
                         <Wrapper
                             navTitle="Patient Information"
