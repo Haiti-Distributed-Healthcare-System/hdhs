@@ -1,14 +1,17 @@
 import React, { ReactElement } from 'react'
 import { WhiteSpace, Button } from 'antd-mobile'
 import { UserAddOutlined } from '@ant-design/icons'
+import { useHistory } from 'react-router-dom'
 
 import '../scss/LandingPage.scss'
 
 export default function LandingPage(): ReactElement {
+    let history = useHistory()
     /* istanbul ignore next */
     // TODO: these onClick functions could be mocked in a unit test
     const patientLookup = () => {
         console.log('Clicked Patient Lookup')
+        history.push('/search')
     }
 
     /* istanbul ignore next */
