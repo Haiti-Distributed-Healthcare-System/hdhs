@@ -109,20 +109,12 @@
             ]
         },
         {
-            "group-title": "Pneumonia",
-            "id": "pneumonia",
-            "group": [
-                { "name": "Right", "id": "pneumonia-right" },
-                { "name": "Left", "id": "pneumonia-left" }
-            ]
+            "name": "Pneumonia",
+            "id": "pneumonia"
         },
         {
             "id": "sinusitis",
-            "group-title": "Sinusitis",
-            "group": [
-                { "name": "Right", "id": "sinusitis-right" },
-                { "name": "Left", "id": "sinusitis-left" }
-            ]
+            "name": "Sinusitis"
         },
         {
             "name": "URI",
