@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 import '../scss/LandingPage.scss'
 
 export default function LandingPage(): ReactElement {
-    let history = useHistory()
+    const history = useHistory()
     /* istanbul ignore next */
     // TODO: these onClick functions could be mocked in a unit test
     const patientLookup = () => {
