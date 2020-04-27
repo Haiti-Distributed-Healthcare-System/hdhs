@@ -7,8 +7,8 @@ import '../scss/LandingPage.scss'
 
 export default function LandingPage(): ReactElement {
     const history = useHistory()
-    /* istanbul ignore next */
     // TODO: these onClick functions could be mocked in a unit test
+    /* istanbul ignore next */
     const patientLookup = () => {
         console.log('Clicked Patient Lookup')
         history.push('/search')
