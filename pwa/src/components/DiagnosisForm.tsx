@@ -97,6 +97,10 @@ export default function DiagnosisForm(): ReactElement {
                                 data-testid={field.id}
                             >
                                 {groupElements}
+                                <WhiteSpace
+                                    className="list-whitespace"
+                                    size="lg"
+                                />
                             </List>,
                         )
                     }
