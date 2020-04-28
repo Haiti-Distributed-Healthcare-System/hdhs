@@ -47,7 +47,7 @@ export default function PatientSearch(): ReactElement {
     }
 
     return (
-        <div>
+        <>
             <SearchBar
                 data-testid="search-bar"
                 placeholder="Patient Name"
@@ -57,7 +57,7 @@ export default function PatientSearch(): ReactElement {
             />
             <WhiteSpace />
             {searchValue ? (
-                <div>
+                <>
                     <List data-test-id="match-list">
                         {matches.map((matchElement: Patient, index: number) => (
                             <List.Item
@@ -77,8 +77,8 @@ export default function PatientSearch(): ReactElement {
                             </List.Item>
                         ) : null}
                     </List>
-                </div>
+                </>
             ) : null}
-        </div>
+        </>
     )
 }
