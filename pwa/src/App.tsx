@@ -1,6 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+import { StoreProvider } from 'easy-peasy'
+import store from './state/store'
+
 import Login from './components/Login'
 import LandingPage from './components/LandingPage'
 import Wrapper from './Wrapper'
@@ -9,27 +12,29 @@ import DiagnosisForm from './components/DiagnosisForm'
 
 import './scss/App.scss'
 import './antd-mobile.css'
+import DebugShowEasyPeasy from './components/DebugShowEasyPeasy'
 
 const App: React.FunctionComponent = () => {
     return (
-        <Router>
-            <Switch>
-                <Route path="/login">
-                    <Login />
-                </Route>
-                <Route path="/landing">
-                    <LandingPage />
-                </Route>
-                <Route path="/patientinfo">
-                    <Wrapper
-                        navTitle="Patient Information"
-                        leftArrowText="Home"
-                        leftArrowRoute="/"
-                    >
-                        <PatientInfoForm />
-                    </Wrapper>
-                </Route>
-                <Route path="/diagnosis">
+        <StoreProvider store={store}>
+            <Router>
+                <Switch>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="/landing">
+                        <LandingPage />
+                    </Route>
+                    <Route path="/patientinfo">
+                        <Wrapper
+                            navTitle="Patient Information"
+                            leftArrowText="Home"
+                            leftArrowRoute="/"
+                        >
+                            <PatientInfoForm />
+                        </Wrapper>
+                    </Route>
+                    <Route path="/diagnosis">
                     <Wrapper
                         navTitle="Diagnosis"
                         leftArrowText="Patient Info"
@@ -38,11 +43,15 @@ const App: React.FunctionComponent = () => {
                         <DiagnosisForm />
                     </Wrapper>
                 </Route>
-                <Route path="/">
-                    <Login />
-                </Route>
-            </Switch>
-        </Router>
+                    <Route path="/easy-peasy">
+                        <DebugShowEasyPeasy />
+                    </Route>
+                    <Route path="/">
+                        <Login />
+                    </Route>
+                </Switch>
+            </Router>
+        </StoreProvider>
     )
 }
 
