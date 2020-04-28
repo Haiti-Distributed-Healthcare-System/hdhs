@@ -6,14 +6,9 @@ import { useHistory } from 'react-router-dom'
 import '../scss/LandingPage.scss'
 
 export default function LandingPage(): ReactElement {
-    const history = useHistory()
-    // TODO: these onClick functions could be mocked in a unit test
-    /* istanbul ignore next */
-    const patientLookup = () => {
-        console.log('Clicked Patient Lookup')
-        history.push('/search')
-    }
+    let history = useHistory()
 
+    // TODO: these onClick functions could be mocked in a unit test
     /* istanbul ignore next */
     const newPatient = () => {
         console.log('Clicked New Patient')
@@ -21,7 +16,7 @@ export default function LandingPage(): ReactElement {
     return (
         <div id="landing-wrapper">
             <div className="button-flex">
-                <Button onClick={patientLookup} icon="search">
+                <Button onClick={() => history.push('/search')} icon="search">
                     Patient Lookup
                 </Button>
                 <WhiteSpace />
