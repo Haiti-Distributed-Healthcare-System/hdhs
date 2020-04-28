@@ -1,7 +1,15 @@
 .am-button:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #root {
-  height: 100vh;
+    height: 100vh;
+}
+
+.am-input-label {
+  padding-right: 0.5em !important;
+}
+
+.am-textarea-label {
+  padding-right: 0.5em !important;
 }
