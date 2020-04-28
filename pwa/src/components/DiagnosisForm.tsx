@@ -13,7 +13,9 @@ Diagnosis Fields are stored in DiagnosisFields.json in the format:
             "name": "Name",
             "id": "id",
             "text-input-title": "Title",
+            "text-input-id": "id" for `id` and `data-testid` attributes
             "text-input-type": "type" (i.e. number)
+            "max-length": 3
             "group-title": "Group Title",
             "group": [
                 { "name": "Name1", "id": "id1" },
