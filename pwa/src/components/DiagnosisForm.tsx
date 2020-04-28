@@ -62,8 +62,8 @@ export default function DiagnosisForm(): ReactElement {
                                         : 'text'
                                 }
                                 maxLength={
-                                    field['text-input-id'] === 'pregnancy-weeks'
-                                        ? 2
+                                    field['max-length']
+                                        ? field['max-length']
                                         : null
                                 }
                             />

@@ -125,7 +125,8 @@
             "id": "pregnancy",
             "text-input-title": "Weeks",
             "text-input-id": "pregnancy-weeks",
-            "text-input-type": "number"
+            "text-input-type": "number",
+            "max-length": 2
         },
         {
             "group-title": "Dermatological",
