@@ -29,7 +29,7 @@ const App: React.FunctionComponent = () => {
                         <Wrapper
                             navTitle="Patient Search"
                             leftArrowText="Home"
-                            leftArrowRoute="/"
+                            leftArrowRoute="/landing"
                         >
                             <PatientSearch />
                         </Wrapper>
