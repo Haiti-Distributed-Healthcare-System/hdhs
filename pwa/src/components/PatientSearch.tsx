@@ -15,22 +15,18 @@ const patientsSeed: Array<Patient> = [
 
 export default function PatientSearch(): ReactElement {
     const [matches, setMatches] = useState([])
-    const [patients, setPatients] = useState(patientsSeed)
+    const [patients] = useState(patientsSeed)
     const [searchValue, setSearchValue] = useState('')
 
     // TODO: replace this logic
     // this could potentially use Fuse.js or fuzzy database queries
-    const searchForName = (value: string) => {
+    const searchForName = (value: string): void => {
         setSearchValue(value)
         if (value) {
-            let listOfMatches = patients.filter((element: Patient) => {
-                if (
-                    `${element.first_name} ${element.last_name}`
-                        .toLowerCase()
-                        .includes(value.toLowerCase())
-                ) {
-                    return true
-                }
+            const listOfMatches = patients.filter((element: Patient) => {
+                return `${element.first_name} ${element.last_name}`
+                    .toLowerCase()
+                    .includes(value.toLowerCase())
             })
             setMatches(listOfMatches)
         } else {
@@ -38,11 +34,11 @@ export default function PatientSearch(): ReactElement {
         }
     }
 
-    let addNewPatient = () => {
+    const addNewPatient = (): void => {
         console.log('NO PATIENT FOUND, ADDING A NEW ONE')
     }
 
-    let navigateToPatientPage = (patient: Patient) => {
+    const navigateToPatientPage = (patient: Patient): void => {
         console.log(`Navigating to patient ${JSON.stringify(patient)}`)
     }
 
@@ -53,7 +49,7 @@ export default function PatientSearch(): ReactElement {
                 placeholder="Patient Name"
                 maxLength={30}
                 cancelText="Cancel"
-                onChange={(value: string) => searchForName(value)}
+                onChange={(value: string): void => searchForName(value)}
             />
             <WhiteSpace />
             {searchValue ? (
@@ -63,19 +59,19 @@ export default function PatientSearch(): ReactElement {
                             <List.Item
                                 data-testid={`matched-patient-${index}`}
                                 key={matchElement.pk_patient_id}
-                                onClick={(_) =>
+                                onClick={(): void =>
                                     navigateToPatientPage(matchElement)
                                 }
                             >{`${matchElement.first_name} ${matchElement.last_name}`}</List.Item>
                         ))}
-                        {matches.length == 0 ? (
+                        {matches.length === 0 && (
                             <List.Item
                                 data-testid="no-matched-patient"
-                                onClick={(_) => addNewPatient()}
+                                onClick={(): void => addNewPatient()}
                             >
                                 Add New Patient
                             </List.Item>
-                        ) : null}
+                        )}
                     </List>
                 </>
             ) : null}
