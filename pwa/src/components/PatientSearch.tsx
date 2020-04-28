@@ -38,29 +38,30 @@ export default function PatientSearch(): ReactElement {
         }
     }
 
-    const addNewPatient = () => {
+    let addNewPatient = () => {
         console.log('NO PATIENT FOUND, ADDING A NEW ONE')
     }
 
-    const navigateToPatientPage = (patient: Patient) => {
+    let navigateToPatientPage = (patient: Patient) => {
         console.log(`Navigating to patient ${JSON.stringify(patient)}`)
     }
 
     return (
         <div>
             <SearchBar
+                data-testid="search-bar"
                 placeholder="Patient Name"
                 maxLength={30}
                 cancelText="Cancel"
-                onSubmit={(value: string) => searchForName(value)}
                 onChange={(value: string) => searchForName(value)}
             />
             <WhiteSpace />
             {searchValue ? (
                 <div>
-                    <List>
-                        {matches.map((matchElement: Patient) => (
+                    <List data-test-id="match-list">
+                        {matches.map((matchElement: Patient, index: number) => (
                             <List.Item
+                                data-testid={`matched-patient-${index}`}
                                 key={matchElement.pk_patient_id}
                                 onClick={(_) =>
                                     navigateToPatientPage(matchElement)
@@ -68,7 +69,10 @@ export default function PatientSearch(): ReactElement {
                             >{`${matchElement.first_name} ${matchElement.last_name}`}</List.Item>
                         ))}
                         {matches.length == 0 ? (
-                            <List.Item onClick={(_) => addNewPatient()}>
+                            <List.Item
+                                data-testid="no-matched-patient"
+                                onClick={(_) => addNewPatient()}
+                            >
                                 Add New Patient
                             </List.Item>
                         ) : null}
