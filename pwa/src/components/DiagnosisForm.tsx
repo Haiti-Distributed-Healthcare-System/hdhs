@@ -38,13 +38,15 @@ export default function DiagnosisForm(): ReactElement {
 
                 if (field.name != null) {
                     formElements.push(
-                        <CheckboxItem
-                            id={field.id}
-                            data-testid={field.id}
-                            key={field.id}
-                        >
-                            {field.name}
-                        </CheckboxItem>,
+                        <List>
+                            <CheckboxItem
+                                id={field.id}
+                                data-testid={field.id}
+                                key={field.id}
+                            >
+                                {field.name}
+                            </CheckboxItem>
+                        </List>,
                     )
                 }
 
