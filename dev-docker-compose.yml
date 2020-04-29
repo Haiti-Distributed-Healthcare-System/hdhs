@@ -24,7 +24,7 @@ services:
     ports:
       - "5432:5432"
     expose:
-      - "5422"
+      - "5432"
     environment:
       POSTGRES_DB: app_db
       POSTGRES_USER: postgres
