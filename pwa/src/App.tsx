@@ -8,6 +8,7 @@ import Login from './components/Login'
 import LandingPage from './components/LandingPage'
 import Wrapper from './Wrapper'
 import PatientInfoForm from './components/PatientInfoForm'
+import PatientSearch from './components/PatientSearch'
 import DiagnosisForm from './components/DiagnosisForm'
 
 import './scss/App.scss'
@@ -24,6 +25,15 @@ const App: React.FunctionComponent = () => {
                     </Route>
                     <Route path="/landing">
                         <LandingPage />
+                    </Route>
+                    <Route path="/search">
+                        <Wrapper
+                            navTitle="Patient Search"
+                            leftArrowText="Home"
+                            leftArrowRoute="/landing"
+                        >
+                            <PatientSearch />
+                        </Wrapper>
                     </Route>
                     <Route path="/patientinfo">
                         <Wrapper
