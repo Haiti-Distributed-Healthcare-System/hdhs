@@ -125,7 +125,7 @@ def main(argv):
 
         for fk_field, fk_table in fk_fields:
             pk_fk_table = all_data[fk_table][0]
-            # POTENTIALLY SUS: ASSUMES WE ARE ALWAYS LINKING TO THE PK OF THE TABLE
+            # ASSUMES WE ARE ALWAYS LINKING TO THE PK OF THE TABLE
             constraint_name = f"fk_{fk_table}_id"
 
             psql.execute_command(f"ALTER TABLE {table_name} ALTER COLUMN {fk_field} TYPE numeric USING {fk_field}::numeric;")

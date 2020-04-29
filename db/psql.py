@@ -1,4 +1,3 @@
-# import some python ORM for SQl
 import pandas as pd
 import sqlalchemy as database
 
