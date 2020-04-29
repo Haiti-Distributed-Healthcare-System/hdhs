@@ -1,0 +1,189 @@
+{
+    "diagnoses": [
+        {
+            "name": "Asthma",
+            "id": "asthma"
+        },
+        {
+            "name": "Allergies",
+            "id": "allergies"
+        },
+        {
+            "name": "Anemia",
+            "id": "anemia"
+        },
+        {
+            "name": "Malnutrition",
+            "id": "malnutrition"
+        },
+        {
+            "name": "Depression",
+            "id": "depression"
+        },
+        {
+            "name": "Diabetes",
+            "id": "diabetes"
+        },
+        {
+            "id": "eye",
+            "group-title": "Eye",
+            "group": [
+                {
+                    "name": "Ptergium",
+                    "id": "ptergium"
+                },
+                {
+                    "name": "Cataract",
+                    "id": "cataract"
+                },
+                {
+                    "name": "Dry Eye",
+                    "id": "dry-eye"
+                },
+                {
+                    "name": "Conjuntivitis",
+                    "id": "conjuntivitis"
+                }
+            ]
+        },
+        {
+            "name": "Fever",
+            "id": "fever"
+        },
+        {
+            "name": "Possible Malaria",
+            "id": "malaria"
+        },
+        {
+            "name": "Filariasis",
+            "id": "filariasis"
+        },
+        {
+            "id": "intestinal",
+            "group-title": "Intestinal",
+            "group": [
+                { "name": "Gastritis", "id": "gastritis" },
+                { "name": "GERD", "id": "gerd" },
+                { "name": "Gastroenteritis", "id": "gastroenteritis" },
+                { "name": "Dysentery", "id": "dysentery" },
+                { "name": "Possible Cholera", "id": "cholera" }
+            ]
+        },
+        {
+            "name": "Headache",
+            "id": "headache"
+        },
+        {
+            "group-title": "Hernia",
+            "id": "hernia",
+            "group": [
+                { "name": "Inguinal", "id": "inguinal" },
+                { "name": "Umbilical", "id": "umbilical" }
+            ]
+        },
+        {
+            "id": "cardiovascular",
+            "group-title": "Cardiovascular",
+            "group": [
+                { "name": "Hypertension", "id": "hypertension" },
+                { "name": "Stroke", "id": "stroke" },
+                { "name": "Angina", "id": "angina" },
+                { "name": "CHF", "id": "chf" }
+            ]
+        },
+        {
+            "name": "Healthy",
+            "id": "healthy"
+        },
+
+        {
+            "name": "Musculoskeletal Pain",
+            "id": "musculoskeletal"
+        },
+        {
+            "group-title": "Otitis",
+            "id": "otitis",
+            "group": [
+                { "name": "Right", "id": "otitis-right" },
+                { "name": "Left", "id": "otitis-left" }
+            ]
+        },
+        {
+            "name": "Pneumonia",
+            "id": "pneumonia"
+        },
+        {
+            "id": "sinusitis",
+            "name": "Sinusitis"
+        },
+        {
+            "name": "URI",
+            "id": "uri"
+        },
+        {
+            "name": "Pregnancy",
+            "id": "pregnancy",
+            "text-input-title": "Weeks",
+            "text-input-type": "number",
+            "max-length": 2,
+            "text-input-id": "pregnancy-weeks"
+        },
+        {
+            "group-title": "Dermatological",
+            "id": "dermatological",
+            "group": [
+                { "name": "Atopic Derm", "id": "atopic-derm" },
+                { "name": "Fungal", "id": "fungal" },
+                { "name": "Scabies", "id": "scabies" },
+                { "name": "Impetigo", "id": "Impetigo" },
+                { "name": "Tinea Capitus (kerion)", "id": "tinea-capitus" }
+            ]
+        },
+        {
+            "name": "Possible STD",
+            "id": "std"
+        },
+        {
+            "name": "Possible TB",
+            "id": "tb"
+        },
+        {
+            "name": "Possible Parasites",
+            "id": "parasites"
+        },
+        {
+            "name": "UTI",
+            "id": "uti"
+        },
+        {
+            "group-title": "Vaginal",
+            "id": "vaginal",
+            "group": [
+                { "name": "Vaginitis", "id": "vaginitis" },
+                { "name": "Candidal", "id": "candidal" },
+                { "name": "Trich", "id": "trich" },
+                { "name": "BV", "id": "bv" }
+            ]
+        },
+        {
+            "name": "Needs to see Dentist",
+            "id": "dentist"
+        },
+        {
+            "name": "Needs to see Eye Doctor",
+            "id": "eye-doctor"
+        },
+        {
+            "name": "Surgical candidate",
+            "id": "surgical-candidate"
+        },
+        {
+            "text-input-title": "Other Diagnosis",
+            "text-input-id": "other-diagnosis"
+        },
+        {
+            "text-input-title": "Diagnoses Comments",
+            "text-input-id": "comments"
+        }
+    ]
+}
