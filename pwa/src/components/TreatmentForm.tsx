@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { TextareaItem, Accordion, Checkbox, List, InputItem, WhiteSpace  } from 'antd-mobile'
+import { TextareaItem, Accordion, Checkbox, List, InputItem  } from 'antd-mobile'
 import '../scss/Login.scss'
 import * as data from './TreatmentFields.json'
 
@@ -81,7 +81,7 @@ export default function TreatmentForm(): ReactElement {
                     if (field['group-title'] != null && field.id !== null) {
                         formElements.push(
                             <div>
-                                <Accordion data-testid={field.id}>
+                                <Accordion id={field.id} data-testid={field.id}>
                                 <Accordion.Panel 
                                     header={field['group-title']}
                                 >
