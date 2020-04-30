@@ -13,21 +13,6 @@ import DiagnosisForm from './components/DiagnosisForm'
 
 import './scss/App.scss'
 import './antd-mobile.css'
-<<<<<<< HEAD
-import TreatmentForm from './components/TreatmentForm'
-
-const App: React.FunctionComponent = () => {
-    return (
-        <Router>
-            <Switch>
-                <Route path="/login">
-                    <Login />
-                </Route>
-                <Route path="/landing">
-                    <TreatmentForm />
-                </Route>
-                <Route path="/patientinfo">
-=======
 import DebugShowEasyPeasy from './components/DebugShowEasyPeasy'
 
 const App: React.FunctionComponent = () => {
@@ -60,7 +45,6 @@ const App: React.FunctionComponent = () => {
                         </Wrapper>
                     </Route>
                     <Route path="/diagnosis">
->>>>>>> origin/dev
                     <Wrapper
                         navTitle="Diagnosis"
                         leftArrowText="Patient Info"

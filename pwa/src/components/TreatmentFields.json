@@ -1,0 +1,133 @@
+{
+    "treatments": [
+        {
+            "id": "multivitamins",
+            "group-title": "Multivitamins",
+            "group": [
+                { "name": "Multivitamins - Childrens", "id": "vitamin-childrens" },
+                { "name": "Multivitamins - Adult", "id": "vitamin-adult" },
+                { "name": "Multivitamins - Prenatal", "id": "vitamin-prenatal" }
+            ]
+        },
+        {
+            "id": "pain",
+            "group-title": "Pain",
+            "group": [
+                { "name": "Acetaminophen - 500 tab", "id": "acetaminophen-500" },
+                { "name": "Acetaminophen - 80 chew", "id": "acetaminophen-chew" },
+                { "name": "Acetaminophen - 160 mg/5 cc", "id": "acetaminophen-mg" },
+                { "name": "Ibuprofen - 200 mg", "id": "ibuprofen-200" },
+                { "name": "Ibuprofen - 100 mg/5 cc", "id": "ibuprofen-100" }
+            ]
+        },
+        {
+            "id": "gi",
+            "group-title": "GI",
+            "group": [
+                { "name": "Omeprazole", "id": "omeprazole" },
+                { "name": "Pepto Bismol", "id": "pepto-bismol" },
+                { "name": "Ranitidine", "id": "ranitidine" },
+                { "name": "Zinc", "id": "zinc" },
+                { "name": "Tums", "id": "tums" },
+                { "name": "ORS", "id": "ors" }
+            ]
+        },
+        {
+            "id": "cardiac",
+            "group-title": "Cardiac",
+            "group": [
+                { "name": "Amlodipine", "id": "amlodipine" },
+                { "name": "Aspirin", "id": "aspirin" },
+                { "name": "Atenolol", "id": "atenolol" },
+                { "name": "Lisinopril", "id": "lisinopril" },
+                { "name": "HCTZ", "id": "hctz" },
+                { "name": "Lasix tab", "id": "lasix" }
+            ]
+        },
+        {
+            "id": "anti-infectives",
+            "group-title": "Anti-infectives",
+            "group": [
+                { "name": "Albendazole", "id": "albendazole" },
+                { "name": "Amoxicillin - 500 tab", "id": "amosicillin-tab" },
+                { "name": "Amoxicillin - 250 chew", "id": "amoxicillin-chew" },
+                { "name": "Amoxicillin - 250 mg/cc", "id": "amoxicillin-mg" },
+                { "name": "Augmentin", "id": "augmentin" },
+                { "name": "Azithromycin - 250 tab", "id": "azithromycin-tab" },
+                { "name": "Azithromycin - 200 mg/5 cc", "id": "azithromycin-mg" },
+                { "name": "Bactrim - DS tab", "id": "bactrim-tab" },
+                { "name": "Bactrim - 40 mg/5 cc", "id": "bactrim-mg" },
+                { "name": "Cipro", "id": "cipro" },
+                { "name": "Chloroquine", "id": "chloroquine" },
+                { "name": "Doxycycline", "id": "doxycycline" },
+                { "name": "Flagyl", "id": "flagyl" },
+                { "name": "Fluconazole", "id": "fluconazole" },
+                { "name": "Griseofulvin - 500 mg", "id": "griseofulvin-500" },
+                { "name": "Griseofulvin - 125 mg", "id": "griseofulvin-125" },
+                { "name": "Ivermectin", "id": "ivermectin" },
+                { "name": "Keflex 500 mg tab", "id": "keflex" },
+                { "name": "Nitrofurantoin", "id": "nitrofurantoin" },
+                { "name": "Rocephin Inj. - 50 mg/kg", "id": "rocephin-50" },
+                { "name": "Rocephin Inj. - 250 mg", "id": "rocephin-250" },
+                { "name": "Rocephin Inj. - 1 gm", "id": "rocephin-1" }
+            ]
+        },
+        {
+            "id": "topical",
+            "group-title": "Topical",
+            "group": [
+                { "name": "Clotrimazole", "id": "clotrimazole" },
+                { "name": "Triple Antibiotic", "id": "triple-antibiotic" },
+                { "name": "Hydrocortisone", "id": "hydrocortisone" },
+                { "name": "Permethrine", "id": "permethrine" },
+                { "name": "Silvadine", "id": "silvadine" }
+            ]
+        },
+        {
+            "id": "im",
+            "group-title": "IM",
+            "group": [
+                { "name": "Dexamethasone", "id": "dexamethasone" },
+                { "name": "Lasix Injection", "id": "lasix-injection" }
+            ]
+        },
+        {
+            "id": "misc",
+            "group-title": "Misc.",
+            "group": [
+                { "name": "Albuterol", "id": "albendazole" },
+                { "name": "Benadryl - 25 mg", "id": "amosicillin-tab" },
+                { "name": "Benadryl - 12.5 mg/5 cc", "id": "amoxicillin-chew" },
+                { "name": "Depo-Provera", "id": "amoxicillin-mg" },
+                { "name": "Ferrous sulfate", "id": "augmentin" },
+                { "name": "Paroxetine", "id": "azithromycin-tab" },
+                { "name": "Labetolol", "id": "azithromycin-mg" },
+                { "name": "Methyldopa", "id": "bactrim-tab" },
+                { "name": "Metformin", "id": "bactrim-mg" },
+                { "name": "OCP", "id": "cipro" },
+                { "name": "IUD", "id": "chloroquine" },
+                { "name": "Carbamazepine", "id": "doxycycline" },
+                { "name": "Keppra", "id": "flagyl" },
+                { "name": "Prednisone", "id": "fluconazole" },
+                { "name": "Terazosin", "id": "griseofulvin-500" },
+                { "name": "Comments", "placeholder": "Other misc:", "id": "other-misc" }
+            ]
+        },
+        {
+            "id": "referrals",
+            "group-title": "Referrals",
+            "group": [
+                { "name": "Saw dentist", "id": "saw-dentist" },
+                { "name": "Saw eye doctor", "id": "saw-eye-doctor" },
+                { "name": "CHW", "id": "chw" },
+                { "name": "Given Glasses", "id": "given-glasses" },
+                { "name": "Outside", "id": "outside" }
+            ]
+        },
+        {
+            "name": "Comments",
+            "placeholder": "Treatment Comments",
+            "id": "comments"
+        }
+    ]
+}

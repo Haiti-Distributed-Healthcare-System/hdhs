@@ -16,7 +16,7 @@ export default function TreatmentForm(): ReactElement {
         <div>
             <Accordion defaultActiveKey="0" className="my-accordion">
             <Accordion.Panel header="Multivitamins">
-                <CheckboxItem id="1">Multivitamins - Childrens</CheckboxItem>
+                <CheckboxItem>Multivitamins - Childrens</CheckboxItem>
                 <CheckboxItem>Multivitamins - Adult</CheckboxItem>
                 <CheckboxItem>Multivitamins - Prenatal</CheckboxItem>
             </Accordion.Panel>
@@ -55,7 +55,6 @@ export default function TreatmentForm(): ReactElement {
                 <CheckboxItem>Bactrim - 40 mg/5 cc</CheckboxItem>
                 <CheckboxItem>Cipro</CheckboxItem>
                 <CheckboxItem>Chloroquine</CheckboxItem>                
-                <CheckboxItem>Cipro</CheckboxItem>
                 <CheckboxItem>Doxycycline</CheckboxItem>
                 <CheckboxItem>Flagyl</CheckboxItem>
                 <CheckboxItem>Fluconazole</CheckboxItem>
@@ -64,7 +63,6 @@ export default function TreatmentForm(): ReactElement {
                 <CheckboxItem>Ivermectin</CheckboxItem>
                 <CheckboxItem>Keflex 500 mg tab</CheckboxItem>
                 <CheckboxItem>Nitrofurantoin</CheckboxItem>                
-                <CheckboxItem>Nitrofurantoin</CheckboxItem>
                 <CheckboxItem>Rocephin Inj. - 50 mg/kg</CheckboxItem>
                 <CheckboxItem>Rocephin Inj. - 250 mg</CheckboxItem>
                 <CheckboxItem>Rocephin Inj. - 1 gm</CheckboxItem>
