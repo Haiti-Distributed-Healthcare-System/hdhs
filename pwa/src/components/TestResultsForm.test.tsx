@@ -40,6 +40,12 @@ test('renders each test option as a checkbox and is able to be checked / uncheck
 
 test('pregnancy-results div is only displayed if pregnancy test is selected', () => {})
 
+test('pregnancy results is displayed as a checkbox and is able to be checked / unchecked', () => {})
+
 test('blood-sugar-results div is only displayed if blood sugar test is selected', () => {})
 
+test('blood sugar results fields is a number input box', () => {})
+
 test('ua-results div is only displayed if UA test is selected', () => {})
+
+test('ua test results are rendered as number input boxes', () => {})
