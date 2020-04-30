@@ -13,7 +13,7 @@ export default function TreatmentForm(): ReactElement {
 
     return (
     <>
-        <div>
+        <div id="treatment-form-wrapper" data-testid="treatment-form-wrapper">
             <Accordion defaultActiveKey="0" className="my-accordion">
             <Accordion.Panel header="Multivitamins">
                 <CheckboxItem>Multivitamins - Childrens</CheckboxItem>
@@ -115,9 +115,8 @@ export default function TreatmentForm(): ReactElement {
                     id="comments"/>
             </Accordion.Panel>
             </Accordion>
-        </div>
         
-        <Button onClick={onSubmit} >Submit</Button>
+        </div>
     </>
     )
 }

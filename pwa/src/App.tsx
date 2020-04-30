@@ -14,6 +14,7 @@ import DiagnosisForm from './components/DiagnosisForm'
 import './scss/App.scss'
 import './antd-mobile.css'
 import DebugShowEasyPeasy from './components/DebugShowEasyPeasy'
+import TreatmentForm from './components/TreatmentForm'
 
 const App: React.FunctionComponent = () => {
     return (
@@ -49,10 +50,19 @@ const App: React.FunctionComponent = () => {
                         navTitle="Diagnosis"
                         leftArrowText="Patient Info"
                         leftArrowRoute="/patientinfo"
-                    >
+                        >
                         <DiagnosisForm />
                     </Wrapper>
-                </Route>
+                    </Route>
+                    <Route path="/treatment">
+                    <Wrapper
+                        navTitle="Treatment"
+                        leftArrowText="Diagnosis"
+                        leftArrowRoute="/diagnosis"
+                        >
+                        <TreatmentForm />
+                    </Wrapper>
+                    </Route>
                     <Route path="/easy-peasy">
                         <DebugShowEasyPeasy />
                     </Route>
