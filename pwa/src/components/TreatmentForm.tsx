@@ -1,19 +1,93 @@
 import React, { ReactElement } from 'react'
-import { TextareaItem, Button, Accordion, Checkbox } from 'antd-mobile'
+import { TextareaItem, Accordion, Checkbox, List, InputItem, WhiteSpace  } from 'antd-mobile'
 import '../scss/Login.scss'
+import * as data from './TreatmentFields.json'
+
+/*
+
+Treatment Fields are stored in TreatmentFields.json in the format:
+
+{
+    "treatments" : [
+        {
+            "id": "multivitamins",
+            "group-title": "Multivitamins",
+            "group": [
+                { "name": "Multivitamins - Childrens", "id": "vitamin-childrens" },
+                { "name": "Multivitamins - Adult", "id": "vitamin-adult" },
+                { "name": "Multivitamins - Prenatal", "id": "vitamin-prenatal" }
+            ]
+        },
+        {...}
+    ]
+}
+*/
 
 const CheckboxItem = Checkbox.CheckboxItem;
+const treatmentFields = data.treatments
 
 export default function TreatmentForm(): ReactElement {
-
-    const onSubmit = () => {
-      const testField = document.getElementById('1') as HTMLInputElement
-      console.log("Test:", testField.checked)
-    }
-
     return (
-    <>
         <div id="treatment-form-wrapper" data-testid="treatment-form-wrapper">
+            {treatmentFields.map((field) => {
+                const formElements: ReactElement[] = []
+
+                if (
+                    field['text-input-title'] != null && field['text-input-id'] != null) {
+                    formElements.push(
+                        <List renderHeader={() => field['text-input-title']}>
+                            <InputItem
+                                id={field['text-input-id']}
+                                data-testid={field['text-input-id']}
+                                key={field['text-input-id']}
+                                type={'text'}
+                                maxLength={null
+                                }
+                            />
+                        </List>,
+                    )
+                }
+
+                if (field.group != null) {
+                    const groupElements: ReactElement[] = []
+
+                    // add each group element to the internalElement array
+                    field.group.forEach((ele: any) => {
+                        if (ele.id != null && ele.name != null) {
+                            groupElements.push(
+                                <CheckboxItem
+                                    id={ele.id}
+                                    data-testid={ele.id}
+                                    key={ele.id}
+                                >
+                                    {ele.name}
+                                </CheckboxItem>,
+                            )
+                        }
+                    })
+
+                    // Render the entire list with the internal elements
+                    if (field['group-title'] != null && field.id !== null) {
+                        formElements.push(
+                            <List
+                                renderHeader={() => field['group-title']}
+                                data-testid={field.id}
+                            >
+                                {groupElements}
+                                <WhiteSpace
+                                    className="list-whitespace"
+                                    size="lg"
+                                />
+                            </List>,
+                        )
+                    }
+                }
+
+                return <> {formElements} </>
+            })}
+        </div>
+    )
+         {/*}   
             <Accordion defaultActiveKey="0" className="my-accordion">
             <Accordion.Panel header="Multivitamins">
                 <CheckboxItem>Multivitamins - Childrens</CheckboxItem>
@@ -116,7 +190,5 @@ export default function TreatmentForm(): ReactElement {
             </Accordion.Panel>
             </Accordion>
         
-        </div>
-    </>
-    )
+    */}
 }

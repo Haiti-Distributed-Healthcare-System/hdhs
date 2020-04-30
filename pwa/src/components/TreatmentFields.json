@@ -109,9 +109,12 @@
                 { "name": "Carbamazepine", "id": "doxycycline" },
                 { "name": "Keppra", "id": "flagyl" },
                 { "name": "Prednisone", "id": "fluconazole" },
-                { "name": "Terazosin", "id": "griseofulvin-500" },
-                { "name": "Comments", "placeholder": "Other misc:", "id": "other-misc" }
+                { "name": "Terazosin", "id": "griseofulvin-500" }
             ]
+        },
+        {
+            "text-input-title": "Misc. Comments",
+            "text-input-id": "misc-comments"
         },
         {
             "id": "referrals",
@@ -125,9 +128,8 @@
             ]
         },
         {
-            "name": "Comments",
-            "placeholder": "Treatment Comments",
-            "id": "comments"
+            "text-input-title": "Treatment Comments",
+            "text-input-id": "comments"
         }
     ]
 }
