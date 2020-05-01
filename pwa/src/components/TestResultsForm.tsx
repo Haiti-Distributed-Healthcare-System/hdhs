@@ -36,7 +36,7 @@ export default function TestResultsForm(): ReactElement {
                     HCG (Pregnancy) Test Performed
                 </CheckboxItem>
                 {pregnancyTest ? (
-                    <div id="pregnancy-results">
+                    <div id="pregnancy-results" data-testid="pregnancy-results">
                         <List renderHeader={() => 'HCG (Pregnancy) Results'}>
                             {radioPosNeg.map((i) => (
                                 <RadioItem
@@ -59,7 +59,6 @@ export default function TestResultsForm(): ReactElement {
                     </div>
                 ) : null}
                 <CheckboxItem
-                    checked={bloodSugarTest}
                     id="blood-sugar-test"
                     data-testid="blood-sugar-test"
                     onChange={() => setBloodSugarTest(bloodSugarTest ? 0 : 1)}
@@ -67,7 +66,10 @@ export default function TestResultsForm(): ReactElement {
                     Blood Sugar Test Performed
                 </CheckboxItem>
                 {bloodSugarTest ? (
-                    <div id="blood-sugar-results">
+                    <div
+                        id="blood-sugar-results"
+                        data-testid="blood-sugar-results"
+                    >
                         <List renderHeader={() => 'Blood Sugar Results'}>
                             <InputItem
                                 type="number"
@@ -87,22 +89,19 @@ export default function TestResultsForm(): ReactElement {
                     UA (Urine Analysis) Test Performed
                 </CheckboxItem>
                 {ua ? (
-                    <div id="ua-results">
+                    <div id="ua-results" data-testid="ua-results">
                         <List renderHeader={() => 'UA Results'}>
                             {/* TODO: I am unsure about the range/type of these fields */}
-                            <InputItem type="number" id="glucose-results-val">
+                            <InputItem id="glucose-results-val">
                                 Glucose
                             </InputItem>
-                            <InputItem type="number" id="nitrites-results-val">
+                            <InputItem id="nitrites-results-val">
                                 Nitrites
                             </InputItem>
-                            <InputItem type="number" id="protein-results-val">
+                            <InputItem id="protein-results-val">
                                 Protein
                             </InputItem>
-                            <InputItem
-                                type="number"
-                                id="leukocytes-results-val"
-                            >
+                            <InputItem id="leukocytes-results-val">
                                 Leukocytes
                             </InputItem>
                         </List>
