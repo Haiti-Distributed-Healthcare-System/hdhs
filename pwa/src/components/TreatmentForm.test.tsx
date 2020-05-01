@@ -1,5 +1,4 @@
 import React from 'react'
-import { Collapse } from 'antd-mobile';
 import { render, fireEvent } from '@testing-library/react'
 import TreatmentForm from './TreatmentForm'
 import * as data from './TreatmentFields.json'
