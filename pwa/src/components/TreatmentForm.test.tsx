@@ -1,4 +1,5 @@
 import React from 'react'
+import { Collapse } from 'antd-mobile';
 import { render, fireEvent } from '@testing-library/react'
 import TreatmentForm from './TreatmentForm'
 import * as data from './TreatmentFields.json'
@@ -43,14 +44,15 @@ test('renders each treatment.name data field', () => {
 })
 
 test('renders each diagnoses.text-input-title data field as a text entry field', () => {
-    const { getByTestId } = render(<TreatmentForm />)
+    const { getByTestId, getByText } = render( <TreatmentForm /> )
 
     treatmentFields.forEach((treatment) => {
+
         if (
             treatment['text-input-title'] != null &&
-            treatment['text-input-title'] != null
+            treatment['text-input-id'] != null
         ) {
-            const re = new RegExp(treatment['text-input-id'], 'gi')
+            const re = new RegExp(`\^${treatment['text-input-id']}\$`, 'gi')
             const field = getByTestId(re)
             expect(field).toBeInTheDocument()
             expect(field).toHaveAttribute('type', 'text')
@@ -58,11 +60,12 @@ test('renders each diagnoses.text-input-title data field as a text entry field',
 
         // To account for nested text fields in the misc. tab
         if (treatment.group != null && treatment.id != null) {
+            fireEvent.click(getByText(treatment['group-title']))
             if (
                 treatment['text-input-title'] != null &&
-                treatment['text-input-title'] != null
+                treatment['text-input-id'] != null
             ) {
-                const re = new RegExp(treatment['text-input-id'], 'gi')
+                const re = new RegExp(`\^${treatment['text-input-id']}\$`, 'gi')
                 const field = getByTestId(re)
                 expect(field).toBeInTheDocument()
                 expect(field).toHaveAttribute('type', 'text')
@@ -71,44 +74,30 @@ test('renders each diagnoses.text-input-title data field as a text entry field',
     })
 })
 
-test('renders each diagnoses.group entry in the same accordion element', () => {
-    const { getByTestId } = render(<TreatmentForm />)
+test('expands each diagnoses.group accordion and checks functionality of checkboxes', () => {
+    const { getByTestId, getByText } = render(<TreatmentForm />)
     treatmentFields.forEach((treatment) => {
         if (treatment.group != null && treatment.id != null) {
-            // get the list by treatment.id
-            const re = new RegExp(`\^${treatment.id}\$`, 'gi')
-            const field = getByTestId(re)
-            expect(field).toBeInTheDocument()
-            expect(field).toHaveClass('am-accordion')
+            // Expand the accordion
+            fireEvent.click(getByText(treatment['group-title']))
 
-            // For each element in the group, ensure it is contained in the list
             treatment.group.forEach((groupElement) => {
-                const el = getByTestId(groupElement.id)
-                expect(field).toContainElement(el)
-            })
-        }
-    })
-})
-
-test('renders each diagnoses.[el] as a checkbox that can be checked/unchecked', () => {
-    const { getByTestId } = render(<TreatmentForm />)
-    treatmentFields.forEach((treatment) => {
-        if (treatment.group != null) {
-            treatment.group.forEach((groupElement) => {
-                const re = new RegExp(groupElement.id, 'gi')
-                const groupCheckboxItem = getByTestId(re)
-                expect(groupCheckboxItem).toBeInTheDocument()
-                expect(groupCheckboxItem).toHaveClass('am-checkbox-item')
-
-                const checkBox = groupCheckboxItem.getElementsByTagName(
-                    'span',
-                )[0]
-                expect(checkBox).not.toHaveClass('am-checkbox-checked')
-                const checkBoxInput = groupCheckboxItem.getElementsByClassName(
-                    'am-checkbox-input',
-                )[0]
-                fireEvent.click(checkBoxInput)
-                expect(checkBox).toHaveClass('am-checkbox-checked')
+                if (groupElement.id != null && groupElement.name != null) {
+                    const re = new RegExp(`\^${groupElement.id}\$`, 'gi')
+                    const groupCheckboxItem = getByTestId(re)
+                    expect(groupCheckboxItem).toBeInTheDocument()
+                    expect(groupCheckboxItem).toHaveClass('am-checkbox-item')
+    
+                    const checkBox = groupCheckboxItem.getElementsByTagName(
+                        'span',
+                    )[0]
+                    expect(checkBox).not.toHaveClass('am-checkbox-checked')
+                    const checkBoxInput = groupCheckboxItem.getElementsByClassName(
+                        'am-checkbox-input',
+                    )[0]
+                    fireEvent.click(checkBoxInput)
+                    expect(checkBox).toHaveClass('am-checkbox-checked')
+                }
             })
         }
     })

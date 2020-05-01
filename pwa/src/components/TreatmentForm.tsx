@@ -81,7 +81,7 @@ export default function TreatmentForm(): ReactElement {
                     if (field['group-title'] != null && field.id !== null) {
                         formElements.push(
                             <div>
-                                <Accordion id={field.id} data-testid={field.id}>
+                                <Accordion>
                                 <Accordion.Panel 
                                     header={field['group-title']}
                                 >
