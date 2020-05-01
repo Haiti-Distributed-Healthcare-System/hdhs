@@ -41,7 +41,10 @@ export default function TestResultsForm(): ReactElement {
                             {radioPosNeg.map((i) => (
                                 <RadioItem
                                     key={i.value}
-                                    data-testid={`pregnancy-results-${i.label.toLowerCase}`}
+                                    data-testid={
+                                        `pregnancy-results-` +
+                                        i.label.toLowerCase()
+                                    }
                                     name="pregnancy-results-radio"
                                     checked={pregnancyTestPositive === i.value}
                                     onClick={() =>

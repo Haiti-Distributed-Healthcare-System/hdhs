@@ -1,5 +1,10 @@
 import React from 'react'
-import { render, fireEvent, getByTestId } from '@testing-library/react'
+import {
+    render,
+    fireEvent,
+    getByTestId,
+    queryByTestId,
+} from '@testing-library/react'
 import TestResultsForm from './TestResultsForm'
 
 const testText = [
@@ -38,7 +43,23 @@ test('renders each test option as a checkbox and is able to be checked / uncheck
     })
 })
 
-test('pregnancy-results div is only displayed if pregnancy test is selected', () => {})
+test('pregnancy-results div is only displayed if pregnancy test is selected', () => {
+    const { getByTestId, queryByTestId } = render(<TestResultsForm />)
+
+    // ensure the pregnancy-results div is not displayed
+    const re = new RegExp('pregnancy-results', 'gi')
+    expect(queryByTestId(re)).toBeFalsy()
+
+    // check the pregnancy-test checkbox
+    const checkboxItem = getByTestId('pregnancy-test')
+    const checkBoxInput = checkboxItem.getElementsByClassName(
+        'am-checkbox-input',
+    )[0]
+    fireEvent.click(checkBoxInput)
+
+    // ensure the pregnancy-results div is displayed
+    expect(queryByTestId(re)).toBeTruthy()
+})
 
 test('pregnancy results is displayed as a checkbox and is able to be checked / unchecked', () => {})
 
