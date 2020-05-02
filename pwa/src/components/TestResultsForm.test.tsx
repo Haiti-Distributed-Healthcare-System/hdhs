@@ -4,6 +4,7 @@ import {
     fireEvent,
     getByTestId,
     queryByTestId,
+    within,
 } from '@testing-library/react'
 import TestResultsForm from './TestResultsForm'
 
@@ -62,7 +63,41 @@ test('pregnancy-results div is only displayed if pregnancy test is selected', ()
     expect(getByTestId(re)).toBeTruthy()
 })
 
-test('pregnancy results is displayed as a checkbox and is able to be checked / unchecked', () => {})
+test('pregnancy results is displayed as a checkbox and is able to be checked / unchecked', () => {
+    const { getByTestId, queryByTestId } = render(<TestResultsForm />)
+
+    // check the pregnancy-test checkbox to display the pregnancy-results div
+    const checkBoxInput = getByTestId('pregnancy-test')
+        .getElementsByTagName('span')[0]
+        .getElementsByClassName('am-checkbox-input')[0]
+    fireEvent.click(checkBoxInput)
+
+    // ensure negative and positive checkboxes are initilaly displayed unchecked
+    const negativeRadioButtonDiv = getByTestId('pregnancy-results-negative')
+    const positiveRadioButtonDiv = getByTestId('pregnancy-results-positive')
+    const negativeRadioButton = negativeRadioButtonDiv.getElementsByTagName(
+        'span',
+    )[0]
+    const positiveRadioButton = positiveRadioButtonDiv.getElementsByTagName(
+        'span',
+    )[0]
+    expect(negativeRadioButton).not.toHaveClass('am-radio-checked')
+    expect(positiveRadioButton).not.toHaveClass('am-radio-checked')
+
+    // select "Negative"
+    fireEvent.click(negativeRadioButtonDiv)
+
+    // ensure negative is checked and positive is unchecked
+    expect(negativeRadioButton).toHaveClass('am-radio-checked')
+    expect(positiveRadioButton).not.toHaveClass('am-radio-checked')
+
+    // select "Positive"
+    fireEvent.click(positiveRadioButtonDiv)
+
+    // ensure negative is unchecked and positive is checked
+    expect(negativeRadioButton).not.toHaveClass('am-radio-checked')
+    expect(positiveRadioButton).toHaveClass('am-radio-checked')
+})
 
 test('blood-sugar-results div is only displayed if blood sugar test is selected', () => {
     const { getByTestId, queryByTestId } = render(<TestResultsForm />)
@@ -83,7 +118,22 @@ test('blood-sugar-results div is only displayed if blood sugar test is selected'
     expect(getByTestId(re)).toBeTruthy()
 })
 
-test('blood sugar results fields is a number input box', () => {})
+test('blood sugar results fields is a number input box', () => {
+    const { getByTestId } = render(<TestResultsForm />)
+
+    // check the blood-sugar-test checkbox to display the blood-sugar-results div
+    const checkBoxInput = getByTestId('blood-sugar-test')
+        .getElementsByTagName('span')[0]
+        .getElementsByClassName('am-checkbox-input')[0]
+    fireEvent.click(checkBoxInput)
+
+    // ensure result field is displayed as a number input box
+    expect(getByTestId('blood-sugar-results-val')).toBeTruthy()
+    expect(getByTestId('blood-sugar-results-val')).toHaveAttribute(
+        'type',
+        'text',
+    )
+})
 
 test('ua-results div is only displayed if UA test is selected', () => {
     const { getByTestId, queryByTestId } = render(<TestResultsForm />)
@@ -104,4 +154,24 @@ test('ua-results div is only displayed if UA test is selected', () => {
     expect(getByTestId(re)).toBeTruthy()
 })
 
-test('ua test results are rendered as number input boxes', () => {})
+test('ua test results are rendered as number input boxes', () => {
+    const { getByTestId, queryByTestId } = render(<TestResultsForm />)
+    const uaResultFieldID = [
+        'glucose-results-val',
+        'nitrites-results-val',
+        'protein-results-val',
+        'leukocytes-results-val',
+    ]
+
+    // check the ua-test checkbox  to display the ua-results div
+    const checkBoxInput = getByTestId('ua-test')
+        .getElementsByTagName('span')[0]
+        .getElementsByClassName('am-checkbox-input')[0]
+    fireEvent.click(checkBoxInput)
+
+    // ensure each result field is displayed as a number input box
+    uaResultFieldID.forEach((field) => {
+        expect(getByTestId(field)).toBeTruthy()
+        expect(getByTestId(field)).toHaveAttribute('type', 'text')
+    })
+})

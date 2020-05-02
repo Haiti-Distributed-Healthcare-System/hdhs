@@ -45,7 +45,11 @@ export default function TestResultsForm(): ReactElement {
                                         `pregnancy-results-` +
                                         i.label.toLowerCase()
                                     }
-                                    name="pregnancy-results-radio"
+                                    name={
+                                        `pregnancy-results-` +
+                                        i.label.toLowerCase()
+                                    }
+                                    // name="pregnancy-results-radio"
                                     checked={pregnancyTestPositive === i.value}
                                     onClick={() =>
                                         setPregnancyTestPositive(i.value)
@@ -74,6 +78,7 @@ export default function TestResultsForm(): ReactElement {
                             <InputItem
                                 type="number"
                                 id="blood-sugar-results-val"
+                                data-testid="blood-sugar-results-val"
                                 placeholder="mg/dL" // TOOD: unsure if the unit is mg/dL or mmol/L, could leave this out
                                 maxLength={3}
                             ></InputItem>
@@ -91,17 +96,33 @@ export default function TestResultsForm(): ReactElement {
                 {ua ? (
                     <div id="ua-results" data-testid="ua-results">
                         <List renderHeader={() => 'UA Results'}>
-                            {/* TODO: I am unsure about the range/type of these fields */}
-                            <InputItem id="glucose-results-val">
+                            {/* TODO: I am unsure about the range/type of these fields - check DB */}
+                            <InputItem
+                                id="glucose-results-val"
+                                data-testid="glucose-results-val"
+                                placeholder="0"
+                            >
                                 Glucose
                             </InputItem>
-                            <InputItem id="nitrites-results-val">
+                            <InputItem
+                                id="nitrites-results-val"
+                                data-testid="nitrites-results-val"
+                                placeholder="0"
+                            >
                                 Nitrites
                             </InputItem>
-                            <InputItem id="protein-results-val">
+                            <InputItem
+                                id="protein-results-val"
+                                data-testid="protein-results-val"
+                                placeholder="0"
+                            >
                                 Protein
                             </InputItem>
-                            <InputItem id="leukocytes-results-val">
+                            <InputItem
+                                id="leukocytes-results-val"
+                                data-testid="leukocytes-results-val"
+                                placeholder="0"
+                            >
                                 Leukocytes
                             </InputItem>
                         </List>
