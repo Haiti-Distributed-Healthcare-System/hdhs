@@ -127,7 +127,7 @@ test('blood-sugar-results div is only displayed if blood sugar test is selected'
     fireEvent.click(checkBoxInput)
 
     // ensure the blood-sugar-results div is no longer displayed
-    expect(queryByTestId(re)).toBeTruthy()
+    expect(queryByTestId(re)).not.toBeTruthy()
 })
 
 test('blood sugar results fields is a number input box', () => {
@@ -169,7 +169,7 @@ test('ua-results div is only displayed if UA test is selected', () => {
     fireEvent.click(checkBoxInput)
 
     // ensure the ua-results div is no longer displayed
-    expect(queryByTestId(re)).toBeTruthy()
+    expect(queryByTestId(re)).not.toBeTruthy()
 })
 
 test('ua test results are rendered as number input boxes', () => {
