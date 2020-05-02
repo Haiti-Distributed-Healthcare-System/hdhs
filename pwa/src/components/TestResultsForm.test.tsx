@@ -61,6 +61,12 @@ test('pregnancy-results div is only displayed if pregnancy test is selected', ()
 
     // ensure the pregnancy-results div is displayed
     expect(getByTestId(re)).toBeTruthy()
+
+    // Uncheck the checkbox
+    fireEvent.click(checkBoxInput)
+
+    // ensure the pregnancy-results div is no longer displayed
+    expect(queryByTestId(re)).toBeFalsy()
 })
 
 test('pregnancy results is displayed as a checkbox and is able to be checked / unchecked', () => {
@@ -116,6 +122,12 @@ test('blood-sugar-results div is only displayed if blood sugar test is selected'
 
     // ensure the blood-sugar-results div is displayed
     expect(getByTestId(re)).toBeTruthy()
+
+    // uncheck the checkbox
+    fireEvent.click(checkBoxInput)
+
+    // ensure the blood-sugar-results div is no longer displayed
+    expect(queryByTestId(re)).toBeTruthy()
 })
 
 test('blood sugar results fields is a number input box', () => {
@@ -152,6 +164,12 @@ test('ua-results div is only displayed if UA test is selected', () => {
 
     // ensure the ua-results div is displayed
     expect(getByTestId(re)).toBeTruthy()
+
+    // uncheck the checkbox
+    fireEvent.click(checkBoxInput)
+
+    // ensure the ua-results div is no longer displayed
+    expect(queryByTestId(re)).toBeTruthy()
 })
 
 test('ua test results are rendered as number input boxes', () => {
