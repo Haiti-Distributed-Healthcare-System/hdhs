@@ -15,8 +15,6 @@ import sys
 import pandas as pd
 from datetime import datetime
 
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
 
 logging.basicConfig(filename=f"./validation/{datetime.now().strftime('%Y%m%d_%H%M%S')}_sanity_age_increases_across_visits.log", level=logging.INFO)
 logging.info('Starting log to validate that age increases across chronological visits')
