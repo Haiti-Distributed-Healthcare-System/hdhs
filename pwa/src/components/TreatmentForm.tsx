@@ -54,13 +54,15 @@ export default function TreatmentForm(): ReactElement {
                     field.group.forEach((ele: any) => {
                         if (ele.id != null && ele.name != null) {
                             groupElements.push(
-                                <CheckboxItem
-                                    id={ele.id}
-                                    data-testid={ele.id}
-                                    key={ele.id}
-                                >
-                                    {ele.name}
-                                </CheckboxItem>,
+                                <List>
+                                    <CheckboxItem
+                                        id={ele.id}
+                                        data-testid={ele.id}
+                                        key={ele.id}
+                                    >
+                                        {ele.name}
+                                    </CheckboxItem>
+                                </List>,
                             )
                         }
 
