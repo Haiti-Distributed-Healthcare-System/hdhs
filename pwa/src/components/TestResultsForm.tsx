@@ -1,6 +1,7 @@
 import React, { ReactElement, useState } from 'react'
 import { Checkbox, List, Radio, WhiteSpace, InputItem } from 'antd-mobile'
 import '../scss/TestResultsForm.scss'
+import * as data from './TestResultsFields.json'
 
 const RadioItem = Radio.RadioItem
 const CheckboxItem = Checkbox.CheckboxItem
@@ -19,6 +20,7 @@ export default function TestResultsForm(): ReactElement {
         { value: 0, label: 'Negative' },
         { value: 1, label: 'Positive' },
     ]
+    const uaResultElements: ReactElement[] = []
 
     return (
         <div
@@ -93,38 +95,24 @@ export default function TestResultsForm(): ReactElement {
                 >
                     UA (Urine Analysis) Test Performed
                 </CheckboxItem>
+                {/* Create UA Results internal elements to insert*/}
+                {data.uaResultFields.map((fieldName) => {
+                    uaResultElements.push(
+                        <InputItem
+                            id={fieldName.toLowerCase() + '-results-val'}
+                            data-testid={
+                                fieldName.toLowerCase() + '-results-val'
+                            }
+                            placeholder="0"
+                        >
+                            {fieldName}
+                        </InputItem>,
+                    )
+                })}
                 {ua ? (
                     <div id="ua-results" data-testid="ua-results">
                         <List renderHeader={() => 'UA Results'}>
-                            {/* TODO: I am unsure about the range/type of these fields - check DB */}
-                            <InputItem
-                                id="glucose-results-val"
-                                data-testid="glucose-results-val"
-                                placeholder="0"
-                            >
-                                Glucose
-                            </InputItem>
-                            <InputItem
-                                id="nitrites-results-val"
-                                data-testid="nitrites-results-val"
-                                placeholder="0"
-                            >
-                                Nitrites
-                            </InputItem>
-                            <InputItem
-                                id="protein-results-val"
-                                data-testid="protein-results-val"
-                                placeholder="0"
-                            >
-                                Protein
-                            </InputItem>
-                            <InputItem
-                                id="leukocytes-results-val"
-                                data-testid="leukocytes-results-val"
-                                placeholder="0"
-                            >
-                                Leukocytes
-                            </InputItem>
+                            {uaResultElements}
                         </List>
                     </div>
                 ) : null}

@@ -1,12 +1,7 @@
 import React from 'react'
-import {
-    render,
-    fireEvent,
-    getByTestId,
-    queryByTestId,
-    within,
-} from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import TestResultsForm from './TestResultsForm'
+import * as data from './TestResultsFields.json'
 
 const testText = [
     'HCG \\(Pregnancy\\)',
@@ -70,7 +65,7 @@ test('pregnancy-results div is only displayed if pregnancy test is selected', ()
 })
 
 test('pregnancy results is displayed as a checkbox and is able to be checked / unchecked', () => {
-    const { getByTestId, queryByTestId } = render(<TestResultsForm />)
+    const { getByTestId } = render(<TestResultsForm />)
 
     // check the pregnancy-test checkbox to display the pregnancy-results div
     const checkBoxInput = getByTestId('pregnancy-test')
@@ -173,14 +168,7 @@ test('ua-results div is only displayed if UA test is selected', () => {
 })
 
 test('ua test results are rendered as number input boxes', () => {
-    const { getByTestId, queryByTestId } = render(<TestResultsForm />)
-    const uaResultFieldID = [
-        'glucose-results-val',
-        'nitrites-results-val',
-        'protein-results-val',
-        'leukocytes-results-val',
-    ]
-
+    const { getByTestId } = render(<TestResultsForm />)
     // check the ua-test checkbox  to display the ua-results div
     const checkBoxInput = getByTestId('ua-test')
         .getElementsByTagName('span')[0]
@@ -188,8 +176,9 @@ test('ua test results are rendered as number input boxes', () => {
     fireEvent.click(checkBoxInput)
 
     // ensure each result field is displayed as a number input box
-    uaResultFieldID.forEach((field) => {
-        expect(getByTestId(field)).toBeTruthy()
-        expect(getByTestId(field)).toHaveAttribute('type', 'text')
+    data.uaResultFields.forEach((field) => {
+        const fieldRe = new RegExp(field.toLowerCase() + `-results-val`, 'gi')
+        expect(getByTestId(fieldRe)).toBeTruthy()
+        expect(getByTestId(fieldRe)).toHaveAttribute('type', 'text')
     })
 })
