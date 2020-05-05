@@ -10,6 +10,7 @@ import Wrapper from './Wrapper'
 import PatientInfoForm from './components/PatientInfoForm'
 import PatientSearch from './components/PatientSearch'
 import DiagnosisForm from './components/DiagnosisForm'
+import TestResults from './components/TestResultsForm'
 
 import './scss/App.scss'
 import './antd-mobile.css'
@@ -46,22 +47,31 @@ const App: React.FunctionComponent = () => {
                         </Wrapper>
                     </Route>
                     <Route path="/diagnosis">
-                    <Wrapper
-                        navTitle="Diagnosis"
-                        leftArrowText="Patient Info"
-                        leftArrowRoute="/patientinfo"
+                        <Wrapper
+                            navTitle="Diagnosis"
+                            leftArrowText="Patient Info"
+                            leftArrowRoute="/patientinfo"
                         >
-                        <DiagnosisForm />
-                    </Wrapper>
+                            <DiagnosisForm />
+                        </Wrapper>
                     </Route>
                     <Route path="/treatment">
-                    <Wrapper
-                        navTitle="Treatment"
-                        leftArrowText="Diagnosis"
-                        leftArrowRoute="/diagnosis"
+                        <Wrapper
+                            navTitle="Treatment"
+                            leftArrowText="Diagnosis"
+                            leftArrowRoute="/diagnosis"
                         >
-                        <TreatmentForm />
-                    </Wrapper>
+                            <TreatmentForm />
+                        </Wrapper>
+                    </Route>
+                    <Route path="/tests">
+                        <Wrapper
+                            navTitle="Tests"
+                            leftArrowText="Treatment"
+                            leftArrowRoute="/treatment"
+                        >
+                            <TestResults />
+                        </Wrapper>
                     </Route>
                     <Route path="/easy-peasy">
                         <DebugShowEasyPeasy />

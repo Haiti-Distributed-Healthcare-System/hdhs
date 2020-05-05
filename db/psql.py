@@ -1,12 +1,14 @@
 import pandas as pd
-from sqlalchemy import create_engine
+import sqlalchemy as database
 
 from db import DB
 
 
 class PSQL(DB):
     def __init__(self, db_uri):
-        self.__engine = create_engine(db_uri)
+        self.__engine = database.create_engine(db_uri)
+        self.__table_cache = {}
+        self.__metadata = database.MetaData()
 
     # METHODS FROM DB SUPER CLASS
     # ###########################
@@ -23,6 +25,16 @@ class PSQL(DB):
         )
 
     # ###########################
+
+    @property
+    def db(self,):
+        return database
+
+    def table(self, table_name):
+        if table_name not in self.__table_cache.keys():
+            self.__table_cache[table_name] = self.db.Table(table_name, self.__metadata, autoload=True, autoload_with=self.__engine) 
+        
+        return self.__table_cache[table_name]
 
     def open_connection(self):
         return self.__engine.connect()
