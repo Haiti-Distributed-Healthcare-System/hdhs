@@ -81,7 +81,7 @@ export default function TestResultsForm(): ReactElement {
                                 type="number"
                                 id="blood-sugar-results-val"
                                 data-testid="blood-sugar-results-val"
-                                placeholder="mg/dL" // TOOD: unsure if the unit is mg/dL or mmol/L, could leave this out
+                                placeholder="mg/dL"
                                 maxLength={3}
                             ></InputItem>
                             <WhiteSpace className="list-whitespace" size="lg" />
