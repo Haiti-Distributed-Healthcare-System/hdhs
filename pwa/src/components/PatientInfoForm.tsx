@@ -109,37 +109,38 @@ export default function Form(): ReactElement {
             'exam',
         ) as HTMLInputElement
         updateCentralState({
-            firstName: firstNameField.value,
-            lastName: lastNameField.value,
+            first_name: firstNameField.value,
+            last_name: lastNameField.value,
             nickname: nicknameField.value,
-            sex: sex ? SEX.female : SEX.male,
-            birthDate: new Date(birthdateField.value),
+            gender: sex ? SEX.female : SEX.male,
+            birthdate: new Date(birthdateField.value),
             age: parseInt(age.value),
             phone: phone.value,
             town: town.value,
-            firstVisit: firstVisit,
-            pregnant: pregnant,
-            G: sex ? parseInt(gravida.value) : null,
-            P: sex ? parseInt(para.value) : null,
-            A: sex ? parseInt(abortus.value) : null,
-            LMP: sex ? new Date(lmp.value) : null,
-            wantsPlanning: planning,
-            weight: parseFloat(weight.value),
-            height: parseFloat(height.value),
-            bloodPressure: bloodPressureValue,
-            temperature: parseFloat(temp.value),
-            pulse: parseFloat(pulse.value),
+            first_visit: firstVisit,
+            ob_pregnant: pregnant,
+            ob_gravida: sex ? parseInt(gravida.value) : null,
+            ob_para: sex ? parseInt(para.value) : null,
+            ob_abortus: sex ? parseInt(abortus.value) : null,
+            ob_last_menstrual_period: sex ? new Date(lmp.value) : null,
+            ob_wants_planning: planning,
+            weight_in_lbs: parseFloat(weight.value),
+            height_in_inches: parseFloat(height.value),
+            bp_systolic_blood_pressure: parseInt(
+                bloodPressureValue.split('/')[0],
+            ),
+            bp_diastolic_blood_pressure: parseInt(
+                bloodPressureValue.split('/')[1],
+            ),
+            temp_in_fahrenheit: parseFloat(temp.value),
+            pulse_rate: parseFloat(pulse.value),
             zScore: parseFloat(zScore.value),
-            albendazole: albendazole,
-            allergies: allergies.value,
-            medicines: medicines.value,
-            chiefComplaint: [
-                complaintField1.value,
-                complaintField2.value,
-                complaintField3.value,
-            ],
-            history: history.value,
-            exam: exam.value,
+            albendazole_given: albendazole,
+            known_med_allergies: allergies.value,
+            meds_currently_taken: medicines.value,
+            chief_complaint: `1.) ${complaintField1.value} 2.) ${complaintField2.value} 3.) ${complaintField3.value}`,
+            history_of_present_illness: history.value,
+            exam_comments: exam.value,
         })
     }
 
@@ -296,7 +297,7 @@ export default function Form(): ReactElement {
                 id="weight"
                 maxLength={3}
             >
-                Weight (kg)
+                Weight (lb)
             </InputItem>
 
             <InputItem
@@ -305,7 +306,7 @@ export default function Form(): ReactElement {
                 id="height"
                 maxLength={3}
             >
-                Height (cm)
+                Height (inch)
             </InputItem>
 
             <InputItem
