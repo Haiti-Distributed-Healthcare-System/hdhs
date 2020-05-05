@@ -15,6 +15,7 @@ import TestResults from './components/TestResultsForm'
 import './scss/App.scss'
 import './antd-mobile.css'
 import DebugShowEasyPeasy from './components/DebugShowEasyPeasy'
+import TreatmentForm from './components/TreatmentForm'
 
 const App: React.FunctionComponent = () => {
     return (
@@ -54,12 +55,20 @@ const App: React.FunctionComponent = () => {
                             <DiagnosisForm />
                         </Wrapper>
                     </Route>
+                    <Route path="/treatment">
+                        <Wrapper
+                            navTitle="Treatment"
+                            leftArrowText="Diagnosis"
+                            leftArrowRoute="/diagnosis"
+                        >
+                            <TreatmentForm />
+                        </Wrapper>
+                    </Route>
                     <Route path="/tests">
                         <Wrapper
                             navTitle="Tests"
-                            // TODO: uncomment when Treatment component is completed
-                            // leftArrowText="Treatment"
-                            // leftArrowRoute="/treatment"
+                            leftArrowText="Treatment"
+                            leftArrowRoute="/treatment"
                         >
                             <TestResults />
                         </Wrapper>
