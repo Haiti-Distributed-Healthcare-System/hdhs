@@ -1,12 +1,23 @@
 import React, { ReactElement, useState } from 'react'
-import { Checkbox, List, Radio, WhiteSpace, InputItem } from 'antd-mobile'
+import {
+    Checkbox,
+    List,
+    Radio,
+    WhiteSpace,
+    InputItem,
+    Button,
+} from 'antd-mobile'
 import '../scss/TestResultsForm.scss'
 import * as data from './TestResultsFields.json'
+import ListItem from 'antd-mobile/lib/list/ListItem'
+import BeatLoader from 'react-spinners/BeatLoader'
 
 const RadioItem = Radio.RadioItem
 const CheckboxItem = Checkbox.CheckboxItem
 
 export default function TestResultsForm(): ReactElement {
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitted, setSubmitted] = useState(false)
     // State Hooks used for result div visibility
     const [pregnancyTest, setPregnancyTest] = useState(0) // Default: 0 (unchecked)
     const [pregnancyTestPositive, setPregnancyTestPositive] = useState(
@@ -118,6 +129,37 @@ export default function TestResultsForm(): ReactElement {
                     </div>
                 ) : null}
             </List>
+            <div style={{ margin: '2em 20em 0' }}>
+                {!isSubmitting && !submitted && (
+                    <Button
+                        onClick={async () => {
+                            setIsSubmitting(true)
+                            await new Promise((resolve) =>
+                                setTimeout(resolve, 2000),
+                            )
+                            setIsSubmitting(false)
+                            setSubmitted(true)
+                        }}
+                    >
+                        {submitted ? 'Responses Sent' : 'Submit'}
+                    </Button>
+                )}
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                >
+                    {isSubmitting && (
+                        <div style={{ paddingTop: '1em' }}>
+                            <BeatLoader size={15} color={'#0E8EE9'} />
+                        </div>
+                    )}
+                    {!isSubmitting && submitted && (
+                        <p style={{ fontSize: '1.4em' }}>Sent!</p>
+                    )}
+                </div>
+            </div>
         </div>
     )
 }
