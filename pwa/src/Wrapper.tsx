@@ -52,15 +52,25 @@ const Wrapper: React.FunctionComponent<WrapperProps> = (
         <div id="primary-wrapper">
             <div id="wrapper-contents">
                 {needNavBar && (
-                    <NavBar
-                        id="nav-bar"
-                        mode="light"
-                        onLeftClick={(): void => hist.push(leftRoute)}
-                        leftContent={leftContentArr}
-                        rightContent={rightContentArr}
+                    <div
+                        style={{
+                            position: 'fixed',
+                            zIndex: 100000,
+                            top: 0,
+                            marginBottom: '1em',
+                            width: '55em',
+                        }}
                     >
-                        {`${navTitle}`}
-                    </NavBar>
+                        <NavBar
+                            id="nav-bar"
+                            mode="light"
+                            onLeftClick={(): void => hist.push(leftRoute)}
+                            leftContent={leftContentArr}
+                            rightContent={rightContentArr}
+                        >
+                            {`${navTitle}`}
+                        </NavBar>
+                    </div>
                 )}
                 {props.children}
             </div>
