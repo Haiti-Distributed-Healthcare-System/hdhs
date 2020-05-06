@@ -156,7 +156,7 @@ export default function TestResultsForm(): ReactElement {
                         </div>
                     )}
                     {!isSubmitting && submitted && (
-                        <p style={{ fontSize: '1.4em' }}>Sent!</p>
+                        <p style={{ fontSize: '1.4em' }}>Record Submitted!</p>
                     )}
                 </div>
             </div>
