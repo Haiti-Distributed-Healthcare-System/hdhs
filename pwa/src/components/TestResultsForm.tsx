@@ -96,6 +96,7 @@ export default function TestResultsForm(): ReactElement {
                     UA (Urine Analysis) Test Performed
                 </CheckboxItem>
                 {/* Create UA Results internal elements to insert*/}
+                {/* eslint-disable-next-line */}
                 {data.uaResultFields.map((fieldName) => {
                     uaResultElements.push(
                         <InputItem
