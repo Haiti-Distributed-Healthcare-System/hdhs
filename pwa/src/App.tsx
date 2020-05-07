@@ -42,6 +42,8 @@ const App: React.FunctionComponent = () => {
                             navTitle="Patient Information"
                             leftArrowText="Home"
                             leftArrowRoute="/"
+                            rightArrowText="Diagnosis"
+                            rightArrowRoute="/diagnosis"
                         >
                             <PatientInfoForm />
                         </Wrapper>
@@ -51,6 +53,8 @@ const App: React.FunctionComponent = () => {
                             navTitle="Diagnosis"
                             leftArrowText="Patient Info"
                             leftArrowRoute="/patientinfo"
+                            rightArrowRoute="/treatment"
+                            rightArrowText="Treatment"
                         >
                             <DiagnosisForm />
                         </Wrapper>
@@ -60,6 +64,8 @@ const App: React.FunctionComponent = () => {
                             navTitle="Treatment"
                             leftArrowText="Diagnosis"
                             leftArrowRoute="/diagnosis"
+                            rightArrowText="Tests"
+                            rightArrowRoute="/tests"
                         >
                             <TreatmentForm />
                         </Wrapper>

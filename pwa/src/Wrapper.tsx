@@ -8,34 +8,71 @@ type WrapperProps = {
     navTitle?: string
     leftArrowText?: string
     leftArrowRoute?: string
+    rightArrowText?: string
+    rightArrowRoute?: string
     children: React.ReactNode
 }
 
 const Wrapper: React.FunctionComponent<WrapperProps> = (
     props: WrapperProps,
 ) => {
-    const { navTitle, leftArrowText, leftArrowRoute } = props
     const hist = useHistory()
-    const needNavBar = navTitle || leftArrowText || leftArrowRoute
+    const {
+        navTitle,
+        leftArrowText,
+        leftArrowRoute,
+        rightArrowText,
+        rightArrowRoute,
+    } = props
+    const needNavBar =
+        navTitle ||
+        leftArrowText ||
+        leftArrowRoute ||
+        rightArrowText ||
+        rightArrowRoute
+    const leftRoute = leftArrowRoute ? `${leftArrowRoute}` : '/'
+    const rightRoute = rightArrowRoute ? `${rightArrowRoute}` : '/'
     const leftContentArr = leftArrowText
         ? [<Icon key={1} type="left" />, `${leftArrowText}`]
         : []
-    const leftRoute = leftArrowRoute ? `${leftArrowRoute}` : '/'
+    const rightContentArr = rightArrowText
+        ? [
+              <div
+                  onClick={(): void => hist.push(rightRoute)}
+                  key={2}
+                  style={{ display: 'flex' }}
+              >
+                  <div style={{ paddingTop: '.1em' }}>{rightArrowText}</div>
+                  <Icon type="right" />
+              </div>,
+          ]
+        : []
 
     return (
         <div id="primary-wrapper">
             <div id="wrapper-contents">
                 {needNavBar && (
-                    <NavBar
-                        id="nav-bar"
-                        mode="light"
-                        onLeftClick={(): void => hist.push(leftRoute)}
-                        leftContent={leftContentArr}
+                    <div
+                        style={{
+                            position: 'fixed',
+                            zIndex: 100000,
+                            top: 0,
+                            marginBottom: '4em',
+                            width: '55em',
+                        }}
                     >
-                        {`${navTitle}`}
-                    </NavBar>
+                        <NavBar
+                            id="nav-bar"
+                            mode="light"
+                            onLeftClick={(): void => hist.push(leftRoute)}
+                            leftContent={leftContentArr}
+                            rightContent={rightContentArr}
+                        >
+                            {`${navTitle}`}
+                        </NavBar>
+                    </div>
                 )}
-                {props.children}
+                <div style={{ marginTop: '3em' }}>{props.children}</div>
             </div>
         </div>
     )
