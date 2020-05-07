@@ -57,7 +57,7 @@ const Wrapper: React.FunctionComponent<WrapperProps> = (
                             position: 'fixed',
                             zIndex: 100000,
                             top: 0,
-                            marginBottom: '1em',
+                            marginBottom: '4em',
                             width: '55em',
                         }}
                     >
@@ -72,7 +72,7 @@ const Wrapper: React.FunctionComponent<WrapperProps> = (
                         </NavBar>
                     </div>
                 )}
-                {props.children}
+                <div style={{ marginTop: '3em' }}>{props.children}</div>
             </div>
         </div>
     )
