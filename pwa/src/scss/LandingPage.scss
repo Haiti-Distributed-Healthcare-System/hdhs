@@ -1,0 +1,19 @@
+.button-flex {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+    .am-button {
+        background-color: #9bd7ff;
+        width: 40%;
+        &.am-button-active {
+            background-color: #ccebff;
+        }
+    }
+}
+
+#landing-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}

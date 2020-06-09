@@ -1,0 +1,8 @@
+**/.lighthouseci/**
+env/*
+.vscode/*
+# postgres persisted data
+pgdata/
+
+.gitsecret/keys/random_seed
+!*.secret

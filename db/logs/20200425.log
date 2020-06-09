@@ -1,0 +1,58 @@
+  0%|                                                                                                        | 0/10 [00:00<?, ?it/s]
+globals
+ 10%|██████████▌                                                                                             | 1/10 [00:00<00:03,  2.90it/s]
+clinics
+patients
+ 30%|███████████████████████████████▏                                                                        | 3/10 [29:52<31:22, 269.00s/it]
+visits
+ 40%|█████████████████████████████████████████▌                                                              | 4/10 [33:20<25:04, 250.80s/it]
+diagnoses
+ 50%|████████████████████████████████████████████████████                                                    | 5/10 [33:20<14:38, 175.70s/it]
+diagnoses_made
+Table (diagnoses_made) lost (0) entries
+ 60%|██████████████████████████████████████████████████████████████▍                                         | 6/10 [35:53<11:14, 168.71s/it]
+meds
+ 70%|████████████████████████████████████████████████████████████████████████▊                               | 7/10 [35:53<05:54, 118.17s/it]
+meds_dispensed
+Table (meds_dispensed) lost (1) entries
+ 80%|███████████████████████████████████████████████████████████████████████████████████▏                    | 8/10 [40:33<05:33, 166.78s/it]
+geonames
+ 90%|█████████████████████████████████████████████████████████████████████████████████████████████▌          | 9/10 [41:14<02:08, 128.92s/it]
+settings
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████ | 10/10 [41:14<00:00, 247.44s/it]
+PSQL EXECUTING: [ALTER TABLE clinics ALTER COLUMN pk_clinic_id TYPE numeric USING pk_clinic_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE clinics ADD PRIMARY KEY (pk_clinic_id);]
+PSQL EXECUTING: [ALTER TABLE patients ALTER COLUMN pk_patient_id TYPE numeric USING pk_patient_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE patients ADD PRIMARY KEY (pk_patient_id);]
+PSQL EXECUTING: [ALTER TABLE visits ALTER COLUMN pk_visit_id TYPE numeric USING pk_visit_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE visits ADD PRIMARY KEY (pk_visit_id);]
+PSQL EXECUTING: [ALTER TABLE diagnoses ALTER COLUMN pk_diagnosis_id TYPE numeric USING pk_diagnosis_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE diagnoses ADD PRIMARY KEY (pk_diagnosis_id);]
+PSQL EXECUTING: [ALTER TABLE diagnoses_made ALTER COLUMN pk_diagnoses_made TYPE numeric USING pk_diagnoses_made::numeric;]
+PSQL EXECUTING: [ALTER TABLE diagnoses_made ALTER COLUMN fk_visit_id TYPE numeric USING fk_visit_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE diagnoses_made ADD PRIMARY KEY (pk_diagnoses_made, fk_visit_id, fk_diagnosis_key);]
+PSQL EXECUTING: [ALTER TABLE meds ALTER COLUMN pk_med_id TYPE numeric USING pk_med_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE meds ADD PRIMARY KEY (pk_med_id);]
+PSQL EXECUTING: [ALTER TABLE meds_dispensed ALTER COLUMN pk_meds_dispensed TYPE numeric USING pk_meds_dispensed::numeric;]
+PSQL EXECUTING: [ALTER TABLE meds_dispensed ALTER COLUMN fk_visit_id TYPE numeric USING fk_visit_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE meds_dispensed ADD PRIMARY KEY (pk_meds_dispensed, fk_visit_id, fk_med_key);]
+PSQL EXECUTING: [ALTER TABLE geonames ALTER COLUMN pk_geoname_id TYPE numeric USING pk_geoname_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE geonames ADD PRIMARY KEY (pk_geoname_id);]
+PSQL EXECUTING: [ALTER TABLE settings ALTER COLUMN pk_settings_id TYPE numeric USING pk_settings_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE settings ADD PRIMARY KEY (pk_settings_id);]
+PSQL EXECUTING: [ALTER TABLE patients ALTER COLUMN fk_geoname_id TYPE numeric USING fk_geoname_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE patients ADD CONSTRAINT fk_geonames_id FOREIGN KEY (fk_geoname_id) REFERENCES geonames(pk_geoname_id);]
+PSQL EXECUTING: [ALTER TABLE visits ALTER COLUMN fk_patient_id TYPE numeric USING fk_patient_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE visits ADD CONSTRAINT fk_patients_id FOREIGN KEY (fk_patient_id) REFERENCES patients(pk_patient_id);]
+Failure to execute: ['ALTER TABLE visits ADD CONSTRAINT fk_patients_id FOREIGN KEY (fk_patient_id) REFERENCES patients(pk_patient_id);']
+FAILURE TO IMPLEMENT CONSTRAINT ON (visits.fk_patient_id) to (patients.pk_patient_id)
+PSQL EXECUTING: [ALTER TABLE visits ALTER COLUMN fk_clinic_id TYPE numeric USING fk_clinic_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE visits ADD CONSTRAINT fk_clinics_id FOREIGN KEY (fk_clinic_id) REFERENCES clinics(pk_clinic_id);]
+PSQL EXECUTING: [ALTER TABLE diagnoses_made ALTER COLUMN fk_visit_id TYPE numeric USING fk_visit_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE diagnoses_made ADD CONSTRAINT fk_visits_id FOREIGN KEY (fk_visit_id) REFERENCES visits(pk_visit_id);]
+Failure to execute: ['ALTER TABLE diagnoses_made ADD CONSTRAINT fk_visits_id FOREIGN KEY (fk_visit_id) REFERENCES visits(pk_visit_id);']
+FAILURE TO IMPLEMENT CONSTRAINT ON (diagnoses_made.fk_visit_id) to (visits.pk_visit_id)
+PSQL EXECUTING: [ALTER TABLE meds_dispensed ALTER COLUMN fk_visit_id TYPE numeric USING fk_visit_id::numeric;]
+PSQL EXECUTING: [ALTER TABLE meds_dispensed ADD CONSTRAINT fk_visits_id FOREIGN KEY (fk_visit_id) REFERENCES visits(pk_visit_id);]
+Failure to execute: ['ALTER TABLE meds_dispensed ADD CONSTRAINT fk_visits_id FOREIGN KEY (fk_visit_id) REFERENCES visits(pk_visit_id);']
+FAILURE TO IMPLEMENT CONSTRAINT ON (meds_dispensed.fk_visit_id) to (visits.pk_visit_id)

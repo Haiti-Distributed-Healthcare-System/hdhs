@@ -1,0 +1,7 @@
+# ifupdown has been replaced by netplan(5) on this system.  See
+# /etc/netplan for current configuration.
+# To re-enable ifupdown on this system, you can run:
+#    sudo apt install ifupdown
+iface wlan0 inet dhcp
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp

@@ -1,0 +1,26 @@
+name: PWA Testing
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node Version ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: docker-compose -f dev-docker-compose.yml up --detach
+      - run: docker exec haiti_pwa npm run lint
+      - run: docker exec haiti_pwa npm run test:cov
+      - run: docker exec haiti_pwa npm run cy:run
+      - run: docker exec haiti_pwa npm run build
+      - run: docker-compose -f dev-docker-compose.yml down
+        env:
+          CI: true
